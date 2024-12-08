@@ -1,0 +1,25 @@
+.utilBar {
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 0 5rem 0 0;
+  padding: 0.5rem 1rem 0.5rem 2.4rem;
+  width: 8%;
+  background-color: #fff;
+}
+
+.utilBar > svg {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.utilBar > svg:first-child {
+  margin-right: 10%;
+}
+
+.detailHeader {
+  margin-bottom: 3.6rem;
+  padding: 2.8rem 2.4rem;
+  width: 100%;
+  background-color: #fff;
+}

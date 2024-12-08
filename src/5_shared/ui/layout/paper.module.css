@@ -1,0 +1,11 @@
+.paper {
+  padding: 1rem 2.5rem;
+  width: 100%;
+  background-color: #fff;
+  height: 77%;
+  overflow-y: scroll;
+}
+
+.paper::-webkit-scrollbar {
+  display: none;
+}
