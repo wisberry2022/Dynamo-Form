@@ -11,12 +11,16 @@ export const RadioGroup: FC<RadioGroupProps> = (props) => {
   const { value, onChange, children } = props;
   const childArr = Children.toArray(children);
 
-  return childArr.map((child, idx) =>
-    cloneElement(child as ReactElement<RadioProps>, {
-      key: idx,
-      selected: value,
-      onChange,
-    })
+  return (
+    <div className={styles.radioGroup}>
+      {childArr.map((child, idx) =>
+        cloneElement(child as ReactElement<RadioProps>, {
+          key: idx,
+          selected: value,
+          onChange,
+        })
+      )}
+    </div>
   );
 };
 

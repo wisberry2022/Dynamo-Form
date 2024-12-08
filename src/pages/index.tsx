@@ -11,8 +11,6 @@ const Page: NextPage = () => {
 
   return (
     <Container>
-      {/* <Radio selected={selected} label="사용" value="A" onChange={onChange} />
-      <Radio selected={selected} label="미사용" value="B" onChange={onChange} /> */}
       <RadioGroup value={selected} onChange={onChange}>
         <Radio value="A" label="사용" />
         <Radio value="B" label="미사용" />

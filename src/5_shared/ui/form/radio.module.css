@@ -1,3 +1,9 @@
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .radioRow {
   display: flex;
   align-items: center;
