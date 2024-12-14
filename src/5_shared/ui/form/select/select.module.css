@@ -1,11 +1,78 @@
 .select {
-  border-radius: 3rem;
-  width: 20%;
-  padding: 1.1rem 2.2rem;
+  position: relative;
+  width: 200px;
+  border-radius: 20px;
   background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
 
-  span {
-    font-size: 1.3rem;
-    font-weight: 500;
-  }
+.selectHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  font-weight: 500;
+  color: #171717;
+  position: relative;
+  z-index: 2;
+}
+
+.icon {
+  fill: #171717;
+  transition: transform 0.3s ease;
+}
+
+.icon.open {
+  transform: rotate(180deg);
+}
+
+.selectList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  padding-top: 3.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1;
+  -ms-overflow-style: none;
+}
+
+.selectList::-webkit-scrollbar {
+  display: none;
+}
+
+.selectList.open {
+  max-height: 350%;
+  opacity: 1;
+  visibility: visible;
+  overflow-y: scroll;
+}
+
+.selectItem {
+  list-style: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
+  color: #171717;
+  background-color: #d9d9d9;
+  border-bottom: 1px solid #f9f9f9;
+  cursor: pointer;
+}
+
+.selectItem:last-child {
+  border-bottom: none;
+}
+
+.selectItem:hover {
+  background-color: #c0c0c0;
 }
