@@ -7,12 +7,11 @@ import {
   MouseEventHandler,
   ReactElement,
   ReactNode,
-  useEffect,
-  useRef,
   useState,
 } from "react";
 import styles from "./select.module.css";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { useHandleOutsideClick } from "@/5_shared/hooks";
 
 type SelectProps = {
   value: any;
@@ -27,9 +26,9 @@ type SelectCompound<T = {}> = FC<T> & {
 export const Select: SelectCompound<SelectProps> = (props) => {
   const { value, children, onChange } = props;
   const childArr = Children.toArray(children);
-  const [isOpen, setIsOpen] = useState(false); // 드롭다운 상태
   const [selectedValue, setSelectedValue] = useState(value); // 선택된 값
-  const selectRef = useRef<HTMLDivElement>(null); // 드롭다운 외부 클릭 감지용 Ref
+  const { isOpen, setIsOpen, selectRef } =
+    useHandleOutsideClick<HTMLDivElement>();
 
   const onItemChange = (value: any) => {
     onChange?.(value);
@@ -41,20 +40,6 @@ export const Select: SelectCompound<SelectProps> = (props) => {
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
-
-  // 드롭다운 외부 클릭 감지
-  useEffect(() => {
-    const handleOutsideClick = (event: any) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
-        setIsOpen(false); // 드롭다운 닫기
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   return (
     <div className={styles.select} ref={selectRef}>
