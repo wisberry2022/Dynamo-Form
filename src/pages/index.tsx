@@ -1,16 +1,10 @@
-import { PageLayout, PageWithLayout, TextField } from "@/5_shared";
+import { PageLayout, PageWithLayout, Select, TextField } from "@/5_shared";
 import { ChangeEventHandler, useState } from "react";
 
 const Page: PageWithLayout = () => {
-  const [value, setValue] = useState<string>("");
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
-  };
-
   return (
     <>
-      <TextField placeholder="placeholder" value={value} onChange={onChange} />
+      <Select></Select>
     </>
   );
 };
