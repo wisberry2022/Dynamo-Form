@@ -1,23 +1,26 @@
-import { PageLayout, PageWithLayout, Select, TextField } from "@/5_shared";
+import {
+  PageLayout,
+  PageWithLayout,
+  Select,
+  Switch,
+  TextField,
+} from "@/5_shared";
 import { ChangeEventHandler, useState } from "react";
 
 const Page: PageWithLayout = () => {
-  const [value, setValue] = useState<string>("Value1");
+  const [value, setValue] = useState<boolean>(true);
 
-  const onChange = (value: any) => {
+  const onChange = (value: boolean) => {
     setValue(value);
   };
 
   return (
     <>
-      <Select value={value} onChange={onChange}>
-        <Select.Item label={"Value1"} value={"Value1"} />
-        <Select.Item label={"Value2"} value={"Value2"} />
-        <Select.Item label={"Value3"} value={"Value3"} />
-        <Select.Item label={"Value4"} value={"Value4"} />
-        <Select.Item label={"Value5"} value={"Value5"} />
-        <Select.Item label={"Value6"} value={"Value6"} />
-      </Select>
+      <Switch
+        checked={value}
+        onChange={onChange}
+        label={value ? "사용" : "미사용"}
+      />
     </>
   );
 };
