@@ -1,0 +1,35 @@
+.button {
+  outline: none;
+  border: none;
+  border-radius: 9rem;
+  padding: 0.5rem 2.8rem;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary {
+  color: #f9f9f9;
+  background-color: #bcb3ff;
+}
+
+.secondary {
+  color: #333;
+  background-color: #ffd3b3;
+}
+
+.brighten {
+  color: #333;
+  background-color: #a3ffc1;
+}
+
+.pink {
+  color: #333;
+  background-color: #ffb3d3;
+}
+
+.hazy {
+  color: #f9f9f9;
+  background-color: #b3d3ff;
+}

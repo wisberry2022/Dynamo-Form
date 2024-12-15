@@ -1,27 +1,22 @@
-import {
-  PageLayout,
-  PageWithLayout,
-  Select,
-  Switch,
-  TextField,
-} from "@/5_shared";
-import { ChangeEventHandler, useState } from "react";
+import { Button, PageLayout, PageWithLayout } from "@/5_shared";
 
 const Page: PageWithLayout = () => {
-  const [value, setValue] = useState<boolean>(true);
-
-  const onChange = (value: boolean) => {
-    setValue(value);
-  };
-
   return (
-    <>
-      <Switch
-        checked={value}
-        onChange={onChange}
-        label={value ? "사용" : "미사용"}
-      />
-    </>
+    <div style={{ width: "10%" }}>
+      <Button onClick={() => {}}>primary</Button>
+      <Button onClick={() => {}} variant="secondary">
+        secondary
+      </Button>
+      <Button onClick={() => {}} variant="brighten">
+        brighten
+      </Button>
+      <Button onClick={() => {}} variant="pink">
+        pink
+      </Button>
+      <Button onClick={() => {}} variant="hazy">
+        hazy
+      </Button>
+    </div>
   );
 };
 
