@@ -33,3 +33,28 @@
   color: #f9f9f9;
   background-color: #b3d3ff;
 }
+
+.squaredBtn {
+  border: 0.1rem solid #999;
+  padding: 1.7rem 0;
+  background-color: #fff;
+  width: 20%;
+  cursor: pointer;
+
+  div {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    strong {
+      font-size: 1.8rem;
+    }
+
+    strong + svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+import { FC } from "react";
+import styles from "./styles/Index.module.css";
+import { FaFileAlt, FaListOl, FaRegPlusSquare } from "react-icons/fa";
+import { SquareButton } from "@/6_shared";
+
+export const Index: FC = () => {
+  return (
+    <>
+      <div className={styles.titleBox}>
+        <h1>Dyna Form</h1>
+      </div>
+      <div className={styles.btnBox}>
+        <SquareButton title="양식 생성하기" icon={<FaRegPlusSquare />} />
+        <SquareButton title="양식 관리" icon={<FaListOl />} />
+        <SquareButton title="설문조사 만들기" icon={<FaFileAlt />} />
+      </div>
+    </>
+  );
+};
