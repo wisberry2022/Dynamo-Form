@@ -1,3 +1,19 @@
 .primary {
-  
+  background-color: #bcb3ff;
+}
+
+.secondary {
+  background-color: #ffd3b3;
+}
+
+.brighten {
+  background-color: #a3ffc1;
+}
+
+.pink {
+  background-color: #ffb3d3;
+}
+
+.hazy {
+  background-color: #b3d3ff;
 }

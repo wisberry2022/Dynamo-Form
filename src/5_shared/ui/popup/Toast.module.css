@@ -1,0 +1,30 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-radius: 20rem;
+  width: 30rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  span {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  span.success {
+    color: #f9f9f9;
+  }
+
+  span.error {
+    color: #f00;
+  }
+
+  span.warning {
+    color: #111;
+  }
+}

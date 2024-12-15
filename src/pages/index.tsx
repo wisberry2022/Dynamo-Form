@@ -1,21 +1,11 @@
-import { Button, PageLayout, PageWithLayout } from "@/5_shared";
+import { Button, PageLayout, PageWithLayout, Toast } from "@/5_shared";
 
 const Page: PageWithLayout = () => {
   return (
     <div style={{ width: "10%" }}>
-      <Button onClick={() => {}}>primary</Button>
-      <Button onClick={() => {}} variant="secondary">
-        secondary
-      </Button>
-      <Button onClick={() => {}} variant="brighten">
-        brighten
-      </Button>
-      <Button onClick={() => {}} variant="pink">
-        pink
-      </Button>
-      <Button onClick={() => {}} variant="hazy">
-        hazy
-      </Button>
+      <Toast type="success" message="SUCCESS TOAST" />
+      <Toast type="warning" message="WARNING TOAST" />
+      <Toast type="error" message="ERROR TOAST" />
     </div>
   );
 };

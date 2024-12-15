@@ -4,3 +4,5 @@ export type ButtonVariant =
   | "brighten"
   | "pink"
   | "hazy";
+
+export type ToastVariant = Omit<ButtonVariant, "secondary" | "hazy">;
