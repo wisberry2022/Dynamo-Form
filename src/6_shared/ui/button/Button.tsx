@@ -4,8 +4,8 @@ import { ButtonVariant } from "@/6_shared/types";
 
 type ButtonProps = {
   children: ReactNode;
-  onClick: () => void;
   variant?: ButtonVariant;
+  onClick?: () => void;
 };
 
 export const Button: FC<ButtonProps> = (props) => {
