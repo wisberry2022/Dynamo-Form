@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import styles from "./button.module.css";
-import { ButtonVariant } from "@/5_shared/types";
+import { ButtonVariant } from "@/6_shared/types";
 
 type ButtonProps = {
   children: ReactNode;

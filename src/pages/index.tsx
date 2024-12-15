@@ -7,7 +7,7 @@ import {
   PageLayout,
   PageWithLayout,
   Toast,
-} from "@/5_shared";
+} from "@/6_shared";
 import { useState } from "react";
 
 const Page: PageWithLayout = () => {

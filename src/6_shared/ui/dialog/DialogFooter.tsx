@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import styles from "./Dialog.module.css";
-import { Align } from "@/5_shared/types";
+import { Align } from "@/6_shared/types";
 
 type DialogFooterProps = {
   children: ReactNode;

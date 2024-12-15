@@ -8,7 +8,7 @@ import React, {
   useRef,
 } from "react";
 import styles from "./Dialog.module.css";
-import { DialogScale } from "@/5_shared/types";
+import { DialogScale } from "@/6_shared/types";
 import { createPortal } from "react-dom";
 
 type DialogProps = {

@@ -1,4 +1,4 @@
-import { PageWithLayout } from "@/5_shared";
+import { PageWithLayout } from "@/6_shared";
 import "@/styles/reset.css";
 import type { AppProps } from "next/app";
 type AppPropsWithLayout = AppProps & {

@@ -11,7 +11,7 @@ import {
 } from "react";
 import styles from "./select.module.css";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { useHandleOutsideClick } from "@/5_shared/hooks";
+import { useHandleOutsideClick } from "@/6_shared/hooks";
 
 type SelectProps = {
   value: any;
