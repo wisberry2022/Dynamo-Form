@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import styles from "./button.module.css";
+import styles from "./styles/button.module.css";
 import { ButtonVariant } from "@/6_shared/types";
 
 type ButtonProps = {

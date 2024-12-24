@@ -1,5 +1,5 @@
 import { cloneElement, FC, ReactElement, ReactNode } from "react";
-import styles from "./button.module.css";
+import styles from "./styles/button.module.css";
 import { useRouter } from "next/router";
 
 type SquareButtonProps = {
