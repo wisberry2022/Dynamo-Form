@@ -1,0 +1,11 @@
+.tIcon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.body {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
