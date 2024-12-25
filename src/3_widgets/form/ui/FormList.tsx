@@ -68,7 +68,7 @@ export const FormList: FC<FormListProps> = (props) => {
                     />
                   )
                 }
-                right={<FormDelete />}
+                right={<FormDelete id={form.id} />}
               />
             }
           />

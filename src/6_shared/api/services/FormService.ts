@@ -16,4 +16,7 @@ export const Form = {
       ResponseWrapper<FormNameUpdateResponse>
     >(Paths.form.updateName, sendData);
   },
+  delete: async (id: number): Promise<void> => {
+    await RestService.delete<void>(Paths.form.delete(id));
+  },
 };
