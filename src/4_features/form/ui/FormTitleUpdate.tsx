@@ -1,4 +1,4 @@
-import { TextField } from "@/6_shared";
+import { TextField, Toast } from "@/6_shared";
 import { ChangeEventHandler, FC, MouseEvent, useState } from "react";
 import styles from "./styles/form-update.module.css";
 import { FaPen } from "react-icons/fa";
@@ -31,6 +31,7 @@ export const FormTitleUpdate: FC<FormTitleUpdateProps> = (props) => {
       });
       init();
       mutate();
+      Toast.success("양식 이름이 변경되었습니다.");
     } catch (e) {}
   };
 

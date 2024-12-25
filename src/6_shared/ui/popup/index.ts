@@ -1,2 +1,2 @@
-export { Toast } from "./Toast";
+export * from "./toast";
 export { PopupTrigger } from "./PopupTrigger";
