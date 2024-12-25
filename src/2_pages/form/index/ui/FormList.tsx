@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styles from "./styles/form-list.module.css";
 import { ListButton } from "@/6_shared";
 import {
@@ -7,8 +7,12 @@ import {
   FaRegPlusSquare,
   FaRegTrashAlt,
 } from "react-icons/fa";
+import { Form, useFormListSWR } from "@/6_shared/api";
 
 export const FormList: FC = () => {
+  const { formList } = useFormListSWR();
+  console.log("formList", formList);
+
   return (
     <div id={styles.listContainer}>
       <ListButton
