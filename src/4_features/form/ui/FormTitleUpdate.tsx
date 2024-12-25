@@ -14,7 +14,7 @@ type FormTitleUpdateProps = {
 };
 
 export const FormTitleUpdate: FC<FormTitleUpdateProps> = (props) => {
-  const { id, open, title, init } = props;
+  const { id, open, title, init = () => {} } = props;
   const [value, setValue] = useState<string>(title);
 
   const { mutate } = useSWR(Paths.form.getAll);
