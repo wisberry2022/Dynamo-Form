@@ -12,7 +12,12 @@ export const PopupTrigger: FC<PopupTriggerProps> = (props) => {
 
   return (
     <>
-      {cloneElement<any>(trigger, { onClick: onOpen })}
+      {cloneElement<any>(trigger, {
+        onClick: (e: any) => {
+          e.stopPropagation();
+          onOpen();
+        },
+      })}
       {cloneElement<any>(popup, { open, onClose })}
     </>
   );

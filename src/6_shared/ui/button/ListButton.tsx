@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, MouseEventHandler, ReactNode } from "react";
 import styles from "./styles/list-btn.module.css";
 
 type ListButtonCompound = {
@@ -13,10 +13,11 @@ type ListButtonType = ListButtonCompound &
     left?: ReactNode;
     center?: ReactNode;
     right?: ReactNode;
+    onClick?: () => void;
   }>;
 
 export const ListButton: ListButtonType = (props) => {
-  const { bgColor = "secondary", left, center, right } = props;
+  const { bgColor = "secondary", left, center, right, onClick } = props;
 
   const colors = {
     primary: "#D8F9FA",
@@ -27,6 +28,7 @@ export const ListButton: ListButtonType = (props) => {
     <div
       style={{ backgroundColor: colors[bgColor] }}
       className={styles.listBtn}
+      onClick={onClick}
     >
       <div className={styles.leftBox}>{left}</div>
       <div className={styles.centerBox}>{center}</div>

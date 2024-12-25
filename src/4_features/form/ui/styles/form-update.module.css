@@ -1,0 +1,15 @@
+.tTitle {
+  font-size: 1.6rem;
+}
+
+.updateField {
+  position: absolute;
+  left: 15%;
+}
+
+.updateField + svg {
+  position: absolute;
+  left: 29%;
+  width: 1.8rem;
+  height: 1.8rem;
+}
