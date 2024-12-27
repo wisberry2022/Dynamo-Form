@@ -1,7 +1,8 @@
+import { FormDetail } from "@/2_pages/form";
 import { PageLayout, PageWithLayout } from "@/6_shared";
 
 const Page: PageWithLayout = () => {
-  return <div>hi</div>;
+  return <FormDetail />;
 };
 
 Page.getLayout = (page) => <PageLayout title="양식 관리">{page}</PageLayout>;
