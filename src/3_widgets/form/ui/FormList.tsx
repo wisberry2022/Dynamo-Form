@@ -1,10 +1,9 @@
 import { FC, MouseEvent, useState } from "react";
 import styles from "./styles/form-list.module.css";
-import { FormListResponse, ListButton } from "@/6_shared";
+import { endpoints, FormListResponse, ListButton } from "@/6_shared";
 import { FaFileAlt, FaPen, FaRegPlusSquare } from "react-icons/fa";
 import { FormDelete, FormTitleUpdate } from "@/4_features/form";
-import { useRecoilState } from "recoil";
-import { ToastState } from "@/6_shared/states/Toast/ToastStates";
+import { useRouter } from "next/router";
 
 type FormListProps = {
   formList?: FormListResponse[];
@@ -30,6 +29,12 @@ export const FormList: FC<FormListProps> = (props) => {
     setUpdate(id);
   };
 
+  const router = useRouter();
+
+  const goPage = (id: number) => {
+    router.push(endpoints.form.detail(id));
+  };
+
   return (
     <>
       <ListButton
@@ -47,6 +52,7 @@ export const FormList: FC<FormListProps> = (props) => {
         return (
           <ListButton
             key={form.id}
+            onClick={() => goPage(form.id)}
             left={
               <ListButton.Left
                 left={<FaFileAlt className={styles.tIcon} />}
