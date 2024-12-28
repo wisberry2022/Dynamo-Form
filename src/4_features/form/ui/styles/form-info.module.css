@@ -1,0 +1,28 @@
+.formInfo {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .infoRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 50%;
+
+    dt {
+      width: 20%;
+      max-width: 20%;
+      strong {
+        display: block;
+        font-size: 1.3rem;
+      }
+    }
+    dd {
+      strong {
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

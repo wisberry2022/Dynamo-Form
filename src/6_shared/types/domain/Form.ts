@@ -82,5 +82,6 @@ export type FormResponse = {
   id: number;
   title: string;
   description: string;
+  autoTitle: boolean;
   questions: Question[];
 };
