@@ -10,4 +10,21 @@
     text-align: left;
     font-size: 1.8rem;
   }
+
+  .starts {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  .scoreBox {
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
 }
