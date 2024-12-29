@@ -1,12 +1,14 @@
 import {
   DropdownQuestion,
   MultiSelectQuestion,
+  RatingQuestion,
   TextualQuestion,
 } from "@/5_entities/question";
 import {
   ComponentMapperType,
   DropDownQuestion as DropdownQuestionResponse,
   Question,
+  RatingQuestion as RatingQuestionResponse,
   SelectQuestion,
   TextualQuestion as TextualQuestionResponse,
 } from "@/6_shared";
@@ -22,4 +24,5 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
   TEXTUAL: (view: TextualQuestionResponse) => (
     <TextualQuestion question={view} />
   ),
+  RATING: (view: RatingQuestionResponse) => <RatingQuestion question={view} />,
 };

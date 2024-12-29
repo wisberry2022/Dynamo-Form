@@ -9,8 +9,8 @@
     display: flex;
     align-items: flex-end;
     gap: 0.5rem;
-    width: 100%;
-    justify-content: center;
+    width: 80%;
+    justify-content: flex-start;
 
     h4 {
       font-size: 1.8rem;
