@@ -42,3 +42,7 @@
 .radioRow:hover {
   cursor: pointer;
 }
+
+.radioRow span {
+  font-size: 1.2rem;
+}

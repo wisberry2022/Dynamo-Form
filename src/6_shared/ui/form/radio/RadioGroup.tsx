@@ -3,16 +3,17 @@ import { Children, cloneElement, FC, ReactElement, ReactNode } from "react";
 
 type RadioGroupProps = {
   value: string | number;
-  onChange: (value: string | number) => void;
   children: ReactNode;
+  onChange: (value: string | number) => void;
+  className?: string;
 };
 
 export const RadioGroup: FC<RadioGroupProps> = (props) => {
-  const { value, onChange, children } = props;
+  const { value, onChange, children, className } = props;
   const childArr = Children.toArray(children);
 
   return (
-    <div className={styles.radioGroup}>
+    <div className={className ?? styles.radioGroup}>
       {childArr.map((child, idx) =>
         cloneElement(child as ReactElement<RadioProps>, {
           key: idx,
