@@ -5,7 +5,7 @@ import {
   DialogFooter,
   DialogHeader,
 } from "@/6_shared";
-import { FC } from "react";
+import { ChangeEventHandler, FC, MouseEventHandler } from "react";
 import styles from "./styles/form-delete.module.css";
 
 type FormDeleteDialogProps = {
@@ -17,7 +17,13 @@ type FormDeleteDialogProps = {
 const FormDeleteDialog: FC<FormDeleteDialogProps> = (props) => {
   const { open, onClose, onConfirm } = props;
 
-  const confirm = () => {
+  const close: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    onClose?.();
+  };
+
+  const confirm: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
     onConfirm?.();
     onClose?.();
   };
@@ -30,7 +36,7 @@ const FormDeleteDialog: FC<FormDeleteDialogProps> = (props) => {
       </DialogBody>
       <DialogFooter align="right">
         <div style={{ display: "flex", gap: "1rem" }}>
-          <Button variant="brighten" onClick={onClose}>
+          <Button variant="brighten" onClick={close}>
             취소
           </Button>
           <Button variant="pink" onClick={confirm}>

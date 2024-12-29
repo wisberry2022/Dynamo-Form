@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, MouseEventHandler, ReactNode } from "react";
 import styles from "./styles/button.module.css";
 import { ButtonVariant } from "@/6_shared/types";
 
@@ -6,7 +6,7 @@ type ButtonProps = {
   children: ReactNode;
   width?: number;
   variant?: ButtonVariant;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const Button: FC<ButtonProps> = (props) => {
