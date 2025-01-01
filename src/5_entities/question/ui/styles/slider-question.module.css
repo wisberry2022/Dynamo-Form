@@ -1,0 +1,18 @@
+.qContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0;
+  align-items: center;
+  gap: 2rem;
+
+  .titleBox {
+    width: 80%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+
+    h4 {
+      font-size: 1.8rem;
+    }
+  }
+}

@@ -7,12 +7,13 @@ import {
 import {
   ComponentMapperType,
   DropDownQuestion as DropdownQuestionResponse,
-  Question,
   RatingQuestion as RatingQuestionResponse,
   SelectQuestion,
+  SliderQuestion as SliderQuestionResponse,
   TextualQuestion as TextualQuestionResponse,
 } from "@/6_shared";
 import { QuestionComponentMapperType } from "./types";
+import { SliderQuestion } from "@/5_entities/question/ui/SliderQuestion";
 
 export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
   MULTI_QUESTION: (view: SelectQuestion) => (
@@ -25,4 +26,5 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
     <TextualQuestion question={view} />
   ),
   RATING: (view: RatingQuestionResponse) => <RatingQuestion question={view} />,
+  SLIDER: (view: SliderQuestionResponse) => <SliderQuestion question={view} />,
 };
