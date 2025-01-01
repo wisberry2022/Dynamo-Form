@@ -2,6 +2,7 @@ import {
   DragEventHandler,
   FC,
   MouseEventHandler,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -10,17 +11,18 @@ import styles from "./slide.module.css";
 type SliderProps = {
   min: number;
   max: number;
+  defaultScore?: number;
   className?: string;
   disableLabel?: boolean;
 };
 
 export const Slider: FC<SliderProps> = (props) => {
-  const { min, max, className, disableLabel = false } = props;
+  const { min, max, className, defaultScore = 0, disableLabel = false } = props;
   const pointRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
   const [state, setState] = useState<boolean>(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(defaultScore);
 
   const calcScore = (offset: number) => {
     const range = max - min;
@@ -71,6 +73,15 @@ export const Slider: FC<SliderProps> = (props) => {
     (pointRef.current as HTMLSpanElement).style.left = `${e.pageX - x}px`;
     calcScore(e.pageX - x);
   };
+
+  useEffect(() => {
+    if (pointRef.current && barRef.current) {
+      const xEnd = barRef.current.offsetWidth;
+      const intvl = (max - min) / xEnd;
+
+      (pointRef.current as HTMLSpanElement).style.left = `${score / intvl}px`;
+    }
+  }, [barRef.current, pointRef.current]);
 
   return (
     <div
