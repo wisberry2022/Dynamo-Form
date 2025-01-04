@@ -3,6 +3,8 @@ import {
   MultiSelectQuestion,
   RatingQuestion,
   TextualQuestion,
+  SliderQuestion,
+  AttachQuestion,
 } from "@/5_entities/question";
 import {
   ComponentMapperType,
@@ -11,9 +13,9 @@ import {
   SelectQuestion,
   SliderQuestion as SliderQuestionResponse,
   TextualQuestion as TextualQuestionResponse,
+  AttachQuestion as AttachQuestionResponse,
 } from "@/6_shared";
 import { QuestionComponentMapperType } from "./types";
-import { SliderQuestion } from "@/5_entities/question/ui/SliderQuestion";
 
 export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
   MULTI_QUESTION: (view: SelectQuestion) => (
@@ -27,4 +29,7 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
   ),
   RATING: (view: RatingQuestionResponse) => <RatingQuestion question={view} />,
   SLIDER: (view: SliderQuestionResponse) => <SliderQuestion question={view} />,
+  FILE_ATTACH: (view: AttachQuestionResponse) => (
+    <AttachQuestion question={view} />
+  ),
 };

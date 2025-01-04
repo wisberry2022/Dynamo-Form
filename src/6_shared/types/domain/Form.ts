@@ -76,7 +76,7 @@ export interface AttachQuestion extends Question {
   attachableVideo: boolean;
   attachableAudio: boolean;
   attachableOthers: boolean;
-  extension: FileExtensions[];
+  extensions: FileExtensions[];
 }
 
 export type FormResponse = {

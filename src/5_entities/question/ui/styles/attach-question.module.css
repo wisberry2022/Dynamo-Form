@@ -1,0 +1,42 @@
+.qContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem 0;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+
+  .titleBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+
+    h4 {
+      font-size: 1.8rem;
+    }
+
+    strong {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #f00;
+    }
+  }
+
+  .uploadBox {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+
+    button {
+      align-self: flex-start;
+    }
+
+    .exams {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+}
