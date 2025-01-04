@@ -37,7 +37,7 @@ export const FormInfo: FC<FormInfoProps> = (props) => {
               <strong>항목 제목 자동 설정</strong>
             </dt>
             <dd>
-              <Switch checked={form.autoTitle} onChange={() => {}} />
+              <strong>{form.autoTitle ? "자동" : "수동"}</strong>
             </dd>
           </dl>
         </div>
