@@ -5,3 +5,4 @@ export * from "./button";
 export * from "./popup";
 export * from "./dialog";
 export * from "./slide";
+export * from "./ratings";
