@@ -1,22 +1,24 @@
 import { FormPaper } from "@/5_entities/form";
-import { FC } from "react";
+import { ChangeEventHandler, FC } from "react";
 import styles from "./styles/form-updatable.module.css";
 import { FormResponse, Switch, TextField } from "@/6_shared";
-import { FaPen } from "react-icons/fa";
+import { FaRegSave } from "react-icons/fa";
 
 type UpdatableFormInfoProps = {
   form: FormResponse;
+  onTextField: ChangeEventHandler<HTMLInputElement>;
+  onSwitch: (name: string, checked: boolean) => void;
   onClick: () => void;
 };
 
 export const UpdatableFormInfo: FC<UpdatableFormInfoProps> = (props) => {
-  const { form, onClick } = props;
+  const { form, onTextField, onSwitch, onClick } = props;
 
   return (
     <FormPaper>
       <FormPaper.TitleBar
         left="양식 정보"
-        right={<FaPen onClick={onClick} />}
+        right={<FaRegSave onClick={onClick} />}
       />
       <FormPaper.Main>
         <div className={styles.formInfo}>
@@ -26,7 +28,9 @@ export const UpdatableFormInfo: FC<UpdatableFormInfoProps> = (props) => {
             </dt>
             <dd>
               <TextField
+                name="title"
                 value={form.title}
+                onChange={onTextField}
                 placeholder="양식 제목을 입력하세요"
               />
             </dd>
@@ -37,7 +41,9 @@ export const UpdatableFormInfo: FC<UpdatableFormInfoProps> = (props) => {
             </dt>
             <dd>
               <TextField
+                name="description"
                 value={form.description}
+                onChange={onTextField}
                 placeholder="양식 설명을 입력하세요"
               />
             </dd>
@@ -47,7 +53,11 @@ export const UpdatableFormInfo: FC<UpdatableFormInfoProps> = (props) => {
               <strong>항목 제목 자동 설정</strong>
             </dt>
             <dd>
-              <Switch onChange={() => {}} checked={form.autoTitle} />
+              <Switch
+                onChange={onSwitch}
+                name={"autoTitle"}
+                checked={form.autoTitle}
+              />
             </dd>
           </dl>
         </div>

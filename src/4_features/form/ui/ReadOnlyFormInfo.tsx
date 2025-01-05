@@ -1,7 +1,7 @@
 import { FormPaper } from "@/5_entities/form";
 import { FC } from "react";
 import styles from "./styles/form-info.module.css";
-import { FormResponse, Switch } from "@/6_shared";
+import { FormResponse } from "@/6_shared";
 import { FaPen } from "react-icons/fa";
 
 type ReadOnlyFormInfoProps = {

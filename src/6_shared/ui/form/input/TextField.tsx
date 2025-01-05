@@ -2,6 +2,7 @@ import { ChangeEventHandler, FC, useState } from "react";
 import styles from "./textfield.module.css";
 
 type TextFieldProps = {
+  name?: string;
   value?: string;
   placeholder?: string;
   className?: string;
@@ -13,6 +14,7 @@ export const TextField: FC<TextFieldProps> = (props) => {
   const {
     placeholder = "",
     className = "",
+    name = "",
     value = "",
     onChange,
     width = 0,
@@ -21,6 +23,7 @@ export const TextField: FC<TextFieldProps> = (props) => {
   return (
     <input
       type="text"
+      name={name}
       className={`${styles.textField} ${className}`}
       placeholder={placeholder}
       value={value}

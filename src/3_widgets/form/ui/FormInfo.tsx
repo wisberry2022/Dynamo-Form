@@ -1,13 +1,17 @@
 import { ReadOnlyFormInfo, UpdatableFormInfo } from "@/4_features/form";
-import { DataStatus, FormResponse } from "@/6_shared";
-import { ChangeEventHandler, FC, useState } from "react";
+import { DataHandlerType, DataStatus, FormResponse } from "@/6_shared";
+import { FC, useState } from "react";
 
 type FormInfoProps = {
   form: FormResponse;
+  formHandler: DataHandlerType<FormResponse>;
+  onSectionSave: (form: FormResponse) => void;
 };
 
 export const FormInfo: FC<FormInfoProps> = (props) => {
-  const { form } = props;
+  const { form, formHandler, onSectionSave } = props;
+  const { onTextField, onSwitch } = formHandler;
+
   const [status, setStatus] = useState<DataStatus>("READ");
 
   const onChangeModify = () => {
@@ -21,6 +25,11 @@ export const FormInfo: FC<FormInfoProps> = (props) => {
   return status === "READ" ? (
     <ReadOnlyFormInfo form={form} onClick={onChangeModify} />
   ) : (
-    <UpdatableFormInfo form={form} onClick={onChangeReadOnly} />
+    <UpdatableFormInfo
+      form={form}
+      onTextField={onTextField}
+      onSwitch={onSwitch}
+      onClick={onChangeReadOnly}
+    />
   );
 };
