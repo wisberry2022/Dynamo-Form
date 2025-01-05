@@ -1,3 +1,4 @@
 export { FormDelete } from "./ui/FormDelete";
 export { FormTitleUpdate } from "./ui/FormTitleUpdate";
-export { FormInfo } from "./ui/FormInfo";
+export { ReadOnlyFormInfo } from "./ui/ReadOnlyFormInfo";
+export { UpdatableFormInfo } from "./ui/UpdatebleFormInfo";

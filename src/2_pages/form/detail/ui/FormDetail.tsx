@@ -1,8 +1,8 @@
 import { useFormSWR } from "@/6_shared";
 import { FC } from "react";
 import styles from "./styles/form-detail.module.css";
-import { FormInfo } from "@/4_features/form";
 import { Question } from "@/4_features/question";
+import { FormInfo } from "@/3_widgets/form";
 
 type FormDetailProps = {
   formId: number;
