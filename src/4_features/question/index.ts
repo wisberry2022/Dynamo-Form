@@ -1,1 +1,2 @@
-export { Question } from "./ui/Question";
+export { QuestionPreview } from "./ui/QuestionPreview";
+export { UpdatableQuestion } from "./ui/UpdatableQuestion";

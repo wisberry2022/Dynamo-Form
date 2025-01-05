@@ -1,16 +1,23 @@
 import { FormPaper } from "@/5_entities/form";
-import { Question as QuestionResponse } from "@/6_shared";
+import {
+  DataHandlerType,
+  FormResponse,
+  Question as QuestionResponse,
+  useDataHandler,
+} from "@/6_shared";
 import { FC } from "react";
 import { FaPen, FaRegTrashAlt, FaTrash } from "react-icons/fa";
 import styles from "./styles/question.module.css";
 import QuestionMapper from "./QuestionMapper";
 
-type QuestionProps = {
+type QuestionPreviewProps = {
   question: QuestionResponse;
+  onModify: () => void;
+  onDelete: (id: number) => void;
 };
 
-export const Question: FC<QuestionProps> = (props) => {
-  const { question } = props;
+export const QuestionPreview: FC<QuestionPreviewProps> = (props) => {
+  const { question, onModify, onDelete } = props;
 
   return (
     <FormPaper>
@@ -18,8 +25,8 @@ export const Question: FC<QuestionProps> = (props) => {
         left={<div>{question.question}</div>}
         right={
           <div className={styles.mod}>
-            <FaPen />
-            <FaRegTrashAlt />
+            <FaPen onClick={onModify} />
+            <FaRegTrashAlt onClick={() => onDelete(question.id)} />
           </div>
         }
       />

@@ -5,11 +5,10 @@ import { FC, useState } from "react";
 type FormInfoProps = {
   form: FormResponse;
   formHandler: DataHandlerType<FormResponse>;
-  onSectionSave: (form: FormResponse) => void;
 };
 
 export const FormInfo: FC<FormInfoProps> = (props) => {
-  const { form, formHandler, onSectionSave } = props;
+  const { form, formHandler } = props;
   const { onTextField, onSwitch } = formHandler;
 
   const [status, setStatus] = useState<DataStatus>("READ");

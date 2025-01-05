@@ -16,6 +16,13 @@ export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
     formHandler.setState(form);
   };
 
+  const onDeleteQuestion = (id: number) => {
+    formHandler.setState({
+      ...formHandler.state,
+      questions: formHandler.state.questions.filter((quest) => quest.id !== id),
+    });
+  };
+
   return (
     <FormDetailContext.Provider
       value={{
@@ -23,6 +30,7 @@ export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
         form: formHandler.state,
         formHandler,
         onSectionSave,
+        onDeleteQuestion,
       }}
     >
       {children}
