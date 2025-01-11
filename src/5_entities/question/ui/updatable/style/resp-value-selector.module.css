@@ -1,0 +1,23 @@
+.respValueBox {
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  .content {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      font-weight: 600;
+    }
+
+    strong {
+      font-size: 2rem;
+    }
+  }
+}

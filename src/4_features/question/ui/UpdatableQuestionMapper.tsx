@@ -1,7 +1,11 @@
 import { DataHandlerType, Question } from "@/6_shared";
 import { FC } from "react";
 import { UpdatableCategoryLayout } from "@/5_entities/question/ui/updatable/UpdatableCategoryLayout";
-import { CategorySelector, SubCategorySelector } from "@/5_entities/question";
+import {
+  CategorySelector,
+  RespValueSelector,
+  SubCategorySelector,
+} from "@/5_entities/question";
 
 type UpdatableQuestionMapperProps = {
   handler: DataHandlerType<Question>;
@@ -28,6 +32,7 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
         onChangeCategory={() => {}}
       />
       <SubCategorySelector subCategory={question.subCategory} />
+      <RespValueSelector />
     </UpdatableCategoryLayout>
   );
 };
