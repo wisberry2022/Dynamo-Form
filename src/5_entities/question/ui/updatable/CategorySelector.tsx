@@ -5,10 +5,10 @@ import { CategorySelectRadioLabel } from "../../constants/constants";
 type CategorySelectorProps = {
   category: QuestionCategory;
   onChangeCategory: (category: QuestionCategory) => void;
-}
+};
 
 export const CategorySelector: FC<CategorySelectorProps> = (props) => {
-  const {category, onChangeCategory} = props;
+  const { category, onChangeCategory } = props;
 
   return (
     <RadioCard

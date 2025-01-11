@@ -1,6 +1,7 @@
 import { DataHandlerType, Question } from "@/6_shared";
 import { FC } from "react";
-import { QuestionSetter } from "../model/ComponentMapper";
+import { UpdatableCategoryLayout } from "@/5_entities/question/ui/updatable/UpdatableCategoryLayout";
+import { CategorySelector, SubCategorySelector } from "@/5_entities/question";
 
 type UpdatableQuestionMapperProps = {
   handler: DataHandlerType<Question>;
@@ -9,10 +10,26 @@ type UpdatableQuestionMapperProps = {
 
 const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
   const { handler, onQuestionSave } = props;
+  const { state: question, onTextField } = handler;
 
-  const content = QuestionSetter[handler.state.category] || (() => {});
+  const onSectionSave = () => {
+    onQuestionSave(question);
+  };
 
-  return content(handler, onQuestionSave);
+  return (
+    <UpdatableCategoryLayout
+      status="MODIFY"
+      question={question}
+      onQuestion={onTextField}
+      onSectionSave={onSectionSave}
+    >
+      <CategorySelector
+        category={question.category}
+        onChangeCategory={() => {}}
+      />
+      <SubCategorySelector subCategory={question.subCategory} />
+    </UpdatableCategoryLayout>
+  );
 };
 
 export default UpdatableQuestionMapper;

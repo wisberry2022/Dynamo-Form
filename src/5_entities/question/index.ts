@@ -4,4 +4,6 @@ export { TextualQuestion } from "./ui/preview/TextualQuestion";
 export { RatingQuestion } from "./ui/preview/RatingQuestion";
 export { AttachQuestion } from "./ui/preview/AttachQuestion";
 export { SliderQuestion } from "./ui/preview/SliderQuestion";
-export { SelectCategory } from "./ui/updatable/SelectCategory";
+export { CategorySelector } from "./ui/updatable/CategorySelector";
+export { SubCategorySelector } from "./ui/updatable/SubCategorySelector";
+export { UpdatableCategoryLayout } from "./ui/updatable/UpdatableCategoryLayout";
