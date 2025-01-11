@@ -1,0 +1,15 @@
+.labelTextField {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+
+  strong {
+    font-size: 1.5rem;
+    width: 5%;
+  }
+
+  .fieldBox {
+    width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+
+  .content {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .btn {
+    margin: 0 auto;
+    width: 20% !important;
+  }
+}

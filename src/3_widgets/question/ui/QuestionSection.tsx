@@ -4,11 +4,12 @@ import { FC, useState } from "react";
 
 type QuestionSectionProps = {
   question: Question;
+  onQuestionSave: (question: Question) => void;
   onDelete: (id: number) => void;
 };
 
 export const QuestionSection: FC<QuestionSectionProps> = (props) => {
-  const { question, onDelete } = props;
+  const { question, onQuestionSave, onDelete } = props;
   const [status, setStatus] = useState<DataStatus>("READ");
 
   const onModify = () => {
@@ -26,6 +27,10 @@ export const QuestionSection: FC<QuestionSectionProps> = (props) => {
       onDelete={onDelete}
     />
   ) : (
-    <UpdatableQuestion question={question} onReadOnly={onRead} />
+    <UpdatableQuestion
+      question={question}
+      onReadOnly={onRead}
+      onQuestionSave={onQuestionSave}
+    />
   );
 };

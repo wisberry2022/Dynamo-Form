@@ -9,3 +9,9 @@ export type DataHandlerType<T> = {
   onTextField: ChangeEventHandler<HTMLInputElement>;
   onSwitch: (name: string, checked: boolean) => void;
 };
+
+export type RadioLabelType<T = any> = {
+  id: number;
+  label: string;
+  value: T;
+};

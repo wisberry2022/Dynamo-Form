@@ -7,6 +7,7 @@ type TextFieldProps = {
   placeholder?: string;
   className?: string;
   width?: number;
+  fullWidth?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -16,8 +17,9 @@ export const TextField: FC<TextFieldProps> = (props) => {
     className = "",
     name = "",
     value = "",
-    onChange,
     width = 0,
+    fullWidth = false,
+    onChange,
   } = props;
 
   return (
@@ -28,7 +30,7 @@ export const TextField: FC<TextFieldProps> = (props) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      style={{ width: width ? `${width}px` : "auto" }}
+      style={{ width: fullWidth ? "100%" : width ? `${width}px` : "auto" }}
     />
   );
 };

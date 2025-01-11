@@ -1,0 +1,25 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.7rem 2.1rem;
+  border-radius: 1.8rem;
+  width: 32.5rem;
+  background-color: #fff;
+
+  .labelGroup {
+    margin-bottom: 2.1rem;
+    .title {
+      margin-bottom: 0.9rem;
+
+      h4 {
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+    }
+
+    .desc {
+      font-size: 1.2rem;
+    }
+  }
+}

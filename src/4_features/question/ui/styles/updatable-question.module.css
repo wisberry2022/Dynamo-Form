@@ -1,3 +1,8 @@
+.titleField {
+  display: flex;
+  align-items: center;
+}
+
 .mod {
   display: flex;
   gap: 1.5rem;

@@ -6,16 +6,17 @@ type ButtonProps = {
   children: ReactNode;
   width?: number;
   variant?: ButtonVariant;
+  className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { children, onClick, variant = "primary", width } = props;
+  const { children, onClick, variant = "primary", className, width } = props;
   return (
     <button
       onClick={onClick}
       style={{ width: `${width ? `${width}%` : "auto"}` }}
-      className={`${styles[variant]} ${styles.button}`}
+      className={`${styles[variant]} ${styles.button} ${className}`}
     >
       {children}
     </button>

@@ -5,6 +5,7 @@ import {
   TextualQuestion,
   SliderQuestion,
   AttachQuestion,
+  SelectCategory,
 } from "@/5_entities/question";
 import {
   ComponentMapperType,
@@ -14,8 +15,13 @@ import {
   SliderQuestion as SliderQuestionResponse,
   TextualQuestion as TextualQuestionResponse,
   AttachQuestion as AttachQuestionResponse,
+  DataHandlerType,
+  Question,
 } from "@/6_shared";
-import { QuestionComponentMapperType } from "./types";
+import {
+  CategoryComponentMapperType,
+  QuestionComponentMapperType,
+} from "./types";
 
 export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
   MULTI_QUESTION: (view: SelectQuestion) => (
@@ -33,3 +39,11 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
     <AttachQuestion question={view} />
   ),
 };
+
+export const QuestionSetter: ComponentMapperType<CategoryComponentMapperType> =
+  {
+    SELECT: (
+      handler: DataHandlerType<SelectQuestion>,
+      onQuestionSave: (question: Question) => void
+    ) => <SelectCategory handler={handler} onQuestionSave={onQuestionSave} />,
+  };

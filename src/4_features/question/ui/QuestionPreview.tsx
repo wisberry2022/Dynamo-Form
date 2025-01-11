@@ -22,7 +22,7 @@ export const QuestionPreview: FC<QuestionPreviewProps> = (props) => {
   return (
     <FormPaper>
       <FormPaper.TitleBar
-        left={<div>{question.question}</div>}
+        left={<div>{question.title}</div>}
         right={
           <div className={styles.mod}>
             <FaPen onClick={onModify} />
