@@ -10,7 +10,7 @@ export type DataHandlerType<T> = {
   onSwitch: (name: string, checked: boolean) => void;
 };
 
-export type RadioLabelType<T = any> = {
+export type FormLabelType<T = any> = {
   id: number;
   label: string;
   value: T;

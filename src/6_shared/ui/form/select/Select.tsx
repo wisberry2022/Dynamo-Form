@@ -1,8 +1,6 @@
 import {
-  BaseSyntheticEvent,
   Children,
   cloneElement,
-  createElement,
   FC,
   MouseEventHandler,
   ReactElement,
@@ -16,6 +14,7 @@ import { useHandleOutsideClick } from "@/6_shared/hooks";
 type SelectProps = {
   value: any;
   children: ReactNode;
+  width?: number;
   onChange?: (value: any) => void;
 };
 
@@ -24,11 +23,12 @@ type SelectCompound<T = {}> = FC<T> & {
 };
 
 export const Select: SelectCompound<SelectProps> = (props) => {
-  const { value, children, onChange } = props;
+  const { value, children, onChange, width } = props;
   const childArr = Children.toArray(children);
   const [selectedValue, setSelectedValue] = useState(value); // 선택된 값
   const { isOpen, setIsOpen, selectRef } =
     useHandleOutsideClick<HTMLDivElement>();
+
 
   const onItemChange = (value: any) => {
     onChange?.(value);
@@ -42,7 +42,11 @@ export const Select: SelectCompound<SelectProps> = (props) => {
   };
 
   return (
-    <div className={styles.select} ref={selectRef}>
+    <div
+      className={styles.select}
+      ref={selectRef}
+      style={{ width: `${width ? `${width}%` : "200px"}` }}
+    >
       {/* 드롭다운 헤더 */}
       <div
         className={`${styles.selectHeader}`}

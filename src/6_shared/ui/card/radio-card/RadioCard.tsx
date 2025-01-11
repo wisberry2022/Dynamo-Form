@@ -2,13 +2,13 @@ import { FC } from "react";
 import styles from "./radio-card.module.css";
 import { Radio, RadioGroup } from "../../form";
 import { CardWrapper } from "../card-kit/CardWrapper";
-import { RadioLabelType } from "@/6_shared/types";
+import { FormLabelType } from "@/6_shared/types";
 
 type RadioCardProps = {
   title: string;
   description: string;
   defaultValue: any;
-  radioLabels: RadioLabelType[];
+  radioLabels: FormLabelType[];
   onChange: (value: any) => void;
 };
 

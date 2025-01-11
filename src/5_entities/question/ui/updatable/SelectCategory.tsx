@@ -1,7 +1,13 @@
-import { DataHandlerType, Question, SelectQuestion } from "@/6_shared";
+import {
+  DataHandlerType,
+  Question,
+  QuestionCategory,
+  SelectQuestion,
+} from "@/6_shared";
 import { FC } from "react";
 import { UpdatableCategoryLayout } from "./UpdatableCategoryLayout";
 import { CategorySelector } from "../private/CategorySelector.";
+import { SubCategorySelector } from "../private/SubCategorySelector";
 
 type SelectCategoryProps = {
   handler: DataHandlerType<SelectQuestion>;
@@ -10,7 +16,7 @@ type SelectCategoryProps = {
 
 export const SelectCategory: FC<SelectCategoryProps> = (props) => {
   const { handler, onQuestionSave } = props;
-  const { state: question, onTextField } = handler;
+  const { state: question, onTextField, setState } = handler;
 
   const onSectionSave = () => {
     onQuestionSave(question);
@@ -23,7 +29,11 @@ export const SelectCategory: FC<SelectCategoryProps> = (props) => {
       onQuestion={onTextField}
       onSectionSave={onSectionSave}
     >
-        <CategorySelector />
+      <CategorySelector
+        category={question.category}
+        onChangeCategory={() => {}}
+      />
+      <SubCategorySelector subCategory={question.subCategory} />
     </UpdatableCategoryLayout>
   );
 };
