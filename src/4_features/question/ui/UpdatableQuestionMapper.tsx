@@ -1,4 +1,4 @@
-import { DataHandlerType, Question } from "@/6_shared";
+import { DataHandlerType, Question, QuestionCategory } from "@/6_shared";
 import { FC } from "react";
 import { UpdatableCategoryLayout } from "@/5_entities/question/ui/updatable/UpdatableCategoryLayout";
 import {
@@ -6,6 +6,7 @@ import {
   RespValueSelector,
   SubCategorySelector,
 } from "@/5_entities/question";
+import { useCategoryHandler } from "../libs/useCategoryHandler";
 
 type UpdatableQuestionMapperProps = {
   handler: DataHandlerType<Question>;
@@ -15,10 +16,17 @@ type UpdatableQuestionMapperProps = {
 const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
   const { handler, onQuestionSave } = props;
   const { state: question, onTextField } = handler;
+  const {
+    state: isolatedState,
+    onChangeCategory,
+    onChangeSubCategory,
+  } = useCategoryHandler(question);
 
   const onSectionSave = () => {
     onQuestionSave(question);
   };
+
+  console.log("isolatedState", isolatedState);
 
   return (
     <UpdatableCategoryLayout
@@ -28,10 +36,10 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
       onSectionSave={onSectionSave}
     >
       <CategorySelector
-        category={question.category}
-        onChangeCategory={() => {}}
+        category={isolatedState.category}
+        onChangeCategory={onChangeCategory}
       />
-      <SubCategorySelector subCategory={question.subCategory} />
+      <SubCategorySelector subCategory={isolatedState.subCategory} />
       <RespValueSelector />
     </UpdatableCategoryLayout>
   );
