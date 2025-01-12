@@ -7,13 +7,16 @@ type SubCategorySelectorProps = {
   onChange: (value: QuestionSubCategory) => void;
 };
 
-export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
+export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (
+  props
+) => {
   const { subCategory, onChange } = props;
 
   const mapper: { [key: string]: string } = {
     MULTI_QUESTION: "N지 선다형",
     DROPDOWN: "드롭다운형",
   };
+
 
   return (
     <SelectCard
@@ -22,7 +25,7 @@ export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (props) =
     STEP1에서 설정한 유형을 기반으로 <br />
     더욱 세부적인 질문을 구성할 수 있습니다.
     `}
-      defaultValue={mapper[subCategory]}
+      defaultValue={subCategory}
       selectItemLabels={QuestionSubCategorySelectLabel}
       onChange={onChange}
     />

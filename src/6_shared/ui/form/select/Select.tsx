@@ -10,6 +10,7 @@ import {
 import styles from "./select.module.css";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { useHandleOutsideClick } from "@/6_shared/hooks";
+import { FormLabelType } from "@/6_shared/types";
 
 type SelectProps = {
   value: any;
@@ -29,6 +30,9 @@ export const Select: SelectCompound<SelectProps> = (props) => {
   const { isOpen, setIsOpen, selectRef } =
     useHandleOutsideClick<HTMLDivElement>();
 
+  const selectLabels: FormLabelType[] = childArr.map(
+    (child) => (child as ReactElement).props as FormLabelType
+  );
 
   const onItemChange = (value: any) => {
     onChange?.(value);
@@ -53,7 +57,12 @@ export const Select: SelectCompound<SelectProps> = (props) => {
         onClick={toggleDropdown}
         style={{ zIndex: isOpen ? 2 : 1 }}
       >
-        <span>{selectedValue}</span>
+        <span>
+          {
+            selectLabels?.find((labelSet) => labelSet.value === selectedValue)
+              ?.label
+          }
+        </span>
         <svg
           className={`${styles.icon} ${isOpen ? styles.open : ""}`}
           xmlns="http://www.w3.org/2000/svg"

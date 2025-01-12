@@ -23,8 +23,6 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
     onQuestionSave(question);
   };
 
-  console.log("isolatedState", isolatedState);
-
   return (
     <UpdatableCategoryLayout
       status="MODIFY"
