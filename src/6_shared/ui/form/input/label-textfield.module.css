@@ -1,15 +1,28 @@
 .labelTextField {
   display: flex;
   gap: 2.5rem;
-  justify-content: center;
+  width: 100%;
   align-items: center;
 
-  strong {
-    font-size: 1.5rem;
-    width: 5%;
+  .labelBox {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+
+    strong {
+      display: block;
+      font-size: 1.5rem;
+      width: 100%;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      color: #f00;
+    }
   }
 
   .fieldBox {
-    width: 100%;
+    width: 90%;
   }
 }

@@ -6,7 +6,7 @@ type SubCategorySelectorProps = {
   subCategory: string;
 };
 
-export const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
+export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
   const { subCategory } = props;
 
   const mapper: { [key: string]: string } = {

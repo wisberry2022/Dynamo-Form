@@ -6,16 +6,25 @@ type LabelTextFieldProps = {
   label: string;
   name?: string;
   value?: any;
+  className?: string;
   placeholder?: string;
+  width?: number;
+  subLabel?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const LabelTextiField: FC<LabelTextFieldProps> = (props) => {
-  const { label, name, value, placeholder, onChange } = props;
+  const { label, name, value, className, placeholder, width, subLabel, onChange } = props;
 
   return (
-    <div className={styles.labelTextField}>
-      <strong>{label}</strong>
+    <div
+      style={{ width: `${width ? `${width}px` : "auto"}` }}
+      className={`${className} ${styles.labelTextField}`}
+    >
+      <div className={styles.labelBox}>
+        <strong>{label}</strong>
+        {subLabel && <span>{subLabel}</span>}
+      </div>
       <div className={styles.fieldBox}>
         <TextField
           name={name}

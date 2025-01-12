@@ -6,13 +6,19 @@ type CardWrapperProps = {
   title: string;
   description: string;
   children: ReactNode;
+  size?: number;
 };
 
 export const CardWrapper: FC<CardWrapperProps> = (props) => {
-  const { title, description, children } = props;
+  const { title, description, children, size = 1 } = props;
+
+  const basicWidth = 32.5;
 
   return (
-    <div className={styles.cardWrapper}>
+    <div
+      className={styles.cardWrapper}
+      style={{ width: `${size * basicWidth}rem` }}
+    >
       <div className={styles.labelGroup}>
         <div className={styles.title}>
           <h4>{parse(title)}</h4>
