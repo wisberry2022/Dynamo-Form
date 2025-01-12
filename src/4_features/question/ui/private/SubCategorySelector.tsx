@@ -1,6 +1,7 @@
 import {
   DescriptiveSelector,
   EvaluativeSelector,
+  EvidenceSelector,
   RespValueSelector,
   SelectSubCategorySelector,
 } from "@/5_entities/question";
@@ -37,10 +38,10 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
   }
 
   if (state.category === "EVIDENCE") {
-    return <></>;
+    return <EvidenceSelector />;
   }
 
-  return <div></div>;
+  return <></>;
 };
 
 export default SubCategorySelector;
