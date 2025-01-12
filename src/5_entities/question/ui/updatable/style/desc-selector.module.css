@@ -8,13 +8,15 @@
     display: flex;
     gap: 13rem;
 
-    strong {
-      width: 15rem;
-      font-weight: 500;
-    }
+    div {
+      strong {
+        width: 15rem;
+        font-weight: 500;
+      }
 
-    span {
-      width: 15rem;
+      span {
+        width: 15rem;
+      }
     }
   }
 }
