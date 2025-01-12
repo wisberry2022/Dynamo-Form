@@ -36,7 +36,10 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
         category={isolatedState.category}
         onChangeCategory={onChangeCategory}
       />
-      <SubCategorySelector state={isolatedState} />
+      <SubCategorySelector
+        state={isolatedState}
+        onChangeSubCategory={onChangeSubCategory}
+      />
     </UpdatableCategoryLayout>
   );
 };

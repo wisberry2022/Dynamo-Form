@@ -30,8 +30,12 @@ const categoryReducer = <T extends Question>(
       const tobeSubCategory = action.category;
       const tobeQuestion = InitQuestionStates[tobeSubCategory];
       return {
-        ...tobeQuestion,
-        ...state,
+        ...(tobeQuestion as T),
+        id: state.id,
+        title: state.title,
+        question: state.question,
+        viewOrder: state.viewOrder,
+        required: state.required,
       };
     default:
       return state;

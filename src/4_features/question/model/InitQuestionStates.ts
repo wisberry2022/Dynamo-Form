@@ -59,7 +59,7 @@ export const DirectConvertInitQuestionStates: ObjType<Question> = {
   } as AttachQuestion,
 };
 
-export const InitQuestionStates = {
+export const InitQuestionStates: ObjType<Question> = {
   MULTI_QUESTION: {
     id: 0,
     title: "",

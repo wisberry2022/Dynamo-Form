@@ -5,20 +5,24 @@ import {
   RespValueSelector,
   SelectSubCategorySelector,
 } from "@/5_entities/question";
-import { Question } from "@/6_shared";
+import { Question, QuestionSubCategory } from "@/6_shared";
 import { FC } from "react";
 
 type SubCategorySelectorProps = {
   state: Question;
+  onChangeSubCategory: (category: QuestionSubCategory) => void;
 };
 
 const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
-  const { state } = props;
+  const { state, onChangeSubCategory } = props;
 
   if (state.category === "SELECT") {
     return (
       <>
-        <SelectSubCategorySelector subCategory={state.subCategory} />
+        <SelectSubCategorySelector
+          subCategory={state.subCategory}
+          onChange={onChangeSubCategory}
+        />
         <RespValueSelector />
       </>
     );
@@ -31,7 +35,7 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
   if (state.category === "EVALUATIVE") {
     return (
       <>
-        <EvaluativeSelector question={state} onChangeSubCategory={() => {}} />
+        <EvaluativeSelector question={state} onChangeSubCategory={onChangeSubCategory} />
         <RespValueSelector />
       </>
     );

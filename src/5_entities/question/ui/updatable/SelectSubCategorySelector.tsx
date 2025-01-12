@@ -4,10 +4,11 @@ import { QuestionSubCategorySelectLabel } from "../../constants/constants";
 
 type SubCategorySelectorProps = {
   subCategory: string;
+  onChange: (value: QuestionSubCategory) => void;
 };
 
 export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
-  const { subCategory } = props;
+  const { subCategory, onChange } = props;
 
   const mapper: { [key: string]: string } = {
     MULTI_QUESTION: "N지 선다형",
@@ -23,6 +24,7 @@ export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (props) =
     `}
       defaultValue={mapper[subCategory]}
       selectItemLabels={QuestionSubCategorySelectLabel}
+      onChange={onChange}
     />
   );
 };

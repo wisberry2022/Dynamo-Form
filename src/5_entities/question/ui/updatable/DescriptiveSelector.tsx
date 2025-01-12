@@ -1,8 +1,10 @@
-import { CardWrapper, LabelTextiField } from "@/6_shared";
+import { CardWrapper, LabelTextiField, QuestionSubCategory } from "@/6_shared";
 import { FC } from "react";
 import styles from "./style/desc-selector.module.css";
 
-export const DescriptiveSelector: FC = () => {
+type DescriptiveSelectorProps = {};
+
+export const DescriptiveSelector: FC<DescriptiveSelectorProps> = (props) => {
   return (
     <CardWrapper
       title="STEP2. 세부 유형 설정하기"
