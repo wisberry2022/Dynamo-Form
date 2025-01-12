@@ -12,12 +12,6 @@ export const SelectSubCategorySelector: FC<SubCategorySelectorProps> = (
 ) => {
   const { subCategory, onChange } = props;
 
-  const mapper: { [key: string]: string } = {
-    MULTI_QUESTION: "N지 선다형",
-    DROPDOWN: "드롭다운형",
-  };
-
-
   return (
     <SelectCard
       title="STEP2. 세부 유형 설정하기"

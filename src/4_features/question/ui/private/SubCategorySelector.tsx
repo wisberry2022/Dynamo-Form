@@ -1,12 +1,9 @@
-import {
-  DescriptiveSelector,
-  EvaluativeSelector,
-  EvidenceSelector,
-  RespValueSelector,
-  SelectSubCategorySelector,
-} from "@/5_entities/question";
 import { Question, QuestionSubCategory } from "@/6_shared";
 import { FC } from "react";
+import EvaluativeQuestionDetailSelector from "./EvaluativeQuestionDetailSelector";
+import DescriptiveQuestionDetailSelector from "./DescriptiveQuestionDetailSelector";
+import EvidenceQuestionDetailSelector from "./EvidenceQuestionDetailSelector";
+import SelectQuestionDetailSelector from "./SelectQuestionDetailSelector";
 
 type SubCategorySelectorProps = {
   state: Question;
@@ -16,36 +13,24 @@ type SubCategorySelectorProps = {
 const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
   const { state, onChangeSubCategory } = props;
 
-  if (state.category === "SELECT") {
-    return (
-      <>
-        <SelectSubCategorySelector
-          subCategory={state.subCategory}
-          onChange={onChangeSubCategory}
-        />
-        <RespValueSelector />
-      </>
-    );
-  }
+  const componentMapper = {
+    SELECT: (
+      <SelectQuestionDetailSelector
+        state={state}
+        onChangeSubCategory={onChangeSubCategory}
+      />
+    ),
+    DESCRIPTIVE: <DescriptiveQuestionDetailSelector />,
+    EVALUATIVE: (
+      <EvaluativeQuestionDetailSelector
+        state={state}
+        onChangeSubCategory={onChangeSubCategory}
+      />
+    ),
+    EVIDENCE: <EvidenceQuestionDetailSelector />,
+  };
 
-  if (state.category === "DESCRIPTIVE") {
-    return <DescriptiveSelector />;
-  }
-
-  if (state.category === "EVALUATIVE") {
-    return (
-      <>
-        <EvaluativeSelector question={state} onChangeSubCategory={onChangeSubCategory} />
-        <RespValueSelector />
-      </>
-    );
-  }
-
-  if (state.category === "EVIDENCE") {
-    return <EvidenceSelector />;
-  }
-
-  return <></>;
+  return componentMapper[state.category];
 };
 
 export default SubCategorySelector;
