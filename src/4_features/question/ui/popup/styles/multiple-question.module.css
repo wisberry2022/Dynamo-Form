@@ -1,0 +1,145 @@
+.content {
+  display: flex;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    border-right: 0.1rem solid #ddd;
+    width: 70%;
+    gap: 2.5rem;
+
+    .titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      span {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #f00;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      .dataArea {
+        overflow-y: scroll;
+        max-height: 15rem;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          list-style-type: none;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+
+            .listRight {
+              display: flex;
+              align-items: center;
+              gap: 2.5rem;
+
+              .edit {
+                padding: 1rem;
+                height: 1rem;
+              }
+
+              .iconBox {
+                display: flex;
+                gap: 1rem;
+
+                svg {
+                  width: 1.6rem;
+                  height: 1.6rem;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .dataArea::-webkit-scrollbar {
+        display: none;
+      }
+
+      .controller {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+
+        .row {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+
+          svg {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+
+          span {
+            font-size: 1.4rem;
+          }
+
+          &.delete {
+            svg {
+              color: #f00;
+            }
+
+            span {
+              color: #f00;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+
+    .respType {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+
+      strong {
+        font-size: 1.3rem;
+      }
+    }
+
+    .respLimit {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      strong {
+        display: block;
+      }
+
+      .respEdit {
+        padding: 1rem;
+        height: 0.5rem;
+      }
+    }
+  }
+}

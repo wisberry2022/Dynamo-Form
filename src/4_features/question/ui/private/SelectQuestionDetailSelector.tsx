@@ -4,6 +4,7 @@ import {
 } from "@/5_entities/question";
 import { Question, QuestionSubCategory } from "@/6_shared";
 import { FC } from "react";
+import { MultipleQuestionPopup } from "../popup";
 
 type SelectQuestionDetailSelectorProps = {
   state: Question;
@@ -21,7 +22,7 @@ const SelectQuestionDetailSelector: FC<SelectQuestionDetailSelectorProps> = (
         subCategory={state.subCategory}
         onChange={onChangeSubCategory}
       />
-      <RespValueSelector />
+      <RespValueSelector popup={<MultipleQuestionPopup />} />
     </>
   );
 };
