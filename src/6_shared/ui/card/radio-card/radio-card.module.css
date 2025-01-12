@@ -1,4 +1,5 @@
 .radioGroup {
+  margin: auto 0;
   align-self: flex-end;
   width: auto;
 }

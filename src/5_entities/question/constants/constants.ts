@@ -12,3 +12,8 @@ export const QuestionSubCategorySelectLabel: FormLabelType<QuestionSubCategory>[
     { id: 1, label: "N지 선다형", value: "MULTI_QUESTION" },
     { id: 2, label: "드롭다운형", value: "DROPDOWN" },
   ];
+
+export const EvaluativeCategoryRadioLabel: FormLabelType[] = [
+  { id: 1, label: "별점형", value: "RATING" },
+  { id: 2, label: "수치 조절형", value: "SLIDER" },
+];

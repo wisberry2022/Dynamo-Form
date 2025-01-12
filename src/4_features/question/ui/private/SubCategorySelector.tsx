@@ -1,5 +1,6 @@
 import {
   DescriptiveSelector,
+  EvaluativeSelector,
   RespValueSelector,
   SelectSubCategorySelector,
 } from "@/5_entities/question";
@@ -27,7 +28,12 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
   }
 
   if (state.category === "EVALUATIVE") {
-    return <></>;
+    return (
+      <>
+        <EvaluativeSelector question={state} onChangeSubCategory={() => {}} />
+        <RespValueSelector />
+      </>
+    );
   }
 
   if (state.category === "EVIDENCE") {
