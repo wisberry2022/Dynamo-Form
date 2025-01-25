@@ -16,6 +16,7 @@ type SelectProps = {
   value: any;
   children: ReactNode;
   width?: number;
+  height?: number;
   onChange?: (value: any) => void;
 };
 
@@ -24,7 +25,7 @@ type SelectCompound<T = {}> = FC<T> & {
 };
 
 export const Select: SelectCompound<SelectProps> = (props) => {
-  const { value, children, onChange, width } = props;
+  const { value, children, onChange, width, height } = props;
   const childArr = Children.toArray(children);
   const [selectedValue, setSelectedValue] = useState(value); // 선택된 값
   const { isOpen, setIsOpen, selectRef } =
@@ -55,9 +56,13 @@ export const Select: SelectCompound<SelectProps> = (props) => {
       <div
         className={`${styles.selectHeader}`}
         onClick={toggleDropdown}
-        style={{ zIndex: isOpen ? 2 : 1 }}
+        style={{
+          zIndex: isOpen ? 12 : 1,
+          padding: height && `${height + 0.2}rem`,
+          height: height ? `${height}rem` : "auto",
+        }}
       >
-        <span>
+        <span style={{ fontSize: height && `${height + 0.2}rem` }}>
           {
             selectLabels?.find((labelSet) => labelSet.value === selectedValue)
               ?.label
@@ -77,7 +82,7 @@ export const Select: SelectCompound<SelectProps> = (props) => {
       {/* 드롭다운 리스트 */}
       <ul
         className={`${styles.selectList} ${isOpen ? styles.open : ""}`}
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 10 }}
         role="listbox"
       >
         {childArr?.map((child, idx) =>

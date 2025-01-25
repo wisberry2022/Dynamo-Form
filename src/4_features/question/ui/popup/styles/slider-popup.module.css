@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .body {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+
+        .rangeBox {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

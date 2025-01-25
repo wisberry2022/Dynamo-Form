@@ -109,7 +109,7 @@ export const MultipleQuestionPopup: FC<MultipleQuestionPopupProps> = (
         </div>
       </DialogBody>
       <DialogFooter>
-        <div>
+        <div className={cstyles.btnBox}>
           <Button variant="primary">취소</Button>
           <Button variant="brighten">저장</Button>
         </div>

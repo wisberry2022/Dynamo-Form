@@ -1,6 +1,8 @@
 import { EvaluativeSelector, RespValueSelector } from "@/5_entities/question";
 import { Question, QuestionSubCategory } from "@/6_shared";
 import { FC } from "react";
+import { RatingQuestionPopup } from "../popup/RatingQuestionPopup";
+import { SliderQuestionPopup } from "../popup";
 
 type EvaluativeQuestionDetailSelectorProps = {
   state: Question;
@@ -17,7 +19,15 @@ const EvaluativeQuestionDetailSelector: FC<
         question={state}
         onChangeSubCategory={onChangeSubCategory}
       />
-      <RespValueSelector />
+      <RespValueSelector
+        popup={
+          state.subCategory === "RATING" ? (
+            <RatingQuestionPopup />
+          ) : (
+            <SliderQuestionPopup />
+          )
+        }
+      />
     </>
   );
 };
