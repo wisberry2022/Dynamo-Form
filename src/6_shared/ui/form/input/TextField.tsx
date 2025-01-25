@@ -29,6 +29,7 @@ export const TextField: FC<TextFieldProps> = (props) => {
       className={`${styles.textField} ${className}`}
       placeholder={placeholder}
       value={value}
+      onClick={(e) => e.stopPropagation()}
       onChange={onChange}
       style={{ width: fullWidth ? "100%" : width ? `${width}px` : "auto" }}
     />
