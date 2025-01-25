@@ -4,4 +4,3 @@ export { UpdatableCategoryLayout } from "./UpdatableCategoryLayout";
 export { RespValueSelector } from "./RespValueSelector";
 export { DescriptiveSelector } from "./DescriptiveSelector";
 export { EvaluativeSelector } from "./EvaluativeSelector";
-export { EvidenceSelector } from "./EvidenceSelector";

@@ -1,0 +1,46 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  .body {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      flex: 1;
+
+      /* .checks {
+        margin-left: auto;
+      } */
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      flex: 2;
+    }
+
+    .mTitle {
+      font-size: 1.2rem;
+    }
+
+    .checks {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 2rem;
+      height: 15rem;
+      margin-left: auto;
+
+      div {
+        gap: 1rem;
+      }
+    }
+  }
+}

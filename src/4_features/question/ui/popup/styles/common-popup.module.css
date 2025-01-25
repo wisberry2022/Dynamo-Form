@@ -99,5 +99,6 @@
 
 .btnBox {
   display: flex;
+  margin-left: auto;
   gap: 1rem;
 }

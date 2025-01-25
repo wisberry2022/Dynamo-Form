@@ -1,0 +1,16 @@
+export const ExtensionSetting: string[] = [
+  ".jpg",
+  ".png",
+  ".svg",
+  ".gif",
+  ".avi",
+  ".mp4",
+  ".wmv",
+  ".mp3",
+  ".wav",
+  ".pdf",
+  ".pptx",
+  ".xlsx",
+  ".ppt",
+  ".xls",
+];
