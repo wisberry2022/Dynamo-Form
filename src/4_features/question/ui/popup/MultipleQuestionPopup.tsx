@@ -12,6 +12,7 @@ import {
 } from "@/6_shared";
 import { FC } from "react";
 import styles from "./styles/multiple-question.module.css";
+import cstyles from "./styles/common-popup.module.css";
 import { FaPen, FaRegSave, FaRegTrashAlt } from "react-icons/fa";
 import { MdAddCircleOutline } from "react-icons/md";
 
@@ -31,14 +32,12 @@ export const MultipleQuestionPopup: FC<MultipleQuestionPopupProps> = (
       <DialogBody>
         <div className={styles.content}>
           <div className={styles.left}>
-            <div className={styles.titles}>
+            <div className={cstyles.title}>
               <h4>선택지를 추가할 수 있습니다.</h4>
-              <span>
-                선택지는 최소 2개부터, 최대 30개까지 추가할 수 있습니다.
-              </span>
+              <p>선택지는 최소 2개부터, 최대 30개까지 추가할 수 있습니다.</p>
             </div>
-            <div className={styles.list}>
-              <div className={styles.dataArea}>
+            <div className={cstyles.list}>
+              <div className={cstyles.dataArea}>
                 <ul>
                   <li>
                     <Checkbox value="1" onChecked={() => {}} label="테스트1" />
@@ -66,12 +65,12 @@ export const MultipleQuestionPopup: FC<MultipleQuestionPopupProps> = (
                   </li>
                   <li>
                     <Checkbox value="1" onChecked={() => {}} label="테스트1" />
-                    <div className={styles.listRight}>
+                    <div className={cstyles.listRight}>
                       <TextField
-                        className={styles.edit}
+                        className={cstyles.edit}
                         placeholder="응답을 입력하세요"
                       />
-                      <div className={styles.iconBox}>
+                      <div className={cstyles.iconBox}>
                         <FaRegSave />
                         <FaRegTrashAlt />
                       </div>
@@ -79,12 +78,12 @@ export const MultipleQuestionPopup: FC<MultipleQuestionPopupProps> = (
                   </li>
                 </ul>
               </div>
-              <div className={styles.controller}>
-                <div className={styles.row}>
+              <div className={cstyles.controller}>
+                <div className={cstyles.row}>
                   <MdAddCircleOutline />
                   <span>응답 추가하기</span>
                 </div>
-                <div className={`${styles.row} ${styles.delete}`}>
+                <div className={`${cstyles.row} ${cstyles.delete}`}>
                   <FaRegTrashAlt />
                   <span>응답 삭제하기</span>
                 </div>
