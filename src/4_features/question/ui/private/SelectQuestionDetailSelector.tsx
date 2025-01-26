@@ -4,7 +4,12 @@ import {
   RespValueSelector,
   SelectSubCategorySelector,
 } from "@/5_entities/question";
-import { Question, QuestionSubCategory, SelectQuestion } from "@/6_shared";
+import {
+  DropDownQuestion,
+  Question,
+  QuestionSubCategory,
+  SelectQuestion,
+} from "@/6_shared";
 import { FC } from "react";
 import { DropdownQuestionPopup, MultipleQuestionPopup } from "../popup";
 
@@ -34,7 +39,10 @@ const SelectQuestionDetailSelector: FC<SelectQuestionDetailSelectorProps> = (
       <RespValueSelector
         popup={
           state.subCategory === "DROPDOWN" ? (
-            <DropdownQuestionPopup />
+            <DropdownQuestionPopup
+              question={state as DropDownQuestion}
+              onConfirm={onChangeDropDownQuestion}
+            />
           ) : (
             <MultipleQuestionPopup
               question={state as SelectQuestion}
