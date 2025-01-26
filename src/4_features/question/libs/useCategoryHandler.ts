@@ -15,6 +15,7 @@ import {
   CategoryHandlerType,
   ReducerDropDownQuestion,
   ReducerMultipleQuestion,
+  ReducerTextualQuestion,
 } from "@/5_entities/question";
 
 const DirectConvertQuestionTypes = ["DESCRIPTIVE", "EVIDENCE"];
@@ -49,6 +50,7 @@ const categoryReducer = <T extends Question>(
         viewOrder: state.viewOrder,
         required: state.required,
       };
+    // N지선다형 설정 변경 함수
     case "CHANGE_MULTI_QUESTION":
       return {
         ...state,
@@ -56,11 +58,17 @@ const categoryReducer = <T extends Question>(
         multiple: action.question.multiple,
         responseLimit: action.question.responseLimit,
       } as T;
+    // 드롭다운형 설정 변경 함수수
     case "CHANGE_DROPDOWN_QUESTION":
       return {
         ...state,
         questions: action.question.questions,
       };
+    case "CHANGE_TEXTUAL_QUESTION":
+      return {
+        ...state,
+        answerLimit: action.question.answerLimit
+      }
     default:
       return state;
   }
@@ -97,6 +105,13 @@ export const useCategoryHandler = <T extends Question>(question: T): CategoryHan
     });
   };
 
+  const onChangeTextualQuestion = (question: ReducerTextualQuestion) => {
+    dispatch({
+      type: "CHANGE_TEXTUAL_QUESTION",
+      question
+    })
+  }
+
   return {
     state,
     onChangeCategory,
@@ -104,6 +119,7 @@ export const useCategoryHandler = <T extends Question>(question: T): CategoryHan
     questionHandler: {
       onChangeMultipleQuestion,
       onChangeDropDownQuestion,
+      onChangeTextualQuestion
     }
   };
 };

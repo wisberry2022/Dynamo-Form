@@ -1,10 +1,12 @@
-import { Question, QuestionSubCategory } from "@/6_shared";
+import { Question, QuestionSubCategory, TextualQuestion } from "@/6_shared";
 import { FC } from "react";
 import EvaluativeQuestionDetailSelector from "./EvaluativeQuestionDetailSelector";
-import DescriptiveQuestionDetailSelector from "./DescriptiveQuestionDetailSelector";
 import EvidenceQuestionDetailSelector from "./EvidenceQuestionDetailSelector";
 import SelectQuestionDetailSelector from "./SelectQuestionDetailSelector";
-import { QuestionHandlerType } from "@/5_entities/question";
+import {
+  DescriptiveSelector,
+  QuestionHandlerType,
+} from "@/5_entities/question";
 
 type SubCategorySelectorProps = {
   state: Question;
@@ -24,7 +26,12 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
         onChangeDropDownQuestion={questionHandler.onChangeDropDownQuestion}
       />
     ),
-    DESCRIPTIVE: <DescriptiveQuestionDetailSelector />,
+    DESCRIPTIVE: (
+      <DescriptiveSelector
+        state={state as TextualQuestion}
+        onChangeTextualQuestion={questionHandler.onChangeTextualQuestion}
+      />
+    ),
     EVALUATIVE: (
       <EvaluativeQuestionDetailSelector
         state={state}

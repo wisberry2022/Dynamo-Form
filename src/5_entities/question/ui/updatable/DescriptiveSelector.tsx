@@ -1,10 +1,27 @@
-import { CardWrapper, LabelTextiField, QuestionSubCategory } from "@/6_shared";
-import { FC } from "react";
+import {
+  CardWrapper,
+  LabelTextiField,
+  QuestionSubCategory,
+  TextualQuestion,
+} from "@/6_shared";
+import { ChangeEventHandler, FC } from "react";
 import styles from "./style/desc-selector.module.css";
+import { ReducerTextualQuestion } from "../../model/types";
 
-type DescriptiveSelectorProps = {};
+type DescriptiveSelectorProps = {
+  state: TextualQuestion;
+  onChangeTextualQuestion: (question: ReducerTextualQuestion) => void;
+};
 
 export const DescriptiveSelector: FC<DescriptiveSelectorProps> = (props) => {
+  const { state, onChangeTextualQuestion } = props;
+
+  const onChangeAnswerLimit: ChangeEventHandler<HTMLInputElement> = (e) => {
+    onChangeTextualQuestion({
+      answerLimit: e.target.value ? parseInt(e.target.value) : 0,
+    });
+  };
+
   return (
     <CardWrapper
       title="STEP2. 세부 유형 설정하기"
@@ -19,6 +36,9 @@ export const DescriptiveSelector: FC<DescriptiveSelectorProps> = (props) => {
           className={styles.selectorTextField}
           width={450}
           label="답변 최대 길이"
+          name="answerLimit"
+          value={state.answerLimit}
+          onChange={onChangeAnswerLimit}
           subLabel="3000자 이상은 설정할 수 없습니다."
           placeholder="숫자를 입력하세요"
         />
