@@ -17,10 +17,18 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
     state: isolatedState,
     onChangeCategory,
     onChangeSubCategory,
+    questionHandler,
   } = useCategoryHandler(question);
 
   const onSectionSave = () => {
-    onQuestionSave(question);
+    onQuestionSave({
+      ...isolatedState,
+      question: question.question,
+      required: question.required,
+      title: question.title,
+      viewOrder: question.viewOrder,
+      id: question.id,
+    });
   };
 
   return (
@@ -37,6 +45,7 @@ const UpdatableQuestionMapper: FC<UpdatableQuestionMapperProps> = (props) => {
       <SubCategorySelector
         state={isolatedState}
         onChangeSubCategory={onChangeSubCategory}
+        questionHandler={questionHandler}
       />
     </UpdatableCategoryLayout>
   );

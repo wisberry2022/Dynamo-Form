@@ -2,9 +2,9 @@ import styles from "./radio.module.css";
 import { Children, cloneElement, FC, ReactElement, ReactNode } from "react";
 
 type RadioGroupProps = {
-  value: string | number;
+  value: any;
   children: ReactNode;
-  onChange: (value: string | number) => void;
+  onChange: (value: any) => void;
   className?: string;
 };
 
@@ -26,10 +26,10 @@ export const RadioGroup: FC<RadioGroupProps> = (props) => {
 };
 
 type RadioProps = {
-  value: string | number;
-  selected?: string | number;
+  value: any;
+  selected?: any;
   label?: string;
-  onChange?: (value: string | number) => void;
+  onChange?: (value: any) => void;
 };
 
 export const Radio: FC<RadioProps> = (props) => {

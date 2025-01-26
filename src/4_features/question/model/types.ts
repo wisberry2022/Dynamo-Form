@@ -1,4 +1,8 @@
 import {
+  ReducerDropDownQuestion,
+  ReducerMultipleQuestion,
+} from "@/5_entities/question";
+import {
   DataHandlerType,
   Question,
   QuestionCategory,
@@ -22,6 +26,18 @@ type ChangeSubCategoryType = {
   category: QuestionSubCategory;
 };
 
+type ChangeMultiQuestionType = {
+  type: "CHANGE_MULTI_QUESTION";
+  question: ReducerMultipleQuestion;
+};
+
+type ChangeDropdownQuestionType = {
+  type: "CHANGE_DROPDOWN_QUESTION";
+  question: ReducerDropDownQuestion;
+};
+
 export type CategoryReducerActionType =
   | ChangeCategoryType
-  | ChangeSubCategoryType;
+  | ChangeSubCategoryType
+  | ChangeMultiQuestionType
+  | ChangeDropdownQuestionType;

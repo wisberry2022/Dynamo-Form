@@ -20,8 +20,9 @@ export const UpdatableQuestion: FC<UpdatableQuestionProps> = (props) => {
   const { question, onReadOnly, onQuestionSave } = props;
   const handler = useDataHandler<QuestionResponse>(question);
 
-  const onSectionSave = () => {
-    onQuestionSave(handler.state);
+  const onSectionSave = (question: QuestionResponse) => {
+    // onQuestionSave(handler.state);
+    onQuestionSave(question);
     onReadOnly();
   };
 

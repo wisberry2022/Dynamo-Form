@@ -3,7 +3,7 @@ import styles from "./textfield.module.css";
 
 type TextFieldProps = {
   name?: string;
-  value?: string;
+  value?: string | number;
   placeholder?: string;
   className?: string;
   width?: number;

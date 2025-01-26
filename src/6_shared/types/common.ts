@@ -15,3 +15,16 @@ export type FormLabelType<T = any> = {
   label: string;
   value: T;
 };
+
+export type Unique = {
+  id: number;
+};
+
+export type SequenceData<T> = {
+  seq: number;
+  value: T | null;
+};
+
+export type UseListDataOptionType<T = any> = {
+  defaultData: T;
+};

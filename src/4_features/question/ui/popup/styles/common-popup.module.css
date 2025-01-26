@@ -36,10 +36,14 @@
         align-items: center;
         gap: 3rem;
 
+        &.edit {
+          gap: 0.5rem;
+        }
+
         .listRight {
           display: flex;
           align-items: center;
-          gap: 2.5rem;
+          gap: 1.5rem;
 
           .edit {
             padding: 1rem;

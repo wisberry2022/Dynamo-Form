@@ -1,4 +1,9 @@
-import { Question, QuestionCategory, QuestionSubCategory } from "@/6_shared";
+import {
+  Question,
+  QuestionCategory,
+  QuestionSubCategory,
+  SelectQuestion,
+} from "@/6_shared";
 import { useReducer, useState } from "react";
 import { CategoryReducerActionType } from "../model/types";
 import {
@@ -6,6 +11,11 @@ import {
   InitQuestionStates,
 } from "../model/InitQuestionStates";
 import { convertQuestionStateByCategory } from "./utils";
+import {
+  CategoryHandlerType,
+  ReducerDropDownQuestion,
+  ReducerMultipleQuestion,
+} from "@/5_entities/question";
 
 const DirectConvertQuestionTypes = ["DESCRIPTIVE", "EVIDENCE"];
 
@@ -15,6 +25,7 @@ const categoryReducer = <T extends Question>(
   action: CategoryReducerActionType
 ): T => {
   switch (action.type) {
+    // STEP1 항목 유형 설정 함수
     case "CHANGE_CATEGORY":
       const tobe = action.category;
       const convert = DirectConvertInitQuestionStates[tobe];
@@ -26,6 +37,7 @@ const categoryReducer = <T extends Question>(
         viewOrder: state.viewOrder,
         required: state.required,
       };
+    // STEP2 세부 유형 설정 함수
     case "CHANGE_SUB_CATEGORY":
       const tobeSubCategory = action.category;
       const tobeQuestion = InitQuestionStates[tobeSubCategory];
@@ -37,12 +49,24 @@ const categoryReducer = <T extends Question>(
         viewOrder: state.viewOrder,
         required: state.required,
       };
+    case "CHANGE_MULTI_QUESTION":
+      return {
+        ...state,
+        questions: action.question.questions,
+        multiple: action.question.multiple,
+        responseLimit: action.question.responseLimit,
+      } as T;
+    case "CHANGE_DROPDOWN_QUESTION":
+      return {
+        ...state,
+        questions: action.question.questions,
+      };
     default:
       return state;
   }
 };
 
-export const useCategoryHandler = <T extends Question>(question: T) => {
+export const useCategoryHandler = <T extends Question>(question: T): CategoryHandlerType => {
   const [state, dispatch] = useReducer(categoryReducer, question);
 
   const onChangeCategory = (category: QuestionCategory) => {
@@ -59,9 +83,27 @@ export const useCategoryHandler = <T extends Question>(question: T) => {
     });
   };
 
+  const onChangeMultipleQuestion = (question: ReducerMultipleQuestion) => {
+    dispatch({
+      type: "CHANGE_MULTI_QUESTION",
+      question,
+    });
+  };
+
+  const onChangeDropDownQuestion = (question: ReducerDropDownQuestion) => {
+    dispatch({
+      type: "CHANGE_DROPDOWN_QUESTION",
+      question,
+    });
+  };
+
   return {
     state,
     onChangeCategory,
     onChangeSubCategory,
+    questionHandler: {
+      onChangeMultipleQuestion,
+      onChangeDropDownQuestion,
+    }
   };
 };
