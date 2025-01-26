@@ -36,6 +36,8 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
       <EvaluativeQuestionDetailSelector
         state={state}
         onChangeSubCategory={onChangeSubCategory}
+        onChangeRatingQuestion={questionHandler.onChangeRatingQuestion}
+        onChangeSliderQuestion={questionHandler.onChangeSliderQuestion}
       />
     ),
     EVIDENCE: <EvidenceQuestionDetailSelector />,

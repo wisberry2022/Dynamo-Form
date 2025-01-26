@@ -8,7 +8,6 @@ import {
   useState,
 } from "react";
 import styles from "./select.module.css";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { useHandleOutsideClick } from "@/6_shared/hooks";
 import { FormLabelType } from "@/6_shared/types";
 
@@ -17,6 +16,7 @@ type SelectProps = {
   children: ReactNode;
   width?: number;
   height?: number;
+  listHeight?: number;
   onChange?: (value: any) => void;
 };
 
@@ -25,9 +25,9 @@ type SelectCompound<T = {}> = FC<T> & {
 };
 
 export const Select: SelectCompound<SelectProps> = (props) => {
-  const { value, children, onChange, width, height } = props;
+  const { value, children, onChange, width, height, listHeight } = props;
   const childArr = Children.toArray(children);
-  const [selectedValue, setSelectedValue] = useState(value); // 선택된 값
+  const [selectedValue, setSelectedValue] = useState<any>(value); // 선택된 값
   const { isOpen, setIsOpen, selectRef } =
     useHandleOutsideClick<HTMLDivElement>();
 
@@ -64,8 +64,10 @@ export const Select: SelectCompound<SelectProps> = (props) => {
       >
         <span style={{ fontSize: height && `${height + 0.2}rem` }}>
           {
-            selectLabels?.find((labelSet) => labelSet.value === selectedValue)
-              ?.label
+            selectLabels?.find(
+              (labelSet) =>
+                labelSet.value.toString() === selectedValue.toString()
+            )?.label
           }
         </span>
         <svg
@@ -82,7 +84,7 @@ export const Select: SelectCompound<SelectProps> = (props) => {
       {/* 드롭다운 리스트 */}
       <ul
         className={`${styles.selectList} ${isOpen ? styles.open : ""}`}
-        style={{ zIndex: 10 }}
+        style={{ zIndex: 10, height: listHeight ? `${listHeight}rem` : "auto" }}
         role="listbox"
       >
         {childArr?.map((child, idx) =>

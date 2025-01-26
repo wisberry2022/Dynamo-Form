@@ -4,19 +4,41 @@ import {
   DialogBody,
   DialogFooter,
   DialogHeader,
+  SliderQuestion,
   TextField,
 } from "@/6_shared";
 import cstyles from "./styles/common-popup.module.css";
 import styles from "./styles/slider-popup.module.css";
-import { FC } from "react";
+import { ChangeEventHandler, FC, useState } from "react";
+import { ReducerSliderQuestion } from "@/5_entities/question";
+import { toReducerSliderQuestion } from "../../libs/TypeMapper";
 
 type SliderQuestionPopupProps = {
+  question: SliderQuestion;
+  onConfirm: (question: ReducerSliderQuestion) => void;
   open?: boolean;
   onClose?: () => void;
 };
 
 export const SliderQuestionPopup: FC<SliderQuestionPopupProps> = (props) => {
-  const { open, onClose } = props;
+  const { question, onConfirm, open, onClose } = props;
+  const [state, setState] = useState<ReducerSliderQuestion>(
+    toReducerSliderQuestion(question)
+  );
+
+  const onChangeValue: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setState((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // 저장 함수
+  const onSave = () => {
+    onConfirm(state);
+    onClose?.();
+  };
+
   return (
     <Dialog open={open} onClose={onClose} size="small">
       <DialogHeader title="평가형 - 수치 조절형" onClose={onClose} />
@@ -30,14 +52,32 @@ export const SliderQuestionPopup: FC<SliderQuestionPopupProps> = (props) => {
               <li>
                 <span>점수 범위 설정</span>
                 <div className={styles.rangeBox}>
-                  <TextField placeholder="숫자를 입력하세요" width={130} />
+                  <TextField
+                    placeholder="숫자를 입력하세요"
+                    name="min"
+                    value={state.min}
+                    onChange={onChangeValue}
+                    width={130}
+                  />
                   <span>~</span>
-                  <TextField placeholder="숫자를 입력하세요" width={130} />
+                  <TextField
+                    placeholder="숫자를 입력하세요"
+                    name="max"
+                    value={state.max}
+                    onChange={onChangeValue}
+                    width={130}
+                  />
                 </div>
               </li>
               <li>
                 <span>점수 설정</span>
-                <TextField placeholder="숫자를 입력하세요" width={276} />
+                <TextField
+                  placeholder="숫자를 입력하세요"
+                  name="score"
+                  value={state.score}
+                  onChange={onChangeValue}
+                  width={276}
+                />
               </li>
             </ul>
           </div>
@@ -45,8 +85,12 @@ export const SliderQuestionPopup: FC<SliderQuestionPopupProps> = (props) => {
       </DialogBody>
       <DialogFooter>
         <div className={cstyles.btnBox}>
-          <Button variant="primary">취소</Button>
-          <Button variant="brighten">확인</Button>
+          <Button variant="primary" onClick={onClose}>
+            취소
+          </Button>
+          <Button variant="brighten" onClick={onSave}>
+            확인
+          </Button>
         </div>
       </DialogFooter>
     </Dialog>

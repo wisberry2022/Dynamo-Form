@@ -4,21 +4,20 @@ import {
   QuestionSubCategory,
   SelectQuestion,
 } from "@/6_shared";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { CategoryReducerActionType } from "../model/types";
 import {
   DirectConvertInitQuestionStates,
   InitQuestionStates,
 } from "../model/InitQuestionStates";
-import { convertQuestionStateByCategory } from "./utils";
 import {
   CategoryHandlerType,
   ReducerDropDownQuestion,
   ReducerMultipleQuestion,
+  ReducerRatingQuestion,
+  ReducerSliderQuestion,
   ReducerTextualQuestion,
 } from "@/5_entities/question";
-
-const DirectConvertQuestionTypes = ["DESCRIPTIVE", "EVIDENCE"];
 
 // 타입 변경 시 로직 수정 필요
 const categoryReducer = <T extends Question>(
@@ -58,23 +57,41 @@ const categoryReducer = <T extends Question>(
         multiple: action.question.multiple,
         responseLimit: action.question.responseLimit,
       } as T;
-    // 드롭다운형 설정 변경 함수수
+    // 드롭다운형 설정 변경 함수
     case "CHANGE_DROPDOWN_QUESTION":
       return {
         ...state,
         questions: action.question.questions,
-      };
+      } as T;
+    // 서술형 설정 변경 함수
     case "CHANGE_TEXTUAL_QUESTION":
       return {
         ...state,
-        answerLimit: action.question.answerLimit
-      }
+        answerLimit: action.question.answerLimit,
+      } as T;
+    // 별점형 설정 변경 함수
+    case "CHANGE_RATING_QUESTION":
+      return {
+        ...state,
+        ratingLimit: action.question.ratingLimit,
+        score: action.question.score,
+      } as T;
+    // 수치조절형 설정 변경 함수
+    case "CHANGE_SLIDER_QUESTION":
+      return {
+        ...state,
+        min: action.question.min,
+        max: action.question.max,
+        score: action.question.score,
+      };
     default:
       return state;
   }
 };
 
-export const useCategoryHandler = <T extends Question>(question: T): CategoryHandlerType => {
+export const useCategoryHandler = <T extends Question>(
+  question: T
+): CategoryHandlerType => {
   const [state, dispatch] = useReducer(categoryReducer, question);
 
   const onChangeCategory = (category: QuestionCategory) => {
@@ -108,6 +125,20 @@ export const useCategoryHandler = <T extends Question>(question: T): CategoryHan
   const onChangeTextualQuestion = (question: ReducerTextualQuestion) => {
     dispatch({
       type: "CHANGE_TEXTUAL_QUESTION",
+      question,
+    });
+  };
+
+  const onChangeRatingQuestion = (question: ReducerRatingQuestion) => {
+    dispatch({
+      type: "CHANGE_RATING_QUESTION",
+      question,
+    });
+  };
+  
+  const onChangeSliderQuestion = (question: ReducerSliderQuestion) => {
+    dispatch({
+      type: "CHANGE_SLIDER_QUESTION",
       question
     })
   }
@@ -119,7 +150,9 @@ export const useCategoryHandler = <T extends Question>(question: T): CategoryHan
     questionHandler: {
       onChangeMultipleQuestion,
       onChangeDropDownQuestion,
-      onChangeTextualQuestion
-    }
+      onChangeTextualQuestion,
+      onChangeRatingQuestion,
+      onChangeSliderQuestion
+    },
   };
 };

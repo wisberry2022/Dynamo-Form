@@ -3,7 +3,9 @@ import {
   Question,
   QuestionCategory,
   QuestionSubCategory,
+  RatingQuestion,
   SelectQuestion,
+  SliderQuestion,
   TextualQuestion,
 } from "@/6_shared";
 
@@ -11,6 +13,8 @@ export type QuestionHandlerType = {
   onChangeMultipleQuestion: (question: ReducerMultipleQuestion) => void;
   onChangeDropDownQuestion: (question: ReducerDropDownQuestion) => void;
   onChangeTextualQuestion: (question: ReducerTextualQuestion) => void;
+  onChangeRatingQuestion: (question: ReducerRatingQuestion) => void;
+  onChangeSliderQuestion: (question: ReducerSliderQuestion) => void;
 };
 
 export type CategoryHandlerType = {
@@ -27,3 +31,13 @@ export type ReducerMultipleQuestion = Pick<
 export type ReducerDropDownQuestion = Pick<DropDownQuestion, "questions">;
 
 export type ReducerTextualQuestion = Pick<TextualQuestion, "answerLimit">;
+
+export type ReducerRatingQuestion = Pick<
+  RatingQuestion,
+  "ratingLimit" | "score"
+>;
+
+export type ReducerSliderQuestion = Pick<
+  SliderQuestion,
+  "min" | "max" | "score"
+>;

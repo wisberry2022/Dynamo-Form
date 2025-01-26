@@ -10,6 +10,8 @@ import {
 } from "@/6_shared";
 import { EvidenceQuestionPopup } from "../popup";
 
+
+
 const EvidenceQuestionDetailSelector: FC = () => {
   return (
     <CardWrapper

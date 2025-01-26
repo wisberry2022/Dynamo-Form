@@ -1,6 +1,8 @@
 import {
   ReducerDropDownQuestion,
   ReducerMultipleQuestion,
+  ReducerRatingQuestion,
+  ReducerSliderQuestion,
   ReducerTextualQuestion,
 } from "@/5_entities/question";
 import {
@@ -42,9 +44,21 @@ type ChangeTextualQuestionType = {
   question: ReducerTextualQuestion;
 };
 
+type ChangeRatingQuestionType = {
+  type: "CHANGE_RATING_QUESTION";
+  question: ReducerRatingQuestion;
+};
+
+type ChangeSliderQuestionType = {
+  type: "CHANGE_SLIDER_QUESTION";
+  question: ReducerSliderQuestion;
+};
+
 export type CategoryReducerActionType =
   | ChangeCategoryType
   | ChangeSubCategoryType
   | ChangeMultiQuestionType
   | ChangeDropdownQuestionType
-  | ChangeTextualQuestionType;
+  | ChangeTextualQuestionType
+  | ChangeRatingQuestionType
+  | ChangeSliderQuestionType;
