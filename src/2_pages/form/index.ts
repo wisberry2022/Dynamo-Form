@@ -1,2 +1,3 @@
-export * from "./index/index";
-export * from "./detail/index";
+export * from "./ui/detail";
+export * from "./ui/index";
+export * from "./ui/create";

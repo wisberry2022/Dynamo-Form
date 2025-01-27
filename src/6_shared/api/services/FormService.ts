@@ -10,6 +10,14 @@ import { Paths } from "../core/Paths";
 import { RestService } from "../core/RestService";
 
 export const Form = {
+  save: async (
+    sendData: FormRequest
+  ): Promise<ResponseWrapper<FormResponse>> => {
+    return await RestService.post<FormRequest, ResponseWrapper<FormResponse>>(
+      Paths.form.save,
+      sendData
+    );
+  },
   updateName: async (
     sendData: FormNameUpdateRequest
   ): Promise<ResponseWrapper<FormNameUpdateResponse>> => {

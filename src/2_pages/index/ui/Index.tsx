@@ -11,7 +11,11 @@ export const Index: FC = () => {
         <h1>Dyna Form</h1>
       </div>
       <div className={styles.btnBox}>
-        <SquareButton title="양식 생성하기" icon={<FaRegPlusSquare />} />
+        <SquareButton
+          title="양식 생성하기"
+          link={endpoints.form.create}
+          icon={<FaRegPlusSquare />}
+        />
         <SquareButton
           title="양식 관리"
           link={endpoints.form.index}

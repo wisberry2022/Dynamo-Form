@@ -84,7 +84,7 @@ export interface AttachQuestion extends Question {
 }
 
 export type FormResponse = {
-  id: number;
+  id: number | null;
   title: string;
   description: string;
   autoTitle: boolean;

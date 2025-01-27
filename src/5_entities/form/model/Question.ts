@@ -1,4 +1,12 @@
-import { SelectQuestion } from "@/6_shared";
+import { FormRequest, SelectQuestion } from "@/6_shared";
+
+export const DefaultForm: FormRequest = {
+  id: null,
+  title: "설문양식",
+  description: "",
+  autoTitle: false,
+  questions: [],
+}
 
 export const DefaultQuestion: SelectQuestion = {
   id: null,

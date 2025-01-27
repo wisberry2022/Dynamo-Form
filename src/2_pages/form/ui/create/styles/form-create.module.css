@@ -1,0 +1,19 @@
+#formCreate {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+
+  .updateBtnBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 auto;
+    width: 30%;
+
+    button {
+      flex: 1.5;
+      padding: 1rem 0;
+    }
+  }
+}
