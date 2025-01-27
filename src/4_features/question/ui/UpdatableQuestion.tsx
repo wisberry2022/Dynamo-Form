@@ -30,7 +30,7 @@ export const UpdatableQuestion: FC<UpdatableQuestionProps> = (props) => {
       <FormPaper.TitleBar
         left={
           <div className={styles.titleField}>
-            <strong>1. </strong>
+            <strong>{question.viewOrder}. </strong>
             <TextField
               name="title"
               placeholder="질문 제목을 입력하세요"
