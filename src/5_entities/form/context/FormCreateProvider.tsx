@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { FormCreateContext } from "./FormCreateContext";
 import { FormRequest, getNextSequenceObject, useDataHandler } from "@/6_shared";
 import { DefaultForm } from "../model/Question";
-import { getNextQuestion } from "../libs/utils";
+import { getAutoQuestionTitle, getNextQuestion } from "../libs/utils";
 
 type FormCreateProviderProps = {
   children: ReactNode;
@@ -21,7 +21,12 @@ export const FormCreateProvider: FC<FormCreateProviderProps> = (props) => {
       const nextSeq = getNextSequenceObject(prev.questions, "viewOrder");
       return {
         ...prev,
-        questions: prev.questions.concat(getNextQuestion(nextSeq)),
+        questions: prev.questions.concat(
+          getNextQuestion(
+            nextSeq,
+            prev.autoTitle ? getAutoQuestionTitle(nextSeq) : ""
+          )
+        ),
       };
     });
   };
