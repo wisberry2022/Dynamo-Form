@@ -62,7 +62,7 @@ export const StarReview: FC<StarReviewProps> = (props) => {
   return (
     <div className={styles.review}>
       <div className={styles.stars}>
-        {Array.from({ length: limit / score }).map((_, i) => (
+        {Array.from({ length: limit }).map((_, i) => (
           <Star
             key={i}
             id={i}
@@ -74,7 +74,7 @@ export const StarReview: FC<StarReviewProps> = (props) => {
       </div>
       {!hideCurrentScore && (
         <div className={styles.scoreBox}>
-          ( {viewScore} / {limit}점 )
+          ( {viewScore} / {limit * score}점 )
         </div>
       )}
     </div>
