@@ -35,10 +35,15 @@ export const FormList: FC<FormListProps> = (props) => {
     router.push(endpoints.form.detail(id));
   };
 
+  const goCreate = () => {
+    router.push(endpoints.form.create);
+  };
+
   return (
     <>
       <ListButton
         bgColor="primary"
+        onClick={goCreate}
         center={
           <ListButton.Center
             left={<FaRegPlusSquare className={styles.tIcon} />}
