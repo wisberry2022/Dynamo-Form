@@ -33,6 +33,7 @@ export const QuestionSection: FC<QuestionSectionProps> = (props) => {
       question={question}
       onReadOnly={onRead}
       onQuestionSave={onQuestionSave}
+      onDelete={onDelete}
     />
   );
 };

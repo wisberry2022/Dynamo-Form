@@ -14,14 +14,23 @@ type UpdatableQuestionProps = {
   question: QuestionResponse;
   onReadOnly: () => void;
   onQuestionSave: (question: QuestionResponse) => void;
+  onDelete: (viewOrder: number) => void;
 };
 
 export const UpdatableQuestion: FC<UpdatableQuestionProps> = (props) => {
-  const { question, onReadOnly, onQuestionSave } = props;
+  const { question, onReadOnly, onQuestionSave, onDelete } = props;
   const handler = useDataHandler<QuestionResponse>(question);
 
   const onSectionSave = (question: QuestionResponse) => {
     onQuestionSave(question);
+    onReadOnly();
+  };
+
+  const onCancel = () => {
+    if (!question.id) {
+      onDelete(question.viewOrder);
+      return;
+    }
     onReadOnly();
   };
 
@@ -49,7 +58,7 @@ export const UpdatableQuestion: FC<UpdatableQuestionProps> = (props) => {
                 checked={question.required}
               />
             </div>
-            <MdOutlineClose onClick={onReadOnly} />
+            <MdOutlineClose onClick={onCancel} />
           </div>
         }
       />
