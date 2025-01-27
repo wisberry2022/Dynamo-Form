@@ -1,13 +1,19 @@
 import { FC } from "react";
 import styles from "./styles/form-detail.module.css";
-import { QuestionPreview } from "@/4_features/question";
 import { FormInfo } from "@/3_widgets/form";
 import { useFormDetailContext } from "@/5_entities/form";
-import { Question as QuestionResponse } from "@/6_shared";
+import {
+  Button,
+  Form,
+  FormRequest,
+  Question as QuestionResponse,
+  Toast,
+} from "@/6_shared";
 import { QuestionSection } from "@/3_widgets/question";
 
 export const FormDetail: FC = () => {
-  const { form, formHandler, onDeleteQuestion } = useFormDetailContext();
+  const { form, formHandler, onDeleteQuestion, mutate } =
+    useFormDetailContext();
   const { setState } = formHandler;
 
   const onQuestionSave = (question: QuestionResponse) => {
@@ -22,6 +28,16 @@ export const FormDetail: FC = () => {
     }));
   };
 
+  const onUpdate = async () => {
+    try {
+      await Form.update(form as FormRequest);
+      Toast.success("양식이 수정되었습니다.");
+      mutate();
+    } catch (e) {
+      Toast.error("양식 수정에 실패했습니다.");
+    }
+  };
+
   return (
     <div id={styles.formDetail}>
       {form && <FormInfo form={form} formHandler={formHandler} />}
@@ -34,6 +50,11 @@ export const FormDetail: FC = () => {
             onDelete={onDeleteQuestion}
           />
         ))}
+      <div className={styles.updateBtnBox}>
+        <Button variant="pink" onClick={onUpdate}>
+          수정하기
+        </Button>
+      </div>
     </div>
   );
 };

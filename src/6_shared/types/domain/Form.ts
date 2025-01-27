@@ -90,3 +90,5 @@ export type FormResponse = {
   autoTitle: boolean;
   questions: Question[];
 };
+
+export type FormRequest = FormResponse;

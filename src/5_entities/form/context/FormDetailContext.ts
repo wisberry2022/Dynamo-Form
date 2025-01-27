@@ -7,6 +7,7 @@ type FormDetailContextType = {
   formHandler: DataHandlerType<FormResponse>;
   onSectionSave: (form: FormResponse) => void;
   onDeleteQuestion: (id: number) => void;
+  mutate: () => void;
 };
 
 export const FormDetailContext = createContext<FormDetailContextType>({
@@ -15,6 +16,7 @@ export const FormDetailContext = createContext<FormDetailContextType>({
   formHandler: {} as DataHandlerType<FormResponse>,
   onSectionSave: () => {},
   onDeleteQuestion: () => {},
+  mutate: () => {},
 });
 
 export const useFormDetailContext = () => useContext(FormDetailContext);

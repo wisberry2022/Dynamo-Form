@@ -9,7 +9,7 @@ type FormDetailProviderProps = {
 
 export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
   const { formId, children } = props;
-  const { form } = useFormSWR(formId);
+  const { form, mutate } = useFormSWR(formId);
   const formHandler = useDataHandler<FormResponse>(form?.data as FormResponse);
 
   const onSectionSave = (form: FormResponse) => {
@@ -31,6 +31,7 @@ export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
         formHandler,
         onSectionSave,
         onDeleteQuestion,
+        mutate
       }}
     >
       {children}
