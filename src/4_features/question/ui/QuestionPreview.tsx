@@ -26,7 +26,7 @@ export const QuestionPreview: FC<QuestionPreviewProps> = (props) => {
         right={
           <div className={styles.mod}>
             <FaPen onClick={onModify} />
-            <FaRegTrashAlt onClick={() => onDelete(question.id)} />
+            <FaRegTrashAlt onClick={() => onDelete(question.viewOrder)} />
           </div>
         }
       />

@@ -4,6 +4,8 @@ import { ButtonVariant } from "@/6_shared/types";
 
 type ButtonProps = {
   children: ReactNode;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
   width?: number;
   variant?: ButtonVariant;
   className?: string;
@@ -11,14 +13,24 @@ type ButtonProps = {
 };
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { children, onClick, variant = "primary", className, width } = props;
+  const {
+    children,
+    leftIcon,
+    rightIcon,
+    onClick,
+    variant = "primary",
+    className,
+    width,
+  } = props;
   return (
     <button
       onClick={onClick}
       style={{ width: `${width ? `${width}%` : "auto"}` }}
       className={`${styles[variant]} ${styles.button} ${className}`}
     >
+      {leftIcon}
       {children}
+      {rightIcon}
     </button>
   );
 };

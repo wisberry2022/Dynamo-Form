@@ -39,7 +39,7 @@ export type FormNameUpdateRequest = FormListResponse;
 export type FormNameUpdateResponse = FormNameUpdateRequest;
 
 export interface Question {
-  id: number;
+  id: number | null;
   title: string;
   question: string;
   category: QuestionCategory;

@@ -6,6 +6,8 @@
   .updateBtnBox {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
     margin: 0 auto;
     width: 30%;
 

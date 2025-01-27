@@ -1,7 +1,7 @@
-import { DataHandlerType } from "@/6_shared/types";
+import { DataHandlerType, Unique } from "@/6_shared/types";
 import { ChangeEventHandler, useEffect, useState } from "react";
 
-export const useDataHandler = <T extends { id: number }>(
+export const useDataHandler = <T extends Unique>(
   data: T
 ): DataHandlerType<T> => {
   const [state, setState] = useState<T>(data);

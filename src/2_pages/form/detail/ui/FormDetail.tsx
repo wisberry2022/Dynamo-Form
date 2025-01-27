@@ -12,7 +12,7 @@ import {
 import { QuestionSection } from "@/3_widgets/question";
 
 export const FormDetail: FC = () => {
-  const { form, formHandler, onDeleteQuestion, mutate } =
+  const { form, formHandler, onAddQuestion, onDeleteQuestion, mutate } =
     useFormDetailContext();
   const { setState } = formHandler;
 
@@ -20,7 +20,7 @@ export const FormDetail: FC = () => {
     setState((prev) => ({
       ...prev,
       questions: prev.questions.map((quest) => {
-        if (quest.id !== question.id) {
+        if (quest.viewOrder !== question.viewOrder) {
           return quest;
         }
         return question;
@@ -51,6 +51,9 @@ export const FormDetail: FC = () => {
           />
         ))}
       <div className={styles.updateBtnBox}>
+        <Button variant="brighten" onClick={onAddQuestion}>
+          질문 추가하기
+        </Button>
         <Button variant="pink" onClick={onUpdate}>
           수정하기
         </Button>

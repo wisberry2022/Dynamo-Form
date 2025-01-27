@@ -1,5 +1,5 @@
 import { QuestionPreview, UpdatableQuestion } from "@/4_features/question";
-import { DataStatus, Question } from "@/6_shared";
+import { Button, DataStatus, Question } from "@/6_shared";
 import { FC, useState } from "react";
 
 type QuestionSectionProps = {
@@ -10,7 +10,9 @@ type QuestionSectionProps = {
 
 export const QuestionSection: FC<QuestionSectionProps> = (props) => {
   const { question, onQuestionSave, onDelete } = props;
-  const [status, setStatus] = useState<DataStatus>("READ");
+  const [status, setStatus] = useState<DataStatus>(
+    question.id ? "READ" : "MODIFY"
+  );
 
   const onModify = () => {
     setStatus("MODIFY");

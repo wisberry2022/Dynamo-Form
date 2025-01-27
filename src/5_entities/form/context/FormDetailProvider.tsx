@@ -1,6 +1,12 @@
 import { FC, ReactNode } from "react";
 import { FormDetailContext } from "./FormDetailContext";
-import { FormResponse, useDataHandler, useFormSWR } from "@/6_shared";
+import {
+  FormResponse,
+  getNextSequenceObject,
+  useDataHandler,
+  useFormSWR,
+} from "@/6_shared";
+import { getNextQuestion } from "../libs/utils";
 
 type FormDetailProviderProps = {
   formId: number;
@@ -16,10 +22,24 @@ export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
     formHandler.setState(form);
   };
 
-  const onDeleteQuestion = (id: number) => {
+  // 질문 추가/삭제 함수
+  const onAddQuestion = () => {
+    formHandler.setState((prev) => {
+      const nextViewOrder = getNextSequenceObject(prev.questions, "viewOrder");
+      return {
+        ...prev,
+        questions: prev.questions.concat(getNextQuestion(nextViewOrder)),
+      };
+    });
+  };
+
+  const onDeleteQuestion = (viewOrder: number) => {
     formHandler.setState({
       ...formHandler.state,
-      questions: formHandler.state.questions.filter((quest) => quest.id !== id),
+      questions: formHandler.state.questions
+        .filter((quest) => quest.viewOrder !== viewOrder)
+        .sort((a, b) => a.viewOrder - b.viewOrder)
+        .map((quest, idx) => ({ ...quest, viewOrder: idx + 1 })),
     });
   };
 
@@ -30,8 +50,9 @@ export const FormDetailProvider: FC<FormDetailProviderProps> = (props) => {
         form: formHandler.state,
         formHandler,
         onSectionSave,
+        onAddQuestion,
         onDeleteQuestion,
-        mutate
+        mutate,
       }}
     >
       {children}
