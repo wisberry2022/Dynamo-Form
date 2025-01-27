@@ -28,6 +28,8 @@ export type FileExtensions =
   | "XLS"
   | "XLSX";
 
+export type FileSize = "KB" | "MB" | "GB";
+
 export type FormListResponse = {
   id: number;
   title: string;
@@ -76,6 +78,8 @@ export interface AttachQuestion extends Question {
   attachableVideo: boolean;
   attachableAudio: boolean;
   attachableOthers: boolean;
+  maxFileSize: number;
+  unit: FileSize;
   extensions: FileExtensions[];
 }
 

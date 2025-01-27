@@ -12,6 +12,7 @@ import {
 } from "../model/InitQuestionStates";
 import {
   CategoryHandlerType,
+  ReducerAttachQuestion,
   ReducerDropDownQuestion,
   ReducerMultipleQuestion,
   ReducerRatingQuestion,
@@ -84,6 +85,18 @@ const categoryReducer = <T extends Question>(
         max: action.question.max,
         score: action.question.score,
       };
+    // 첨부파일형 설정 변경 함수
+    case "CHANGE_ATTACH_QUESTION":
+      return {
+        ...state,
+        attachableImage: action.question.attachableImage,
+        attachableVideo: action.question.attachableVideo,
+        attachableAudio: action.question.attachableAudio,
+        attachableOthers: action.question.attachableOthers,
+        maxFileSize: action.question.maxFileSize,
+        unit: action.question.unit,
+        extensions: action.question.extensions,
+      };
     default:
       return state;
   }
@@ -135,13 +148,20 @@ export const useCategoryHandler = <T extends Question>(
       question,
     });
   };
-  
+
   const onChangeSliderQuestion = (question: ReducerSliderQuestion) => {
     dispatch({
       type: "CHANGE_SLIDER_QUESTION",
-      question
-    })
-  }
+      question,
+    });
+  };
+
+  const onChangeAttachQuestion = (question: ReducerAttachQuestion) => {
+    dispatch({
+      type: "CHANGE_ATTACH_QUESTION",
+      question,
+    });
+  };
 
   return {
     state,
@@ -152,7 +172,8 @@ export const useCategoryHandler = <T extends Question>(
       onChangeDropDownQuestion,
       onChangeTextualQuestion,
       onChangeRatingQuestion,
-      onChangeSliderQuestion
+      onChangeSliderQuestion,
+      onChangeAttachQuestion,
     },
   };
 };

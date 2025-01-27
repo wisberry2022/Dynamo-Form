@@ -1,4 +1,5 @@
 import {
+  ReducerAttachQuestion,
   ReducerDropDownQuestion,
   ReducerMultipleQuestion,
   ReducerRatingQuestion,
@@ -7,6 +8,7 @@ import {
 } from "@/5_entities/question";
 import {
   DataHandlerType,
+  FileExtensions,
   Question,
   QuestionCategory,
   QuestionSubCategory,
@@ -54,6 +56,11 @@ type ChangeSliderQuestionType = {
   question: ReducerSliderQuestion;
 };
 
+type ChangeAttachQuestionType = {
+  type: "CHANGE_ATTACH_QUESTION";
+  question: ReducerAttachQuestion;
+};
+
 export type CategoryReducerActionType =
   | ChangeCategoryType
   | ChangeSubCategoryType
@@ -61,4 +68,10 @@ export type CategoryReducerActionType =
   | ChangeDropdownQuestionType
   | ChangeTextualQuestionType
   | ChangeRatingQuestionType
-  | ChangeSliderQuestionType;
+  | ChangeSliderQuestionType
+  | ChangeAttachQuestionType;
+
+export type ExtensionsLabelSettingType = {
+  label: string;
+  value: FileExtensions;
+};

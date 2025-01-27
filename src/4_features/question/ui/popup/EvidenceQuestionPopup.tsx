@@ -1,17 +1,23 @@
 import {
+  AttachQuestion,
   Button,
   Checkbox,
   Dialog,
   DialogBody,
   DialogFooter,
   DialogHeader,
+  FileExtensions,
 } from "@/6_shared";
 import cstyles from "./styles/common-popup.module.css";
 import styles from "./styles/evidence-popup.module.css";
-import { FC } from "react";
-import { ExtensionSetting } from "../../constants/Extensions";
+import { FC, Reducer, useState } from "react";
+import { ExtensionsLabelSetting } from "../../constants/Extensions";
+import { ReducerAttachQuestion } from "@/5_entities/question";
+import { toReducerAttachQuestion } from "../../libs/TypeMapper";
 
 type EvidenceQuestionPopupProps = {
+  question: AttachQuestion;
+  onConfirm: (question: ReducerAttachQuestion) => void;
   open?: boolean;
   onClose?: () => void;
 };
@@ -19,7 +25,33 @@ type EvidenceQuestionPopupProps = {
 export const EvidenceQuestionPopup: FC<EvidenceQuestionPopupProps> = (
   props
 ) => {
-  const { open, onClose } = props;
+  const { question, onConfirm, open, onClose } = props;
+  const [state, setState] = useState<ReducerAttachQuestion>(
+    toReducerAttachQuestion(question)
+  );
+
+  // 데이터 핸들링 함수
+  const onCheckAttachable = (value: string) => {
+    setState((prev) => ({
+      ...prev,
+      [value]: !prev[value],
+    }));
+  };
+
+  const onCheckExtension = (value: FileExtensions) => {
+    setState((prev) => ({
+      ...prev,
+      extensions: prev.extensions.includes(value)
+        ? prev.extensions.filter((ext) => ext !== value)
+        : prev.extensions.concat(value),
+    }));
+  };
+
+  // 저장 함수
+  const onSave = () => {
+    onConfirm(state);
+    onClose?.();
+  };
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -34,27 +66,27 @@ export const EvidenceQuestionPopup: FC<EvidenceQuestionPopupProps> = (
               <h5 className={styles.mTitle}>파일 유형 설정</h5>
               <div className={styles.checks}>
                 <Checkbox
-                  onChecked={() => {}}
-                  value={"1"}
-                  checked={false}
+                  onChecked={onCheckAttachable}
+                  value={"attachableImage"}
+                  checked={state.attachableImage}
                   label="이미지"
                 />
                 <Checkbox
-                  onChecked={() => {}}
-                  value={"1"}
-                  checked={false}
+                  onChecked={onCheckAttachable}
+                  value={"attachableVideo"}
+                  checked={state.attachableVideo}
                   label="동영상"
                 />
                 <Checkbox
-                  onChecked={() => {}}
-                  value={"1"}
-                  checked={false}
+                  onChecked={onCheckAttachable}
+                  value={"attachableAudio"}
+                  checked={state.attachableAudio}
                   label="음성"
                 />
                 <Checkbox
-                  onChecked={() => {}}
-                  value={"1"}
-                  checked={false}
+                  onChecked={onCheckAttachable}
+                  value={"attachableOthers"}
+                  checked={state.attachableOthers}
                   label="기타"
                 />
               </div>
@@ -62,13 +94,13 @@ export const EvidenceQuestionPopup: FC<EvidenceQuestionPopupProps> = (
             <div className={styles.right}>
               <h5 className={styles.mTitle}>확장자 설정</h5>
               <div className={styles.checks}>
-                {ExtensionSetting.map((ext) => (
+                {ExtensionsLabelSetting.map((ext) => (
                   <Checkbox
-                    key={ext}
-                    onChecked={() => {}}
-                    value={ext}
-                    label={ext}
-                    checked={false}
+                    key={ext.value}
+                    onChecked={onCheckExtension}
+                    value={ext.value}
+                    label={ext.label}
+                    checked={state.extensions.includes(ext.value)}
                   />
                 ))}
               </div>
@@ -78,8 +110,12 @@ export const EvidenceQuestionPopup: FC<EvidenceQuestionPopupProps> = (
       </DialogBody>
       <DialogFooter>
         <div className={cstyles.btnBox}>
-          <Button variant="primary">취소</Button>
-          <Button variant="brighten">저장</Button>
+          <Button variant="primary" onClick={onClose}>
+            취소
+          </Button>
+          <Button variant="brighten" onClick={onSave}>
+            저장
+          </Button>
         </div>
       </DialogFooter>
     </Dialog>

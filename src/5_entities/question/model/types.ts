@@ -1,4 +1,5 @@
 import {
+  AttachQuestion,
   DropDownQuestion,
   Question,
   QuestionCategory,
@@ -15,6 +16,7 @@ export type QuestionHandlerType = {
   onChangeTextualQuestion: (question: ReducerTextualQuestion) => void;
   onChangeRatingQuestion: (question: ReducerRatingQuestion) => void;
   onChangeSliderQuestion: (question: ReducerSliderQuestion) => void;
+  onChangeAttachQuestion: (question: ReducerAttachQuestion) => void;
 };
 
 export type CategoryHandlerType = {
@@ -40,4 +42,15 @@ export type ReducerRatingQuestion = Pick<
 export type ReducerSliderQuestion = Pick<
   SliderQuestion,
   "min" | "max" | "score"
+>;
+
+export type ReducerAttachQuestion = { [key: string]: any } & Pick<
+  AttachQuestion,
+  | "attachableImage"
+  | "attachableVideo"
+  | "attachableAudio"
+  | "attachableOthers"
+  | "maxFileSize"
+  | "unit"
+  | "extensions"
 >;

@@ -1,4 +1,9 @@
-import { Question, QuestionSubCategory, TextualQuestion } from "@/6_shared";
+import {
+  AttachQuestion,
+  Question,
+  QuestionSubCategory,
+  TextualQuestion,
+} from "@/6_shared";
 import { FC } from "react";
 import EvaluativeQuestionDetailSelector from "./EvaluativeQuestionDetailSelector";
 import EvidenceQuestionDetailSelector from "./EvidenceQuestionDetailSelector";
@@ -40,7 +45,12 @@ const SubCategorySelector: FC<SubCategorySelectorProps> = (props) => {
         onChangeSliderQuestion={questionHandler.onChangeSliderQuestion}
       />
     ),
-    EVIDENCE: <EvidenceQuestionDetailSelector />,
+    EVIDENCE: (
+      <EvidenceQuestionDetailSelector
+        state={state as AttachQuestion}
+        onChangeAttachQuestion={questionHandler.onChangeAttachQuestion}
+      />
+    ),
   };
 
   return componentMapper[state.category];
