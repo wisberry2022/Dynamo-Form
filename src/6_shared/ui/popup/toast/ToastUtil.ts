@@ -9,18 +9,18 @@ export class Toast {
   }
 
   static success(message: string) {
-    this.setter({ type: "success", message });
+    this.setter({ open: true, type: "success", message });
   }
 
   static error(message: string) {
-    this.setter({ type: "error", message });
+    this.setter({ open: true, type: "error", message });
   }
 
   static warning(message: string) {
-    this.setter({ type: "warning", message });
+    this.setter({ open: true, type: "warning", message });
   }
 
   static close() {
-    this.setter({ type: "success", message: "" });
+    this.setter({ open: false, type: "success", message: "" });
   }
 }

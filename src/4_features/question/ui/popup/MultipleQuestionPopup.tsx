@@ -18,7 +18,7 @@ import { FaPen, FaRegSave, FaRegTrashAlt } from "react-icons/fa";
 import { MdAddCircleOutline } from "react-icons/md";
 import { ReducerMultipleQuestion } from "@/5_entities/question";
 import { toReducerMultipleQuestion } from "../../libs/TypeMapper";
-import { getNextSequenceInPrimitive } from "@/6_shared/utils/Sequence";
+import { getNextSequenceInPrimitive } from "@/6_shared/utils/SequenceUtils";
 
 type MultipleQuestionPopupProps = {
   question: SelectQuestion;
@@ -144,7 +144,7 @@ export const MultipleQuestionPopup: FC<MultipleQuestionPopupProps> = (
                                 <FaRegTrashAlt
                                   onClick={() => removeRow(quest.seq)}
                                 />
-                              </div>  
+                              </div>
                             </div>
                           </>
                         ) : (

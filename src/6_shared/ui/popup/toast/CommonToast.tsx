@@ -10,13 +10,13 @@ export const CommonToast: FC = () => {
   const [toast, setToast] = useRecoilState(ToastState);
 
   useEffect(() => {
-    if (toast.message) {
+    if (toast.open) {
       let timer = setTimeout(() => {
-        setToast({ type: "success", message: "" });
+        setToast((prev) => ({ ...prev, open: !prev.open }));
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [toast.message]);
+  }, [toast.open]);
 
   const stylesMapper = {
     success: {
@@ -38,7 +38,7 @@ export const CommonToast: FC = () => {
 
   return (
     <div
-      className={`${toast.message ? styles.on : styles.off} ${
+      className={`${toast.open ? styles.on : styles.off} ${
         stylesMapper[toast.type].bg
       } ${styles.toast}`}
     >

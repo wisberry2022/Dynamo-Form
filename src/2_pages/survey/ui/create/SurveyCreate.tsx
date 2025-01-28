@@ -5,6 +5,7 @@ import { SurveySetting } from "@/3_widgets/survey";
 import {
   Button,
   endpoints,
+  handleError,
   Survey,
   SurveyRequest,
   Toast,
@@ -28,7 +29,7 @@ export const SurveyCreate: FC = () => {
       Toast.success("설문조사를 생성했습니다.");
       router.replace(endpoints.survey.index);
     } catch (e) {
-      Toast.error("설문 조사 생성에 실패했습니다.");
+      handleError(e);
     }
   };
 
