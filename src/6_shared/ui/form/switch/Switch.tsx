@@ -3,15 +3,15 @@ import styles from "./switch.module.css";
 
 type SwitchProps = {
   checked: boolean;
-  name: string;
   onChange: (name: string, checked: boolean) => void;
+  name?: string;
   label?: string;
   className?: string;
   width?: number;
 };
 
 export const Switch: FC<SwitchProps> = (props) => {
-  const { checked, name, onChange, label, className, width = 0 } = props;
+  const { checked, name = "", onChange, label, className, width = 0 } = props;
   const [isToggle, setToggle] = useState<boolean>(checked);
 
   const onSwitch = () => {

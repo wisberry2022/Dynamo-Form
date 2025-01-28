@@ -8,6 +8,7 @@ export type DataHandlerType<T> = {
   setter: (name: string, value: any) => void;
   onTextField: ChangeEventHandler<HTMLInputElement>;
   onSwitch: (name: string, checked: boolean) => void;
+  onChangeDateWithFormat: (name: string, value: string | null) => void;
 };
 
 export type FormLabelType<T = any> = {

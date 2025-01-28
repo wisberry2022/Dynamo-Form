@@ -1,19 +1,4 @@
-/**
- * 날짜 포맷팅 함수
- * @param dateString 날짜 문자열
- * @param format 변환할 포맷 스트링(기본: yyyy-MM-dd)
- * @returns 포매팅된 날짜 문자열
- */
-export const formatDate = (
-  dateString: string,
-  format: string = "yyyy-MM-dd"
-): string => {
-  if (!dateString) {
-    return "";
-  }
-  // 입력 문자열을 Date 객체로 변환
-  const date = new Date(dateString);
-
+const _toFormatString = (date: Date, format: string): string => {
   // 포맷 구성요소 매핑
   const formatMap: any = {
     yyyy: date.getFullYear(),
@@ -30,4 +15,37 @@ export const formatDate = (
     /yyyy|MM|dd|HH|mm|ss|SSS/g,
     (match) => formatMap[match]
   );
+};
+
+/**
+ * 날짜 포맷팅 함수
+ * @param dateString 날짜 문자열
+ * @param format 변환할 포맷 스트링(기본: yyyy-MM-dd)
+ * @returns 포매팅된 날짜 문자열
+ */
+export const formatDate = (
+  dateString: string,
+  format: string = "yyyy-MM-dd"
+): string => {
+  if (!dateString) {
+    return "";
+  }
+  // 입력 문자열을 Date 객체로 변환
+  const date = new Date(dateString);
+
+  return _toFormatString(date, format);
+};
+
+/**
+ * Date 객체 formatString 변환 함수
+ * @param date 변환할 Date 객체
+ * @param format 변환할 포맷스트링
+ * @returns 포맷스트링으로 변환된 문자열
+ */
+export const parseDate = (date: Date, format = "yyyy-MM-dd"): string => {
+  if (!date) {
+    return "";
+  }
+
+  return _toFormatString(date, format);
 };

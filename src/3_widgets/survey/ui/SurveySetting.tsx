@@ -1,9 +1,52 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./styles/survey-setting.module.css";
-import { Switch, TextField } from "@/6_shared";
+import {
+  DataHandlerType,
+  ObjType,
+  parseDate,
+  SurveyRequest,
+  Switch,
+  TextField,
+} from "@/6_shared";
 import { DateTimePicker } from "@/6_shared/ui/calendar";
 
-export const SurveySetting: FC = () => {
+type SurveySettingProps = {
+  surveyHandler: DataHandlerType<SurveyRequest>;
+};
+
+export const SurveySetting: FC<SurveySettingProps> = (props) => {
+  const { surveyHandler } = props;
+  const { state, onTextField, onChangeDateWithFormat } = surveyHandler;
+
+  // 시작일, 마감일 설정 함수
+  const _onChangeDate = (name: string, value?: Date) => {
+    if (!(state as ObjType)[name]) {
+      onChangeDateWithFormat(
+        name,
+        parseDate(value ? value : new Date(), "yyyy-MM-ddTHH:mm")
+      );
+      return;
+    }
+    onChangeDateWithFormat(name, null);
+  };
+
+  const onChangeStartDate = () => {
+    _onChangeDate("startDate");
+  };
+
+  const onChangeEndDate = () => {
+    const after7Days = new Date();
+    after7Days.setDate(after7Days.getDate() + 7);
+    _onChangeDate("endDate", after7Days);
+  };
+
+  // 참석 인원 제한 설정 함수
+  const [used, setUsed] = useState<boolean>(!!state.limitParticipant);
+
+  const onSwitchLimitParticipant = () => {
+    setUsed((prev) => !prev);
+  };
+
   return (
     <div className={styles.surveySetting}>
       <div className={styles.titleBox}>
@@ -17,11 +60,23 @@ export const SurveySetting: FC = () => {
         <ul>
           <li>
             <strong>설문 조사 제목</strong>
-            <TextField placeholder="제목을 입력하세요." width={364} />
+            <TextField
+              placeholder="제목을 입력하세요."
+              name="title"
+              onChange={onTextField}
+              value={state.title}
+              width={364}
+            />
           </li>
           <li>
             <strong>설문 조사 설명</strong>
-            <TextField placeholder="설명을 입력하세요." width={364} />
+            <TextField
+              placeholder="설명을 입력하세요."
+              name="description"
+              onChange={onTextField}
+              value={state.description}
+              width={364}
+            />
           </li>
           <li>
             <div className={styles.descBox}>
@@ -30,12 +85,17 @@ export const SurveySetting: FC = () => {
             </div>
             <div className={styles.subContent}>
               <Switch
-                checked={false}
-                name="test"
-                onChange={() => {}}
-                label="미사용"
+                checked={!!state.startDate}
+                onChange={onChangeStartDate}
+                label={state.startDate ? "사용" : "미사용"}
               />
-              <DateTimePicker />
+              {state.startDate && (
+                <DateTimePicker
+                  name="startDate"
+                  onChange={onChangeDateWithFormat}
+                  value={state.startDate}
+                />
+              )}
             </div>
           </li>
           <li>
@@ -45,12 +105,17 @@ export const SurveySetting: FC = () => {
             </div>
             <div className={styles.subContent}>
               <Switch
-                checked={false}
-                name="test"
-                onChange={() => {}}
-                label="미사용"
+                checked={!!state.endDate}
+                onChange={onChangeEndDate}
+                label={state.endDate ? "사용" : "미사용"}
               />
-              <DateTimePicker />
+              {state.endDate && (
+                <DateTimePicker
+                  name="endDate"
+                  onChange={onChangeDateWithFormat}
+                  value={state.endDate}
+                />
+              )}
             </div>
           </li>
           <li>
@@ -63,15 +128,20 @@ export const SurveySetting: FC = () => {
             </div>
             <div className={styles.subContent}>
               <Switch
-                checked={false}
-                name="test"
-                onChange={() => {}}
-                label="미사용"
+                checked={used}
+                onChange={onSwitchLimitParticipant}
+                label={used ? "사용" : "미사용"}
               />
-              <div className={styles.withText}>
-                <TextField />
-                <span>명</span>
-              </div>
+              {used && (
+                <div className={styles.withText}>
+                  <TextField
+                    name="limitParticipant"
+                    value={state.limitParticipant}
+                    onChange={onTextField}
+                  />
+                  <span>명</span>
+                </div>
+              )}
             </div>
           </li>
         </ul>

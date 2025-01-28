@@ -26,11 +26,16 @@ export const useDataHandler = <T extends Unique>(
     setter(name, checked);
   };
 
+  const onChangeDateWithFormat = (name: string, value: string | null) => {
+    setter(name, value);
+  };
+
   return {
     state,
     setState,
     setter,
     onTextField,
     onSwitch,
+    onChangeDateWithFormat,
   };
 };

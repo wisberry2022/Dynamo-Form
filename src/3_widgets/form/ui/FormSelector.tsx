@@ -10,12 +10,7 @@ import {
   SurveyRequest,
   Toast,
 } from "@/6_shared";
-import {
-  FormLoaderDialog,
-  FormSummary,
-  SimpleFormDetailState,
-} from "@/4_features/form";
-import { useRecoilState } from "recoil";
+import { FormLoaderDialog, FormSummary } from "@/4_features/form";
 
 type FormSelectorProps = {
   formId: number | null;
@@ -24,13 +19,9 @@ type FormSelectorProps = {
 
 export const FormSelector: FC<FormSelectorProps> = (props) => {
   const { formId, surveyHandler } = props;
-
-  const [form, setForm] = useRecoilState(SimpleFormDetailState);
-
-  useEffect(() => {
-    // 컴포넌트 언마운트 시 state 초기화
-    return () => setForm({} as SimpleFormDetailResponse);
-  }, []);
+  const [form, setForm] = useState<SimpleFormDetailResponse>(
+    {} as SimpleFormDetailResponse
+  );
 
   const onConfirm = async (value: FormPopupListResponse) => {
     if (!value?.id) {
@@ -38,7 +29,12 @@ export const FormSelector: FC<FormSelectorProps> = (props) => {
     }
     try {
       const response = await Form.getSummary(value.id);
-      surveyHandler.setter("formId", value.id);
+      surveyHandler.setState((prev) => ({
+        ...prev,
+        formId: value.id,
+        title: response.data.title,
+        description: response.data.description,
+      }));
       setForm(response.data);
       Toast.success("양식을 불러왔습니다.");
     } catch (e) {

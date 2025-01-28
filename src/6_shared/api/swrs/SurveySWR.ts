@@ -4,10 +4,9 @@ import { Paths } from "../core/Paths";
 import { ResponseWrapper } from "@/6_shared/types";
 
 export const useSurveyListSWR = () => {
-  const { data: surveys, mutate } = useSWR<ResponseWrapper<SurveyListResponse[]>>(
-    Paths.survey.list
-  );
+  const { data: surveys, mutate } = useSWR<
+    ResponseWrapper<SurveyListResponse[]>
+  >(Paths.survey.list);
 
   return { surveys, mutate };
 };
-

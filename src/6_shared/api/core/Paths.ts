@@ -10,6 +10,7 @@ export const Paths = {
     delete: (id: number) => `/api/v1/form/${id}`,
   },
   survey: {
-    list: "/api/v1/survey/list"
-  }
+    list: "/api/v1/survey/list",
+    save: "/api/v1/survey",
+  },
 };
