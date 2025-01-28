@@ -1,0 +1,69 @@
+.surveySetting {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4rem;
+  border: 0.1rem solid #ddd;
+  padding: 3rem 2rem;
+  width: 70%;
+  height: 48rem;
+
+  .titleBox {
+    margin-bottom: 6.5rem;
+
+    h2 {
+      font-size: 2.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .settings {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+
+        strong {
+          font-size: 1.2rem;
+        }
+
+        .descBox {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-size: 1rem;
+          }
+        }
+
+        .subContent {
+          width: 36.4rem;
+          display: flex;
+          justify-content: space-between;
+
+          .withText {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            span {
+              font-size: 1.3rem;
+            }
+          }
+
+          input {
+            padding: 0.5rem;
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+}

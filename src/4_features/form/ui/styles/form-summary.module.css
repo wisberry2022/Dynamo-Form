@@ -1,0 +1,48 @@
+.summary {
+  border-radius: 4rem;
+  border: 0.1rem solid #ddd;
+  padding: 3rem 2rem;
+  height: 100%;
+
+  .titleBox {
+    margin-bottom: 2rem;
+    border-bottom: 0.1rem solid #d9d9d9;
+    padding: 1rem 0;
+
+    h4 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .body {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        strong {
+          font-size: 1.3rem;
+          font-weight: 600;
+        }
+
+        span {
+          font-size: 1.2rem;
+          max-width: 70%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          word-break: break-all;
+
+          svg {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

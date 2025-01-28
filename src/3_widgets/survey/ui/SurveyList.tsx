@@ -1,9 +1,10 @@
-import { ListButton, SurveyListResponse } from "@/6_shared";
+import { endpoints, ListButton, SurveyListResponse } from "@/6_shared";
 import { FC } from "react";
 import { FaFileAlt, FaRegPlusSquare, FaRegTrashAlt } from "react-icons/fa";
 import { MdReportGmailerrorred } from "react-icons/md";
 import styles from "./styles/survey-list.module.css";
 import { SurveyStatusChip } from "@/5_entities/survey";
+import { useRouter } from "next/router";
 
 type SurveyListProps = {
   surveys: SurveyListResponse[];
@@ -11,11 +12,18 @@ type SurveyListProps = {
 
 export const SurveyList: FC<SurveyListProps> = (props) => {
   const { surveys } = props;
+
+  const router = useRouter();
+
+  const goCreate = () => {
+    router.push(endpoints.survey.create);
+  };
+
   return (
     <>
       <ListButton
         bgColor="primary"
-        onClick={() => {}}
+        onClick={goCreate}
         center={
           <ListButton.Center
             left={<FaRegPlusSquare className={styles.tIcon} />}
