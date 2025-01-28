@@ -1,0 +1,26 @@
+.tIcon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.tTitle {
+  font-size: 1.6rem;
+}
+
+.svTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  strong {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,30 @@
+.chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2.5rem;
+  width: 5.5rem;
+  height: 2.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.primary {
+  color: #f9f9f9;
+  background-color: #bcb3ff;
+}
+
+.secondary {
+  color: #333;
+  background-color: #ffd3b3;
+}
+
+.brighten {
+  color: #333;
+  background-color: #a3ffc1;
+}
+
+.pink {
+  color: #333;
+  background-color: #ffb3d3;
+}

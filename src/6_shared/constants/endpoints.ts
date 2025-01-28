@@ -5,4 +5,7 @@ export const endpoints = {
     create: "/form/create",
     detail: (id: number) => `/form/${id}`,
   },
+  survey: {
+    index: "/survey",
+  },
 };

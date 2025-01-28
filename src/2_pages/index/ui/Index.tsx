@@ -21,7 +21,11 @@ export const Index: FC = () => {
           link={endpoints.form.index}
           icon={<FaListOl />}
         />
-        <SquareButton title="설문조사 만들기" icon={<FaFileAlt />} />
+        <SquareButton
+          title="설문조사 관리"
+          icon={<FaFileAlt />}
+          link={endpoints.survey.index}
+        />
       </div>
     </>
   );

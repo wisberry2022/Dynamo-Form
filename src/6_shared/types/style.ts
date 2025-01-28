@@ -11,3 +11,5 @@ export type Scale = "large" | "medium" | "small";
 export type DialogScale = Scale;
 
 export type Align = "left" | "center" | "right";
+
+export type ChipVariant = Omit<ButtonVariant, "hazy">;
