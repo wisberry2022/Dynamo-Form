@@ -1,5 +1,4 @@
-import { Chip, ListButton } from "@/6_shared";
-import { SurveyListResponse } from "@/6_shared/types/domain/Survey";
+import { ListButton, SurveyListResponse } from "@/6_shared";
 import { FC } from "react";
 import { FaFileAlt, FaRegPlusSquare, FaRegTrashAlt } from "react-icons/fa";
 import { MdReportGmailerrorred } from "react-icons/md";
