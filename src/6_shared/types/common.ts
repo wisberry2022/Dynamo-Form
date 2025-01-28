@@ -18,7 +18,7 @@ export type FormLabelType<T = any> = {
 
 export type Unique = {
   [key: string]: any;
-  id: number | null;
+  id?: number | null;
 };
 
 export type SequenceData<T> = {

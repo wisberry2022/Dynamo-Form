@@ -1,3 +1,5 @@
+import { Audit } from "./Common";
+
 export type QuestionCategory =
   | "SELECT"
   | "DESCRIPTIVE"
@@ -92,3 +94,8 @@ export type FormResponse = {
 };
 
 export type FormRequest = FormResponse;
+
+export type FormPopupListResponse = Audit & {
+  id: number;
+  title: string;
+};

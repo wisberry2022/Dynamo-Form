@@ -1,5 +1,6 @@
 import {
   FormListResponse,
+  FormPopupListResponse,
   FormResponse,
   ResponseWrapper,
 } from "@/6_shared/types";
@@ -20,4 +21,12 @@ export const useFormListSWR = () => {
   >(Paths.form.getAll);
 
   return { formList, mutate };
+};
+
+export const useFormPopupListSWR = () => {
+  const { data: forms, mutate } = useSWR<
+    ResponseWrapper<FormPopupListResponse[]>
+  >(Paths.form.getPopupList);
+
+  return { forms: forms?.data, mutate };
 };

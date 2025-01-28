@@ -10,3 +10,4 @@ export const useSurveyListSWR = () => {
 
   return { surveys, mutate };
 };
+
