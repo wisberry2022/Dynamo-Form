@@ -99,3 +99,10 @@ export type FormPopupListResponse = Audit & {
   id: number;
   title: string;
 };
+
+export type SimpleFormDetailResponse = Pick<Audit, "regDttm"> & {
+  id: number;
+  title: string;
+  description: string;
+  questionCount: number;
+};

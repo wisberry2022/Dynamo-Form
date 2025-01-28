@@ -1,8 +1,24 @@
 import { FC } from "react";
 import styles from "./styles/form-summary.module.css";
 import { FaSearch } from "react-icons/fa";
+import { endpoints, formatDate, SimpleFormDetailResponse, useFormSummarySWR } from "@/6_shared";
+import { useRouter } from "next/router";
 
-export const FormSummary: FC = () => {
+type FormSummaryProps = {
+  form: SimpleFormDetailResponse;
+};
+
+export const FormSummary: FC<FormSummaryProps> = (props) => {
+  const { form } = props;
+
+  // 양식 상세보기
+  const goFormDetail = (formId: number | null | undefined) => {
+    if (!formId) {
+      return;
+    }
+    window.open(endpoints.form.detail(formId), "_blank");
+  };
+
   return (
     <div className={styles.summary}>
       <div className={styles.titleBox}>
@@ -12,24 +28,24 @@ export const FormSummary: FC = () => {
         <ul>
           <li>
             <strong>양식 제목</strong>
-            <span>기말 리포트 설문 조사 양식</span>
+            <span>{form?.title}</span>
           </li>
           <li>
             <strong>양식 설명</strong>
-            <span>기말 리포트 설문 조사 양식 설명입니다.</span>
+            <span>{form?.description}</span>
           </li>
           <li>
             <strong>양식 생성 일자</strong>
-            <span>2025-01-24</span>
+            <span>{formatDate(form?.regDttm as string)}</span>
           </li>
           <li>
             <strong>질문 개수</strong>
-            <span>5개</span>
+            <span> {form?.questionCount}개</span>
           </li>
           <li>
             <strong>양식 상세보기</strong>
             <span>
-              <FaSearch />
+              <FaSearch onClick={() => goFormDetail(form?.id)} />
             </span>
           </li>
         </ul>

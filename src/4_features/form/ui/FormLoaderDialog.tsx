@@ -18,12 +18,21 @@ type FormLoaderDialogProps = {
   formId?: number | null;
   open?: boolean;
   onClose?: () => void;
+  onConfirm?: (value: FormPopupListResponse) => void;
 };
 
 export const FormLoaderDialog: FC<FormLoaderDialogProps> = (props) => {
-  const { formId, open, onClose } = props;
+  const { formId, open, onClose, onConfirm } = props;
   const { forms } = useFormPopupListSWR();
 
+  // 선택 기능
+  const [selected, setSelected] = useState<number | null | undefined>(formId);
+
+  const onChange = (value: number) => {
+    setSelected(value);
+  };
+
+  // 검색 기능
   const [keyword, setKeyword] = useState<string>("");
 
   const onSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -37,6 +46,14 @@ export const FormLoaderDialog: FC<FormLoaderDialogProps> = (props) => {
     return data.filter((form) =>
       isMatchField<FormPopupListResponse>(form, ["title"], keyword)
     );
+  };
+
+  // 저장 기능
+  const onSave = () => {
+    onConfirm?.(
+      viewData.find((form) => form.id === selected) as FormPopupListResponse
+    );
+    onClose?.();
   };
 
   const viewData = searchData(forms ?? []);
@@ -64,7 +81,11 @@ export const FormLoaderDialog: FC<FormLoaderDialogProps> = (props) => {
                 {viewData.map((form) => (
                   <tr key={form.id}>
                     <td>
-                      <Radio value={form.id} />
+                      <Radio
+                        selected={selected}
+                        value={form.id}
+                        onChange={onChange}
+                      />
                     </td>
                     <td>{form.title}</td>
                     <td>
@@ -84,7 +105,9 @@ export const FormLoaderDialog: FC<FormLoaderDialogProps> = (props) => {
           <Button variant="primary" onClick={onClose}>
             취소하기
           </Button>
-          <Button variant="secondary">불러오기</Button>
+          <Button variant="secondary" onClick={onSave}>
+            불러오기
+          </Button>
         </div>
       </DialogFooter>
     </Dialog>

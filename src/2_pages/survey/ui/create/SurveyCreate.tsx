@@ -6,12 +6,12 @@ import { Button, SurveyRequest, useDataHandler } from "@/6_shared";
 import { SurveyRequestForm } from "../../constant/SurveyConstant";
 
 export const SurveyCreate: FC = () => {
-  const { state } = useDataHandler<SurveyRequest>(SurveyRequestForm);
+  const surveyHandler = useDataHandler<SurveyRequest>(SurveyRequestForm);
 
   return (
     <div className={styles.container}>
       <div className={styles.setting}>
-        <FormSelector formId={state.formId} />
+        <FormSelector formId={surveyHandler.state.formId} surveyHandler={surveyHandler} />
         <SurveySetting />
       </div>
       <div className={styles.btnBox}>

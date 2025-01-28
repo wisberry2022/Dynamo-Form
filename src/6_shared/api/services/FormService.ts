@@ -5,11 +5,19 @@ import {
   FormRequest,
   FormResponse,
   ResponseWrapper,
+  SimpleFormDetailResponse,
 } from "@/6_shared/types";
 import { Paths } from "../core/Paths";
 import { RestService } from "../core/RestService";
 
 export const Form = {
+  getSummary: async (
+    formId: number
+  ): Promise<ResponseWrapper<SimpleFormDetailResponse>> => {
+    return await RestService.get<ResponseWrapper<SimpleFormDetailResponse>>(
+      Paths.form.getSummary(formId)
+    );
+  },
   save: async (
     sendData: FormRequest
   ): Promise<ResponseWrapper<FormResponse>> => {
