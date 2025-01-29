@@ -14,6 +14,7 @@ export const Paths = {
     list: "/api/v1/survey/list",
     save: "/api/v1/survey",
     update: "/api/v1/survey",
+    createToken: "/api/v1/survey/link",
     complete: (id: number) => `/api/v1/survey/${id}`,
     suspend: (id: number) => `/api/v1/survey/${id}/suspend`,
     delete: (id: number) => `/api/v1/survey/${id}`,

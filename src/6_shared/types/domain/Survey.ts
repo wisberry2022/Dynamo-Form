@@ -13,6 +13,7 @@ export type SurveyRequest = {
   startDate: string;
   endDate: string;
   limitParticipant: number;
+  surveyLink: string;
 };
 
 export type SurveyDetailResponse = SurveyRequest & {
@@ -25,4 +26,8 @@ export type SurveyDetailResponse = SurveyRequest & {
 
 export type SurveyUpdateRequest = SurveyRequest & {
   id: number;
+};
+
+export type SurveyTokenResponse = {
+  surveyToken: string;
 };

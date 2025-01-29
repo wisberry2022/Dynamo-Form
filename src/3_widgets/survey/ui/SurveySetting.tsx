@@ -1,12 +1,16 @@
 import { FC, useState } from "react";
 import styles from "./styles/survey-setting.module.css";
 import {
+  Button,
   DataHandlerType,
+  handleError,
   ObjType,
   parseDate,
+  Survey,
   SurveyRequest,
   Switch,
   TextField,
+  Toast,
 } from "@/6_shared";
 import { DateTimePicker } from "@/6_shared/ui/calendar";
 
@@ -16,7 +20,7 @@ type SurveySettingProps = {
 
 export const SurveySetting: FC<SurveySettingProps> = (props) => {
   const { surveyHandler } = props;
-  const { state, onTextField, onChangeDateWithFormat } = surveyHandler;
+  const { state, setter, onTextField, onChangeDateWithFormat } = surveyHandler;
 
   // 시작일, 마감일 설정 함수
   const _onChangeDate = (name: string, value?: Date) => {
@@ -45,6 +49,20 @@ export const SurveySetting: FC<SurveySettingProps> = (props) => {
 
   const onSwitchLimitParticipant = () => {
     setUsed((prev) => !prev);
+  };
+
+  // 링크 자동 생성 함수
+  const onGenerateLink = async () => {
+    try {
+      const response = await Survey.createToken();
+      setter(
+        "surveyLink",
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/survey/join?=${response.data.surveyToken}`
+      );
+      Toast.success("링크가 자동 생성되었습니다.");
+    } catch (e) {
+      handleError(e);
+    }
   };
 
   return (
@@ -142,6 +160,21 @@ export const SurveySetting: FC<SurveySettingProps> = (props) => {
                   <span>명</span>
                 </div>
               )}
+            </div>
+          </li>
+          <li className={styles.linkBox}>
+            <div className={styles.descBox}>
+              <strong>설문 조사 링크</strong>
+              <p>
+                설문 조사 링크를 생성할 수 있습니다. <br />
+                설문 조사 링크를 공유하여 설문에 참여할 수 있습니다.
+              </p>
+            </div>
+            <div className={styles.subContent}>
+              <Button variant="hazy" onClick={onGenerateLink}>
+                링크 생성
+              </Button>
+              <TextField className={styles.linkText} value={state.surveyLink} />
             </div>
           </li>
         </ul>

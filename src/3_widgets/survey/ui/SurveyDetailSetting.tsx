@@ -2,13 +2,17 @@ import { FC, useState } from "react";
 import styles from "./styles/survey-setting.module.css";
 import dstyles from "./styles/survey-detail-setting.module.css";
 import {
+  Button,
   DataHandlerType,
   formatDate,
+  handleError,
   ObjType,
   parseDate,
+  Survey,
   SurveyDetailResponse,
   Switch,
   TextField,
+  Toast,
 } from "@/6_shared";
 import { DateTimePicker } from "@/6_shared/ui/calendar";
 import { SurveyStatusChip } from "@/5_entities/survey";
@@ -51,6 +55,30 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
       setter("limitParticipant", 0);
     }
     setUsed((prev) => !prev);
+  };
+
+  // 링크 복사 기능
+  const onCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(state.surveyLink);
+      Toast.success("링크가 복사되었습니다.");
+    } catch (e) {
+      Toast.error("링크 복사에 실패했습니다.");
+    }
+  };
+
+  // 링크 자동 생성 함수
+  const onGenerateLink = async () => {
+    try {
+      const response = await Survey.createToken();
+      setter(
+        "surveyLink",
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/survey/join?=${response.data.surveyToken}`
+      );
+      Toast.success("링크가 자동 생성되었습니다.");
+    } catch (e) {
+      handleError(e);
+    }
   };
 
   return (
@@ -227,6 +255,30 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
                 {state.limitParticipant
                   ? `${state.limitParticipant}명`
                   : "미사용"}
+              </strong>
+            )}
+          </li>
+          <li className={styles.linkBox}>
+            <div className={styles.descBox}>
+              <strong>설문 조사 링크</strong>
+              <p>
+                설문 조사 링크를 생성할 수 있습니다. <br />
+                설문 조사 링크를 공유하여 설문에 참여할 수 있습니다.
+              </p>
+            </div>
+            {["WAITING"].includes(state.status) ? (
+              <div className={styles.subContent}>
+                <Button variant="hazy" onClick={onGenerateLink}>
+                  링크 생성
+                </Button>
+                <TextField
+                  className={styles.linkText}
+                  value={state.surveyLink}
+                />
+              </div>
+            ) : (
+              <strong className={dstyles.note} onClick={onCopyLink}>
+                {state.surveyLink}
               </strong>
             )}
           </li>

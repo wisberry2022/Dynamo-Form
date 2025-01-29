@@ -1,4 +1,9 @@
-import { SurveyRequest, SurveyUpdateRequest } from "@/6_shared/types";
+import {
+  ResponseWrapper,
+  SurveyRequest,
+  SurveyTokenResponse,
+  SurveyUpdateRequest,
+} from "@/6_shared/types";
 import { RestService } from "../core/RestService";
 import { Paths } from "../core/Paths";
 
@@ -13,6 +18,11 @@ export const Survey = {
     return await RestService.put<SurveyUpdateRequest, void>(
       Paths.survey.update,
       sendData
+    );
+  },
+  createToken: async (): Promise<ResponseWrapper<SurveyTokenResponse>> => {
+    return await RestService.get<ResponseWrapper<SurveyTokenResponse>>(
+      Paths.survey.createToken
     );
   },
   complete: async (id: number): Promise<void> => {
