@@ -14,3 +14,13 @@ export type SurveyRequest = {
   endDate: string;
   limitParticipant: number;
 };
+
+export type SurveyDetailResponse = SurveyRequest & {
+  id: number;
+  status: SurveyStatus;
+  regDttm: string;
+};
+
+export type SurveyUpdateRequest = SurveyRequest & {
+  id: number;
+};

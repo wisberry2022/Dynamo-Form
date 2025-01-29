@@ -1,4 +1,4 @@
-import { SurveyRequest } from "@/6_shared/types";
+import { SurveyRequest, SurveyUpdateRequest } from "@/6_shared/types";
 import { RestService } from "../core/RestService";
 import { Paths } from "../core/Paths";
 
@@ -6,6 +6,12 @@ export const Survey = {
   save: async (sendData: SurveyRequest): Promise<void> => {
     return await RestService.post<SurveyRequest, void>(
       Paths.survey.save,
+      sendData
+    );
+  },
+  update: async (sendData: SurveyUpdateRequest): Promise<void> => {
+    return await RestService.put<SurveyUpdateRequest, void>(
+      Paths.survey.update,
       sendData
     );
   },

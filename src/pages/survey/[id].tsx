@@ -1,7 +1,9 @@
-import { PageLayout, PageWithLayout } from "@/6_shared";
+import { SurveyDetail } from "@/2_pages/survey/ui/detail/SurveyDetail";
+import { PageLayout, PageWithLayout, useGetQuery } from "@/6_shared";
 
 const Page: PageWithLayout = () => {
-  return <div>hi</div>;
+  const surveyId = useGetQuery<number>("id");
+  return <SurveyDetail surveyId={surveyId} />;
 };
 
 Page.getLayout = (page) => (
