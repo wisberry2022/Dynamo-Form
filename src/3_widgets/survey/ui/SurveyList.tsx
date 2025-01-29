@@ -86,14 +86,16 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
               <ListButton.Right
                 left={<MdReportGmailerrorred className={styles.tIcon} />}
                 right={
-                  <PopupTrigger
-                    trigger={<FaRegTrashAlt className={styles.tIcon} />}
-                    popup={
-                      <SurveyDeleteDialog
-                        onConfirm={() => onConfirm(survey.id)}
-                      />
-                    }
-                  />
+                  ["WAITING", "COMPLETE"].includes(survey.status) && (
+                    <PopupTrigger
+                      trigger={<FaRegTrashAlt className={styles.tIcon} />}
+                      popup={
+                        <SurveyDeleteDialog
+                          onConfirm={() => onConfirm(survey.id)}
+                        />
+                      }
+                    />
+                  )
                 }
               />
             }
