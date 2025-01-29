@@ -27,8 +27,14 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
 
   const router = useRouter();
 
+  // 설문조사 생성 페이지 이동
   const goCreate = () => {
     router.push(endpoints.survey.create);
+  };
+
+  // 설문조사 수정 페이지 이동
+  const goDetail = (id: number) => {
+    router.push(endpoints.survey.id(id));
   };
 
   // 설문조사 삭제 함수
@@ -60,7 +66,7 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
         return (
           <ListButton
             key={survey.id}
-            onClick={() => {}}
+            onClick={() => goDetail(survey.id)}
             left={
               <ListButton.Left
                 left={

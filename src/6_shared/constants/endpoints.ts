@@ -7,6 +7,7 @@ export const endpoints = {
   },
   survey: {
     index: "/survey",
-    create: "/survey/create"
+    create: "/survey/create",
+    id: (id: number) => `/survey/${id}`,
   },
 };
