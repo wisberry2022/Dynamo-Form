@@ -9,4 +9,7 @@ export const Survey = {
       sendData
     );
   },
+  delete: async (id: number): Promise<void> => {
+    return await RestService.delete<void>(Paths.survey.delete(id));
+  },
 };

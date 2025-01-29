@@ -1,4 +1,4 @@
-import { PopupTrigger, Toast } from "@/6_shared";
+import { handleError, PopupTrigger, Toast } from "@/6_shared";
 import { FC } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import styles from "./styles/form-delete.module.css";
@@ -20,7 +20,9 @@ export const FormDelete: FC<FormDeleteProps> = (props) => {
       await Form.delete(id);
       Toast.success("양식이 삭제되었습니다.");
       mutate();
-    } catch (e) {}
+    } catch (e) {
+      handleError(e);
+    }
   };
 
   return (

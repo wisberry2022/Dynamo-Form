@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import styles from "./Dialog.module.css";
+import styles from "./styles/Dialog.module.css";
 import { MdOutlineClose } from "react-icons/md";
 
 type DialogHeaderProps = {

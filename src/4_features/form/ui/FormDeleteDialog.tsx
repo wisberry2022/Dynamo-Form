@@ -1,11 +1,12 @@
 import {
   Button,
+  DeleteDialog,
   Dialog,
   DialogBody,
   DialogFooter,
   DialogHeader,
 } from "@/6_shared";
-import { ChangeEventHandler, FC, MouseEventHandler } from "react";
+import { FC, MouseEventHandler } from "react";
 import styles from "./styles/form-delete.module.css";
 
 type FormDeleteDialogProps = {
@@ -17,34 +18,13 @@ type FormDeleteDialogProps = {
 const FormDeleteDialog: FC<FormDeleteDialogProps> = (props) => {
   const { open, onClose, onConfirm } = props;
 
-  const close: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation();
-    onClose?.();
-  };
-
-  const confirm: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation();
-    onConfirm?.();
-    onClose?.();
-  };
-
   return (
-    <Dialog size="small" open={open} onClose={onClose}>
-      <DialogHeader title="양식 삭제" />
-      <DialogBody>
-        <h3 className={styles.body}>정말로 삭제하시겠습니까?</h3>
-      </DialogBody>
-      <DialogFooter align="right">
-        <div style={{ display: "flex", gap: "1rem" }}>
-          <Button variant="brighten" onClick={close}>
-            취소
-          </Button>
-          <Button variant="pink" onClick={confirm}>
-            확인
-          </Button>
-        </div>
-      </DialogFooter>
-    </Dialog>
+    <DeleteDialog
+      title="양식 삭제"
+      open={open}
+      onClose={onClose}
+      onConfirm={onConfirm}
+    />
   );
 };
 

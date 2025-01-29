@@ -12,5 +12,6 @@ export const Paths = {
   survey: {
     list: "/api/v1/survey/list",
     save: "/api/v1/survey",
+    delete: (id: number) => `/api/v1/survey/${id}`
   },
 };

@@ -1,10 +1,21 @@
-import { endpoints, ListButton, SurveyListResponse } from "@/6_shared";
+import {
+  endpoints,
+  handleError,
+  ListButton,
+  PopupTrigger,
+  Survey,
+  SurveyListResponse,
+  Toast,
+} from "@/6_shared";
 import { FC } from "react";
 import { FaFileAlt, FaRegPlusSquare, FaRegTrashAlt } from "react-icons/fa";
 import { MdReportGmailerrorred } from "react-icons/md";
 import styles from "./styles/survey-list.module.css";
 import { SurveyStatusChip } from "@/5_entities/survey";
 import { useRouter } from "next/router";
+import { SurveyDeleteDialog } from "@/4_features/survey";
+import useSWR from "swr";
+import { Paths } from "@/6_shared/api/core/Paths";
 
 type SurveyListProps = {
   surveys: SurveyListResponse[];
@@ -12,11 +23,23 @@ type SurveyListProps = {
 
 export const SurveyList: FC<SurveyListProps> = (props) => {
   const { surveys } = props;
+  const { mutate } = useSWR(Paths.survey.list);
 
   const router = useRouter();
 
   const goCreate = () => {
     router.push(endpoints.survey.create);
+  };
+
+  // 설문조사 삭제 함수
+  const onConfirm = async (surveyId: number) => {
+    try {
+      await Survey.delete(surveyId);
+      Toast.success("설문조사가 삭제되었습니다.");
+      mutate();
+    } catch (e) {
+      handleError(e);
+    }
   };
 
   return (
@@ -56,7 +79,16 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
             right={
               <ListButton.Right
                 left={<MdReportGmailerrorred className={styles.tIcon} />}
-                right={<FaRegTrashAlt className={styles.tIcon} />}
+                right={
+                  <PopupTrigger
+                    trigger={<FaRegTrashAlt className={styles.tIcon} />}
+                    popup={
+                      <SurveyDeleteDialog
+                        onConfirm={() => onConfirm(survey.id)}
+                      />
+                    }
+                  />
+                }
               />
             }
           />
