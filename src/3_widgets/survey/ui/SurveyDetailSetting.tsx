@@ -71,6 +71,12 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
                 {formatDate(state.completedDttm as string, "yyyy.MM.dd HH:mm")}
               </span>
             )}
+            {state.status === "SUSPENDED" && (
+              <span>
+                중단일:{" "}
+                {formatDate(state.suspendedDttm as string, "yyyy.MM.dd HH:mm")}
+              </span>
+            )}
           </div>
         </div>
         <p className={dstyles.descPhrase}>
@@ -91,6 +97,13 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
               {state.status === "COMPLETE" && (
                 <p className={dstyles.warnPhrase}>
                   본 설문조사는 마감되었습니다.
+                </p>
+              )}
+              {state.status === "SUSPENDED" && (
+                <p className={dstyles.warnPhrase}>
+                  본 설문 조사는 일시적으로 중단되었습니다. <br />
+                  중단된 설문 조사는 제한적인 수정만 허용합니다. (수정 허용
+                  설정: 설문 조사 마감일, 설문 참여 인원수 제한)
                 </p>
               )}
             </div>
@@ -160,7 +173,7 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
               <strong>설문 조사 마감일</strong>
               <span>설정한 날짜에 설문 조사가 마감됩니다.</span>
             </div>
-            {state.status === "WAITING" ? (
+            {["WAITING", "SUSPENDED"].includes(state.status) ? (
               <div className={styles.subContent}>
                 <Switch
                   checked={!!state.endDate}
@@ -191,7 +204,7 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
                 ex&#41;5명 제한 설명 시 -&gt; 5명에게만 설문조사 공유 가능능
               </p>
             </div>
-            {state.status === "WAITING" ? (
+            {["WAITING", "SUSPENDED"].includes(state.status) ? (
               <div className={styles.subContent}>
                 <Switch
                   checked={used}

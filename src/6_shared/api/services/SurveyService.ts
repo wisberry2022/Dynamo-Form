@@ -18,6 +18,9 @@ export const Survey = {
   complete: async (id: number): Promise<void> => {
     return await RestService.patch(Paths.survey.complete(id));
   },
+  suspend: async (id: number): Promise<void> => {
+    return await RestService.patch(Paths.survey.suspend(id));
+  },
   delete: async (id: number): Promise<void> => {
     return await RestService.delete<void>(Paths.survey.delete(id));
   },

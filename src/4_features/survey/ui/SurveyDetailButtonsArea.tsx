@@ -16,6 +16,7 @@ import { toUpdateRequest } from "../libs/TypeMapper";
 import useSWR from "swr";
 import { Paths } from "@/6_shared/api/core/Paths";
 import { SurveyCompleteDialog } from "./SurveyCompleteDialog";
+import { SurveySuspendDialog } from "./SurveySuspendDialog";
 
 type SurveyDetailButtonsAreaProps = {
   survey: SurveyDetailResponse;
@@ -51,6 +52,17 @@ export const SurveyDetailButtonsArea: FC<SurveyDetailButtonsAreaProps> = (
     try {
       await Survey.update(toUpdateRequest(survey));
       Toast.success("수정되었습니다.");
+      mutate();
+    } catch (e) {
+      handleError(e);
+    }
+  };
+
+  // 중단하기
+  const onSuspend = async () => {
+    try {
+      await Survey.suspend(survey.id);
+      Toast.success("중단되었습니다.");
       mutate();
     } catch (e) {
       handleError(e);
@@ -95,7 +107,10 @@ export const SurveyDetailButtonsArea: FC<SurveyDetailButtonsAreaProps> = (
         <Button variant="brighten" onClick={onCancel}>
           취소하기
         </Button>
-        <Button variant="hazy">중단하기</Button>
+        <PopupTrigger
+          trigger={<Button variant="hazy">중단하기</Button>}
+          popup={<SurveySuspendDialog onConfirm={onSuspend} />}
+        />
         <PopupTrigger
           trigger={<Button variant="pink">마감하기</Button>}
           popup={<SurveyCompleteDialog onConfirm={onComplete} />}
@@ -114,6 +129,19 @@ export const SurveyDetailButtonsArea: FC<SurveyDetailButtonsAreaProps> = (
           trigger={<Button variant="pink">삭제하기</Button>}
           popup={<SurveyDeleteDialog onConfirm={onDelete} />}
         />
+      </>
+    );
+  }
+
+  if (status === "SUSPENDED") {
+    return (
+      <>
+        <Button variant="brighten" onClick={onCancel}>
+          취소하기
+        </Button>
+        <Button variant="primary" onClick={onUpdate}>
+          수정하기
+        </Button>
       </>
     );
   }

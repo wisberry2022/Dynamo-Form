@@ -15,6 +15,7 @@ export const Paths = {
     save: "/api/v1/survey",
     update: "/api/v1/survey",
     complete: (id: number) => `/api/v1/survey/${id}`,
+    suspend: (id: number) => `/api/v1/survey/${id}/suspend`,
     delete: (id: number) => `/api/v1/survey/${id}`,
   },
 };
