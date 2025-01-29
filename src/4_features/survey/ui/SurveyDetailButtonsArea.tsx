@@ -15,6 +15,7 @@ import { SurveyDeleteDialog } from "./SurveyDeleteDialog";
 import { toUpdateRequest } from "../libs/TypeMapper";
 import useSWR from "swr";
 import { Paths } from "@/6_shared/api/core/Paths";
+import { SurveyCompleteDialog } from "./SurveyCompleteDialog";
 
 type SurveyDetailButtonsAreaProps = {
   survey: SurveyDetailResponse;
@@ -56,6 +57,17 @@ export const SurveyDetailButtonsArea: FC<SurveyDetailButtonsAreaProps> = (
     }
   };
 
+  // 마감하기
+  const onComplete = async () => {
+    try {
+      await Survey.complete(survey.id);
+      Toast.success("마감되었습니다.");
+      mutate();
+    } catch (e) {
+      handleError(e);
+    }
+  };
+
   if (status === "WAITING") {
     return (
       <>
@@ -73,6 +85,35 @@ export const SurveyDetailButtonsArea: FC<SurveyDetailButtonsAreaProps> = (
         <Button variant="primary" onClick={onUpdate}>
           저장하기
         </Button>
+      </>
+    );
+  }
+
+  if (status === "PROGRESS") {
+    return (
+      <>
+        <Button variant="brighten" onClick={onCancel}>
+          취소하기
+        </Button>
+        <Button variant="hazy">중단하기</Button>
+        <PopupTrigger
+          trigger={<Button variant="pink">마감하기</Button>}
+          popup={<SurveyCompleteDialog onConfirm={onComplete} />}
+        />
+      </>
+    );
+  }
+
+  if (status === "COMPLETE") {
+    return (
+      <>
+        <Button variant="brighten" onClick={onCancel}>
+          취소하기
+        </Button>
+        <PopupTrigger
+          trigger={<Button variant="pink">삭제하기</Button>}
+          popup={<SurveyDeleteDialog onConfirm={onDelete} />}
+        />
       </>
     );
   }

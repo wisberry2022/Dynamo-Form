@@ -19,6 +19,7 @@ export type SurveyDetailResponse = SurveyRequest & {
   id: number;
   status: SurveyStatus;
   regDttm: string;
+  completedDttm: string | null;
 };
 
 export type SurveyUpdateRequest = SurveyRequest & {
