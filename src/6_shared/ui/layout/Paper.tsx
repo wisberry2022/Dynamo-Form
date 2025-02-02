@@ -3,10 +3,18 @@ import styles from "./paper.module.css";
 
 type PaperProps = {
   children: ReactNode;
+  height?: number;
 };
 
 export const Paper: FC<PaperProps> = (props) => {
-  const { children } = props;
+  const { children, height } = props;
 
-  return <div className={styles.paper}>{children}</div>;
+  return (
+    <div
+      style={{ height: height && `${height}% !important` }}
+      className={styles.paper}
+    >
+      {children}
+    </div>
+  );
 };

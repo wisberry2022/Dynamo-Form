@@ -31,3 +31,11 @@ export type SurveyUpdateRequest = SurveyRequest & {
 export type SurveyTokenResponse = {
   surveyToken: string;
 };
+
+export type SurveyValidResponse = {
+  status: SurveyStatus;
+  startDate: string;
+  endDate: string;
+  completedDate: string;
+  suspendedDate: string;
+};

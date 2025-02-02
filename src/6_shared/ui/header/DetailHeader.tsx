@@ -7,10 +7,11 @@ import { endpoints } from "@/6_shared/constants";
 type DetailHeaderProps = {
   title: string;
   backLink?: string;
+  disableUtilBar?: boolean;
 };
 
 export const DetailHeader: FC<DetailHeaderProps> = (props) => {
-  const { title, backLink = "" } = props;
+  const { title, backLink = "", disableUtilBar = false } = props;
   const router = useRouter();
 
   const goPage = () => {
@@ -27,10 +28,12 @@ export const DetailHeader: FC<DetailHeaderProps> = (props) => {
 
   return (
     <>
-      <div className={styles.utilBar}>
-        <FaArrowLeft onClick={goPage} />
-        <FaHome onClick={goHome} />
-      </div>
+      {!disableUtilBar && (
+        <div className={styles.utilBar}>
+          <FaArrowLeft onClick={goPage} />
+          <FaHome onClick={goHome} />
+        </div>
+      )}
       <div className={styles.detailHeader}>
         <h2>{title}</h2>
       </div>

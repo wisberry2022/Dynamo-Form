@@ -73,7 +73,7 @@ export const SurveyDetailSetting: FC<SurveyDetailSettingProps> = (props) => {
       const response = await Survey.createToken();
       setter(
         "surveyLink",
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/survey/join?=${response.data.surveyToken}`
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/survey/join?token=${response.data.surveyToken}`
       );
       Toast.success("링크가 자동 생성되었습니다.");
     } catch (e) {

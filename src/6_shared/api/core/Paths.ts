@@ -18,5 +18,8 @@ export const Paths = {
     complete: (id: number) => `/api/v1/survey/${id}`,
     suspend: (id: number) => `/api/v1/survey/${id}/suspend`,
     delete: (id: number) => `/api/v1/survey/${id}`,
+    join: {
+      valid: (token: string) => `/api/v1/survey/valid/${token}`
+    }
   },
 };

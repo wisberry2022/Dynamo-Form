@@ -8,5 +8,5 @@ type MainLayoutProps = {
 export const MainLayout: FC<MainLayoutProps> = (props) => {
   const { children } = props;
 
-  return <Container>hi</Container>;
+  return <Container>{children}</Container>;
 };
