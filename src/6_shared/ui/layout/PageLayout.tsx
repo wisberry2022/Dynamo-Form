@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
-import { Container } from "./Container";
 import { LeftLNB } from "../lnb";
 import { ContentArea } from "./ContentArea";
+import { Container } from "../container";
 
 type PageLayoutProps = {
   title: string;
