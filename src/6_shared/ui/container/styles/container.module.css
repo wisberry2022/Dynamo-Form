@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #fff;
+  height: 100vh;
+}
+
+.fContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  width: 100rem;
+  height: 100vh;
+}

@@ -1,0 +1,12 @@
+.title {
+  strong {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  span {
+    color: #f00;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+}

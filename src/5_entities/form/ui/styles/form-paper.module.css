@@ -1,14 +1,13 @@
 .formPaper {
   display: flex;
   flex-direction: column;
-  background-color: #cdf4ff;
+  border: 0.1rem solid #ddd;
 
   .titleBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.2rem;
-    border-bottom: 0.1rem solid #f9f9f9;
 
     .left {
       font-size: 1.3rem;
@@ -29,6 +28,5 @@
 
   .main {
     padding: 0 1.2rem;
-    background-color: rgba(205, 244, 255, 0.1);
   }
 }

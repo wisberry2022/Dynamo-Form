@@ -1,0 +1,24 @@
+.toolBar {
+  display: flex;
+  padding: 2rem 2.8rem;
+  width: 100%;
+  height: 7%;
+  background-color: #f9f9f9;
+
+  .utilBar {
+    display: flex;
+    gap: 0.5rem;
+    width: 8%;
+    align-items: center;
+  }
+
+  .utilBar > svg {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .utilBar > svg:first-child {
+    margin-right: 10%;
+  }
+}

@@ -1,7 +1,6 @@
 .surveySetting {
   display: flex;
   flex-direction: column;
-  border-radius: 4rem;
   border: 0.1rem solid #ddd;
   padding: 3rem 2rem;
   width: 70%;

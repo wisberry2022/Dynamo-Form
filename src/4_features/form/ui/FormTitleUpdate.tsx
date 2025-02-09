@@ -10,11 +10,12 @@ type FormTitleUpdateProps = {
   id: number;
   open: boolean;
   title: string;
+  desc?: string;
   init?: () => void;
 };
 
 export const FormTitleUpdate: FC<FormTitleUpdateProps> = (props) => {
-  const { id, open, title, init = () => {} } = props;
+  const { id, open, title, desc = "", init = () => {} } = props;
   const [value, setValue] = useState<string>(title);
 
   const { mutate } = useSWR(Paths.form.getAll);
@@ -50,6 +51,9 @@ export const FormTitleUpdate: FC<FormTitleUpdateProps> = (props) => {
       <FaPen onClick={(e) => onClick(e, id)} />
     </>
   ) : (
-    <strong className={styles.tTitle}>{title}</strong>
+    <div className={styles.titleBox}>
+      <strong className={styles.tTitle}>{title}</strong>
+      {desc && <span>{desc}</span>}
+    </div>
   );
 };

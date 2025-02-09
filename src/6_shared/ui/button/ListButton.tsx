@@ -19,17 +19,8 @@ type ListButtonType = ListButtonCompound &
 export const ListButton: ListButtonType = (props) => {
   const { bgColor = "secondary", left, center, right, onClick } = props;
 
-  const colors = {
-    primary: "#D8F9FA",
-    secondary: "#f9f9f9",
-  };
-
   return (
-    <div
-      style={{ backgroundColor: colors[bgColor] }}
-      className={styles.listBtn}
-      onClick={onClick}
-    >
+    <div className={styles.listBtn} onClick={onClick}>
       <div className={styles.leftBox}>{left}</div>
       <div className={styles.centerBox}>{center}</div>
       <div className={styles.rightBox}>{right}</div>

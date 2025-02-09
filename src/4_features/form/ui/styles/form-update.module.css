@@ -1,5 +1,17 @@
-.tTitle {
-  font-size: 1.6rem;
+.titleBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: flex-start;
+
+  .tTitle {
+    font-size: 1.6rem;
+  }
+
+  span {
+    font-size: 1.4rem;
+  }
 }
 
 .updateField {

@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import styles from "./paper.module.css";
+import styles from "./styles/paper.module.css";
 
 type PaperProps = {
   children: ReactNode;

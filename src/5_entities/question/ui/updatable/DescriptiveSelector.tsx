@@ -29,7 +29,7 @@ export const DescriptiveSelector: FC<DescriptiveSelectorProps> = (props) => {
     STEP1에서 설정한 유형을 기반으로 <br />
     더욱 세부적인 질문을 구성할 수 있습니다.
   `}
-      size={2.17}
+      size={2.1}
     >
       <div className={styles.content}>
         <LabelTextiField

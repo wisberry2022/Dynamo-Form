@@ -8,7 +8,7 @@ import {
   Toast,
 } from "@/6_shared";
 import { FC } from "react";
-import { FaFileAlt, FaRegPlusSquare, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { MdReportGmailerrorred } from "react-icons/md";
 import styles from "./styles/survey-list.module.css";
 import { SurveyStatusChip } from "@/5_entities/survey";
@@ -26,11 +26,6 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
   const { mutate } = useSWR(Paths.survey.list);
 
   const router = useRouter();
-
-  // 설문조사 생성 페이지 이동
-  const goCreate = () => {
-    router.push(endpoints.survey.create);
-  };
 
   // 설문조사 수정 페이지 이동
   const goDetail = (id: number) => {
@@ -50,18 +45,6 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
 
   return (
     <>
-      <ListButton
-        bgColor="primary"
-        onClick={goCreate}
-        center={
-          <ListButton.Center
-            left={<FaRegPlusSquare className={styles.tIcon} />}
-            right={
-              <strong className={styles.tTitle}>새로운 설문조사 만들기</strong>
-            }
-          />
-        }
-      />
       {surveys.map((survey) => {
         return (
           <ListButton
@@ -75,8 +58,8 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
                   </div>
                 }
                 right={
+                  // ToDo: 설문조사 리스트, 설명값 필드 추가
                   <div className={styles.svTitle}>
-                    <FaFileAlt />
                     <strong>{survey.title}</strong>
                   </div>
                 }

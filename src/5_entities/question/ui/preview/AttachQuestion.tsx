@@ -23,7 +23,7 @@ export const AttachQuestion: FC<AttachQuestionProps> = (props) => {
   return (
     <div className={styles.qContainer}>
       <div className={styles.titleBox}>
-        <h4>{question.question}</h4>
+        <h4>파일을 첨부해주세요</h4>
         <strong>
           업로드 가능한 파일 확장자:{" "}
           {getUploadableExtensions(question.extensions)}

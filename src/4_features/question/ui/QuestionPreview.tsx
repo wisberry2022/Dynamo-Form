@@ -1,14 +1,10 @@
 import { FormPaper } from "@/5_entities/form";
-import {
-  DataHandlerType,
-  FormResponse,
-  Question as QuestionResponse,
-  useDataHandler,
-} from "@/6_shared";
+import { Question as QuestionResponse } from "@/6_shared";
 import { FC } from "react";
 import { FaPen, FaRegTrashAlt, FaTrash } from "react-icons/fa";
 import styles from "./styles/question.module.css";
 import QuestionMapper from "./QuestionMapper";
+import { QuestionTitle } from "@/5_entities/question";
 
 type QuestionPreviewProps = {
   question: QuestionResponse;
@@ -22,7 +18,7 @@ export const QuestionPreview: FC<QuestionPreviewProps> = (props) => {
   return (
     <FormPaper>
       <FormPaper.TitleBar
-        left={<div>{question.title}</div>}
+        left={<QuestionTitle question={question} />}
         right={
           <div className={styles.mod}>
             <FaPen onClick={onModify} />

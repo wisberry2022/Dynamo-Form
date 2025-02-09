@@ -12,6 +12,6 @@ const Page: PageWithLayout = () => {
   );
 };
 
-Page.getLayout = (page) => <PageLayout title="양식 관리">{page}</PageLayout>;
+Page.getLayout = (page) => <PageLayout title="양식 수정">{page}</PageLayout>;
 
 export default Page;

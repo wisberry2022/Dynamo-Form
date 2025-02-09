@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+}

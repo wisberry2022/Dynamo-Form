@@ -17,15 +17,7 @@ export const MultiSelectQuestion: FC<MultiSelectQuestionProps> = (props) => {
 
   return (
     <div className={styles.qContainer}>
-      <div className={styles.title}>
-        <h4>{question.question}</h4>
-        {question.multiple && (
-          <strong>({question.responseLimit}개 선택 가능)</strong>
-        )}
-      </div>
-      <div className={styles.list}>
-        <QuestionContent question={question} />
-      </div>
+      <QuestionContent question={question} />
     </div>
   );
 };
@@ -38,17 +30,19 @@ const QuestionContent: FC<QuestionContentProps> = (props) => {
   const { question } = props;
 
   if (question.multiple) {
-    return question.questions.map((quest, idx) => (
+    return (
       <div className={styles.quest}>
-        <Checkbox
-          key={idx}
-          value={idx}
-          checked={false}
-          onChecked={() => {}}
-          label={quest}
-        />
+        {question.questions.map((quest, idx) => (
+          <Checkbox
+            key={idx}
+            value={idx}
+            checked={false}
+            onChecked={() => {}}
+            label={quest}
+          />
+        ))}
       </div>
-    ));
+    );
   }
 
   return (

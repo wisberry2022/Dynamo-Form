@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Container } from "./Container";
+import { Container } from "../container";
 
 type MainLayoutProps = {
   children: ReactNode;

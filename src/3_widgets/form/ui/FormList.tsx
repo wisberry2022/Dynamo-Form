@@ -1,6 +1,6 @@
 import { FC, MouseEvent, useState } from "react";
 import styles from "./styles/form-list.module.css";
-import { endpoints, FormListResponse, ListButton } from "@/6_shared";
+import { Chip, endpoints, FormListResponse, ListButton } from "@/6_shared";
 import { FaFileAlt, FaPen, FaRegPlusSquare } from "react-icons/fa";
 import { FormDelete, FormTitleUpdate } from "@/4_features/form";
 import { useRouter } from "next/router";
@@ -35,24 +35,8 @@ export const FormList: FC<FormListProps> = (props) => {
     router.push(endpoints.form.detail(id));
   };
 
-  const goCreate = () => {
-    router.push(endpoints.form.create);
-  };
-
   return (
     <>
-      <ListButton
-        bgColor="primary"
-        onClick={goCreate}
-        center={
-          <ListButton.Center
-            left={<FaRegPlusSquare className={styles.tIcon} />}
-            right={
-              <strong className={styles.tTitle}>새로운 양식 만들기</strong>
-            }
-          />
-        }
-      />
       {formList.map((form) => {
         return (
           <ListButton
@@ -60,7 +44,9 @@ export const FormList: FC<FormListProps> = (props) => {
             onClick={() => goPage(form.id)}
             left={
               <ListButton.Left
-                left={<FaFileAlt className={styles.tIcon} />}
+                // ToDo: 양식 상태 API 연동 필요
+                // ToDo: 양식 리스트, 설명값 필드 추가
+                left={<Chip text="사용" variant="primary" />}
                 right={
                   <FormTitleUpdate
                     id={form.id}

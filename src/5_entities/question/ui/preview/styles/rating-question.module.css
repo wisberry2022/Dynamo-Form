@@ -5,12 +5,6 @@
   align-items: center;
   gap: 2rem;
 
-  h4 {
-    width: 80%;
-    text-align: left;
-    font-size: 1.8rem;
-  }
-
   .starts {
     display: flex;
     justify-content: center;

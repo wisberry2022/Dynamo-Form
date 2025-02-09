@@ -14,8 +14,8 @@ export const DropdownQuestion: FC<DropdownQuestionProps> = (props) => {
 
   return (
     <div className={styles.qContainer}>
-      <h3>{question.question}</h3>
-      <Select value={question.questions[0]}>
+      {/* <h3>{question.question}</h3> */}
+      <Select value={question.questions[0]} width={35}>
         {question.questions.map((quest, idx) => (
           <Select.Item key={idx} label={quest} value={quest} />
         ))}
