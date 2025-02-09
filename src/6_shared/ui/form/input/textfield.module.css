@@ -1,8 +1,6 @@
 .textField {
-  border: none;
-  border-bottom: 0.1rem solid #a9a9a9;
+  border: 0.1rem solid #c9c9c9;
   padding: 0.8rem 1.5rem;
-  background-color: #cdf4ff;
   font-size: 1.3rem;
 }
 

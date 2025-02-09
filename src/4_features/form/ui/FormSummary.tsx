@@ -1,8 +1,7 @@
 import { FC } from "react";
 import styles from "./styles/form-summary.module.css";
 import { FaSearch } from "react-icons/fa";
-import { endpoints, formatDate, SimpleFormDetailResponse, useFormSummarySWR } from "@/6_shared";
-import { useRouter } from "next/router";
+import { endpoints, formatDate, SimpleFormDetailResponse } from "@/6_shared";
 
 type FormSummaryProps = {
   form: SimpleFormDetailResponse;
