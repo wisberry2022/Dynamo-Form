@@ -10,8 +10,8 @@
 }
 
 .primary {
-  color: #f9f9f9;
-  background-color: #bcb3ff;
+  color: #333;
+  background-color: #a3ffc1;
 }
 
 .secondary {
@@ -20,8 +20,8 @@
 }
 
 .brighten {
-  color: #333;
-  background-color: #a3ffc1;
+  color: #f9f9f9;
+  background-color: #bcb3ff;
 }
 
 .pink {
