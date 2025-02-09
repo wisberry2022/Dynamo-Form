@@ -1,1 +1,0 @@
-export { UpdatableFormInfo } from "./UpdatableFormInfo";
