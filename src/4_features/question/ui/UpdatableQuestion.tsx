@@ -1,5 +1,6 @@
 import { FormPaper } from "@/5_entities/form";
 import {
+  LabelTextiField,
   Question as QuestionResponse,
   Switch,
   TextField,
@@ -38,26 +39,17 @@ export const UpdatableQuestion: FC<UpdatableQuestionProps> = (props) => {
     <FormPaper>
       <FormPaper.TitleBar
         left={
-          <div className={styles.titleField}>
-            <strong>{question.viewOrder}. </strong>
-            <TextField
-              name="title"
-              placeholder="질문 제목을 입력하세요"
-              value={handler.state.title}
-              onChange={handler.onTextField}
+          <div className={styles.required}>
+            <strong>필수 응답 여부</strong>
+            <Switch
+              onChange={handler.onSwitch}
+              name="required"
+              checked={question.required}
             />
           </div>
         }
         right={
           <div className={styles.mod}>
-            <div className={styles.required}>
-              <strong>필수 응답 여부</strong>
-              <Switch
-                onChange={handler.onSwitch}
-                name="required"
-                checked={question.required}
-              />
-            </div>
             <MdOutlineClose onClick={onCancel} />
           </div>
         }

@@ -12,7 +12,7 @@ type CardWrapperProps = {
 export const CardWrapper: FC<CardWrapperProps> = (props) => {
   const { title, description, children, size = 1 } = props;
 
-  const basicWidth = 32.5;
+  const basicWidth = 39.4;
 
   return (
     <div
