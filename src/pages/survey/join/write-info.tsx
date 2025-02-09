@@ -1,12 +1,10 @@
-import { PageLayout, PageWithLayout } from "@/6_shared";
+import { WriteInfo } from "@/2_pages/join";
+import { ColumnContainer, PageWithLayout } from "@/6_shared";
 
-//
 const Page: PageWithLayout = () => {
-  return <div>응답자 정보 입력 화면</div>;
+  return <WriteInfo />;
 };
 
-Page.getLayout = (page) => (
-  <PageLayout title="설문조사 참여하기">{page}</PageLayout>
-);
+Page.getLayout = (page) => <ColumnContainer>{page}</ColumnContainer>;
 
 export default Page;

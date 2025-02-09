@@ -34,6 +34,7 @@ export type SurveyTokenResponse = {
 
 export type SurveyValidResponse = {
   status: SurveyStatus;
+  title: string;
   startDate: string;
   endDate: string;
   completedDate: string;

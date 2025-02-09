@@ -1,3 +1,5 @@
+import { SurveyValidResponse } from "../types";
+
 export const endpoints = {
   index: "/",
   form: {
@@ -10,8 +12,11 @@ export const endpoints = {
     create: "/survey/create",
     id: (id: number) => `/survey/${id}`,
     join: {
-      writeInfo: (token: string) => `/survey/join/write-info?token=${token}`,
-      submit: (token: string) => `/survey/join/submit?token=${token}`
-    }
+      writeInfo: (token: string, survey: SurveyValidResponse) => {
+        const { title, startDate, endDate } = survey;
+        return `/survey/join/write-info?token=${token}&title=${title}&startDate=${startDate}&endDate=${endDate}`;
+      },
+      submit: (token: string) => `/survey/join/submit?token=${token}`,
+    },
   },
 };
