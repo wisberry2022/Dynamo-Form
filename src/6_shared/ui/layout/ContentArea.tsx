@@ -5,15 +5,19 @@ import { Paper } from "./Paper";
 
 type ContentAreaProps = {
   children: ReactNode;
+  title?: string;
   disableTopToolBar?: boolean;
 };
 
 export const ContentArea: FC<ContentAreaProps> = (props) => {
-  const { children, disableTopToolBar = false } = props;
+  const { children, title = "", disableTopToolBar = false } = props;
   return (
     <div className={styles.content}>
       <TopToolBar disableNavigation={disableTopToolBar} />
-      <Paper>{children}</Paper>
+      <Paper>
+        {title && <h2>{title}</h2>}
+        {children}
+      </Paper>
     </div>
   );
 };

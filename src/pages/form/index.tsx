@@ -5,6 +5,6 @@ const Page: PageWithLayout = () => {
   return <FormListMain />;
 };
 
-Page.getLayout = (page) => <PageLayout title="양식 관리">{page}</PageLayout>;
+Page.getLayout = (page) => <PageLayout title="">{page}</PageLayout>;
 
 export default Page;

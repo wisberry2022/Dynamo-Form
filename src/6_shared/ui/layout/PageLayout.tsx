@@ -15,7 +15,7 @@ export const PageLayout: FC<PageLayoutProps> = (props) => {
   return (
     <Container>
       <LeftLNB />
-      <ContentArea disableTopToolBar={disableTopToolBar}>
+      <ContentArea title={title} disableTopToolBar={disableTopToolBar}>
         {children}
       </ContentArea>
     </Container>

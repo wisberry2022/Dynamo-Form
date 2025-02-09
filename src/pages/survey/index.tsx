@@ -5,8 +5,6 @@ const Page: PageWithLayout = () => {
   return <SurveyListMain />;
 };
 
-Page.getLayout = (page) => (
-  <PageLayout title="설문조사 목록">{page}</PageLayout>
-);
+Page.getLayout = (page) => <PageLayout title="">{page}</PageLayout>;
 
 export default Page;
