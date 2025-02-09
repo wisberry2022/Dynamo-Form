@@ -11,9 +11,6 @@ export const SliderQuestion: FC<SliderQuestionProps> = (props) => {
 
   return (
     <div className={styles.qContainer}>
-      <div className={styles.titleBox}>
-        <h4>{question.question}</h4>
-      </div>
       <Slider
         defaultScore={(question.min + question.max) / 2}
         min={question.min}

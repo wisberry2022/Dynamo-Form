@@ -11,10 +11,6 @@ export const TextualQuestion: FC<TextualQuestionProps> = (props) => {
 
   return (
     <div className={styles.qContainer}>
-      <div className={styles.titleBox}>
-        <h4>{question.question}</h4>
-        <span>({question.answerLimit}자 이내로 서술)</span>
-      </div>
       <div className={styles.answerArea}>
         <strong>답변 영역입니다.</strong>
       </div>

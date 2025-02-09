@@ -14,7 +14,16 @@ type LabelTextFieldProps = {
 };
 
 export const LabelTextiField: FC<LabelTextFieldProps> = (props) => {
-  const { label, name, value, className, placeholder, width, subLabel, onChange } = props;
+  const {
+    label,
+    name,
+    value,
+    className,
+    placeholder,
+    width,
+    subLabel,
+    onChange,
+  } = props;
 
   return (
     <div

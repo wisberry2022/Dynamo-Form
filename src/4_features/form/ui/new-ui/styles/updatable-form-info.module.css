@@ -1,0 +1,42 @@
+.formInfo {
+  display: flex;
+  border: 0.1rem solid #ddd;
+  width: 100%;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 1rem;
+    background-color: #f9f9f9;
+    width: 20%;
+
+    strong {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    width: 70%;
+    padding: 0 2rem;
+
+    strong {
+      font-weight: 400;
+    }
+
+    input {
+      width: 115% !important;
+    }
+  }
+}

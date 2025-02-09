@@ -1,48 +1,24 @@
 .qContainer {
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
 
-  .title {
+  .quest {
     display: flex;
-    align-items: flex-end;
-    gap: 0.5rem;
-    width: 80%;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: flex-start;
-
-    h4 {
-      font-size: 1.8rem;
-    }
-
-    strong {
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: #f00;
-    }
+    gap: 2rem;
+    max-height: 20rem;
   }
 
-  .list {
+  .radioGrp {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
-    width: 70%;
-    max-width: 100%;
-
-    .quest {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      width: 8%;
-    }
-
-    .radioGrp {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3rem;
-    }
+    justify-content: flex-start;
+    gap: 2rem;
+    max-height: 20rem;
   }
 }
