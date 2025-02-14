@@ -1,12 +1,10 @@
-import { PageLayout, PageWithLayout } from "@/6_shared";
+import { ColumnContainer, PageWithLayout } from "@/6_shared";
 
 // 설문조사 응답 화면
 const Page: PageWithLayout = () => {
-  return <div>hi</div>;
+  return <div>설문조사 응답화면</div>;
 };
 
-Page.getLayout = (page) => (
-  <PageLayout title="설문조사 참여하기">{page}</PageLayout>
-);
+Page.getLayout = (page) => <ColumnContainer>{page}</ColumnContainer>;
 
 export default Page;

@@ -19,7 +19,14 @@ export const Paths = {
     suspend: (id: number) => `/api/v1/survey/${id}/suspend`,
     delete: (id: number) => `/api/v1/survey/${id}`,
     join: {
-      valid: (token: string) => `/api/v1/survey/valid/${token}`
-    }
+      valid: (token: string) => `/api/v1/survey/valid/${token}`,
+    },
+  },
+  respondent: {
+    valid: (surveyId: number) => `/api/v1/respondent/${surveyId}/valid`,
+  },
+  reply: {
+    getForm: (surveyId: number) => `/api/v1/reply/${surveyId}`,
+    submit: (surveyId: number) => `/api/v1/reply/${surveyId}`,
   },
 };

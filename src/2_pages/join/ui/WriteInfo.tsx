@@ -1,10 +1,50 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styles from "./styles/write-info.module.css";
-import { useGetSurtveyInfo } from "../libs/hooks";
-import { Button, LabelTextiField } from "@/6_shared";
+import { useGetSurveyInfo } from "../libs/hooks";
+import {
+  Button,
+  endpoints,
+  handleError,
+  LabelRadio,
+  LabelTextiField,
+  Respondent,
+  Toast,
+  useGetFormBySurveySWR,
+} from "@/6_shared";
+import { useReplyHandler } from "@/5_entities/reply/libs/useReplyHandler";
+import { useSetRecoilState } from "recoil";
+import { FormViewState } from "@/5_entities/reply";
+import { convert2RespondentValid } from "../libs/TypeMapper";
+import { useRouter } from "next/router";
 
 export const WriteInfo: FC = () => {
-  const { title, startDate, endDate } = useGetSurtveyInfo();
+  const { id, title, token, startDate, endDate } = useGetSurveyInfo();
+  const { form } = useGetFormBySurveySWR(id);
+  const { state, respondent } = useReplyHandler(form);
+
+  const radioSet = [
+    { id: 1, value: "MALE", label: "남성" },
+    { id: 2, value: "FEMALE", label: "여성" },
+  ];
+
+  // 설문자 정보
+  const { value, onChangeTextField, onRadio } = respondent;
+  const router = useRouter();
+
+  const onValid = async () => {
+    try {
+      const resp = await Respondent.valid(
+        form?.surveyId as number,
+        convert2RespondentValid(value)
+      );
+      if (resp.response === "0000") {
+        Toast.success("설문 조사를 진행할 수 있습니다.");
+        router.replace(endpoints.survey.join.submit(token));
+      }
+    } catch (e) {
+      handleError(e);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -18,17 +58,45 @@ export const WriteInfo: FC = () => {
         <h4>설문자 정보 입력하기</h4>
         <ul>
           <li>
-            <LabelTextiField label="이름" placeholder="이름을 입력하세요" />
+            <LabelTextiField
+              label="이름"
+              placeholder="이름을 입력하세요"
+              name="name"
+              value={value.name}
+              onChange={onChangeTextField}
+            />
           </li>
           <li>
-            <LabelTextiField label="이메일" placeholder="이메일을 입력하세요" />
+            <LabelTextiField
+              label="이메일"
+              placeholder="이메일을 입력하세요"
+              name="email"
+              value={value.email}
+              onChange={onChangeTextField}
+            />
           </li>
           <li>
-            <LabelTextiField label="연락처" placeholder="연락처를 입력하세요" />
+            <LabelTextiField
+              label="연락처"
+              placeholder="연락처를 입력하세요"
+              name="phoneNumber"
+              onChange={onChangeTextField}
+              value={value.phoneNumber}
+            />
           </li>
-          <li></li>
+          <li>
+            <LabelRadio
+              label="성별"
+              radioSet={radioSet}
+              row
+              value={value.gender}
+              onChange={onRadio}
+            />
+          </li>
         </ul>
-        <Button className={styles.btn}>참여하기</Button>
+        <Button className={styles.btn} onClick={onValid}>
+          참여하기
+        </Button>
       </div>
     </div>
   );

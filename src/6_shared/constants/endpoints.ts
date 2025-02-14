@@ -13,8 +13,8 @@ export const endpoints = {
     id: (id: number) => `/survey/${id}`,
     join: {
       writeInfo: (token: string, survey: SurveyValidResponse) => {
-        const { title, startDate, endDate } = survey;
-        return `/survey/join/write-info?token=${token}&title=${title}&startDate=${startDate}&endDate=${endDate}`;
+        const { id, title, startDate, endDate } = survey;
+        return `/survey/join/write-info?token=${token}&id=${id}&title=${title}&startDate=${startDate}&endDate=${endDate}`;
       },
       submit: (token: string) => `/survey/join/submit?token=${token}`,
     },

@@ -1,3 +1,6 @@
+import { ReplyFormRequest } from "./Reply";
+import { RespondentResponse } from "./Respondent";
+
 export type SurveyStatus = "WAITING" | "PROGRESS" | "COMPLETE" | "SUSPENDED";
 
 export type SurveyListResponse = {
@@ -33,10 +36,23 @@ export type SurveyTokenResponse = {
 };
 
 export type SurveyValidResponse = {
+  id: number;
   status: SurveyStatus;
   title: string;
   startDate: string;
   endDate: string;
   completedDate: string;
   suspendedDate: string;
+};
+
+export type SurveyValidRequest = {
+  surveyId: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+};
+
+export type SurveyResponseRequest = {
+  respondent: RespondentResponse;
+  replyForm: ReplyFormRequest;
 };
