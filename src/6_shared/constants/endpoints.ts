@@ -11,13 +11,15 @@ export const endpoints = {
     index: "/survey",
     create: "/survey/create",
     id: (id: number) => `/survey/${id}`,
-    join: {
-      writeInfo: (token: string, survey: SurveyValidResponse) => {
-        const { id, title, startDate, endDate } = survey;
-        return `/survey/join/write-info?token=${token}&id=${id}&title=${title}&startDate=${startDate}&endDate=${endDate}`;
-      },
-      submit: (token: string) => `/survey/join/submit?token=${token}`,
-      thanks: `/survey/join/thanks`,
+  },
+  reply: {
+    writeInfo: (token: string, survey: SurveyValidResponse) => {
+      const { id, title, startDate, endDate } = survey;
+      return `/reply/write-info?token=${token}&id=${id}&title=${title}${
+        startDate ? `&startDate=${startDate} ` : ""
+      }${endDate ? `&endDate=${endDate}` : ""}`;
     },
+    submit: (token: string) => `/reply/submit?token=${token}`,
+    thanks: `/reply/thanks`,
   },
 };

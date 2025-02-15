@@ -16,7 +16,7 @@ export const Submit: FC = () => {
   const onSave = async () => {
     try {
       await Reply.submit(form.survey.id, state);
-      router.replace(endpoints.survey.join.thanks);
+      router.replace(endpoints.reply.thanks);
     } catch (e) {
       handleError(e);
     }

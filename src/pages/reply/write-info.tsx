@@ -1,9 +1,8 @@
-import { Submit } from "@/2_pages/join";
+import { WriteInfo } from "@/2_pages/reply";
 import { ColumnContainer, PageWithLayout } from "@/6_shared";
 
-// 설문조사 응답 화면
 const Page: PageWithLayout = () => {
-  return <Submit />;
+  return <WriteInfo />;
 };
 
 Page.getLayout = (page) => <ColumnContainer>{page}</ColumnContainer>;

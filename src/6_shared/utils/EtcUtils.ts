@@ -23,3 +23,24 @@ export const isMatchField = <T extends ObjType<any>>(
 export const isEmptyObject = <T extends object>(object: T): boolean => {
   return !Object.keys(object).length;
 };
+
+/**
+ * 값 공백 여부 검사 함수
+ * @param value 검사 대상 값
+ * @returns boolean - 값 공백 여부
+ */
+export const isEmpty = <T = string | number | Date>(value: T): boolean => {
+  // 값이 undefined인 경우
+  if (!value) {
+    return true;
+  }
+
+  // 값이 null인 경우
+  if (value === null) {
+    return true;
+  }
+
+  console.log("value", value);
+
+  return false;
+};

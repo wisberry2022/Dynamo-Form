@@ -5,6 +5,7 @@ import {
   Button,
   endpoints,
   handleError,
+  isEmpty,
   LabelRadio,
   LabelTextiField,
   Respondent,
@@ -25,6 +26,27 @@ export const WriteInfo: FC = () => {
     { id: 2, value: "FEMALE", label: "여성" },
   ];
 
+  // 조사 기간 반환 함수
+  const getSurveyPeriod = (startDate: string, endDate: string) => {
+    let msg = "설문 기간: ";
+
+    // 시작일이 있을 경우
+    if (startDate) {
+      msg = msg.concat(` ${startDate}`);
+    }
+
+    // 종료일이 있을 경우
+    if (endDate) {
+      msg = msg.concat(` ~ ${endDate}`);
+    }
+
+    if (isEmpty(startDate) && isEmpty(endDate)) {
+      msg = msg.concat(" 관리자가 마감할 때까지");
+    }
+
+    return msg;
+  };
+
   // 설문자 정보
   const { value, onChangeTextField, onRadio } = respondent;
   const router = useRouter();
@@ -37,7 +59,7 @@ export const WriteInfo: FC = () => {
       );
       if (resp.response === "0000") {
         Toast.success("설문 조사를 진행할 수 있습니다.");
-        router.replace(endpoints.survey.join.submit(token));
+        router.replace(endpoints.reply.submit(token));
       }
     } catch (e) {
       handleError(e);
@@ -49,7 +71,8 @@ export const WriteInfo: FC = () => {
       <div className={styles.surveyInfo}>
         <h2>{title}</h2>
         <span>
-          설문 기간: {startDate} ~ {endDate}
+          {/* 설문 기간: {startDate} ~ {endDate} */}
+          {getSurveyPeriod(startDate, endDate)}
         </span>
       </div>
       <div className={styles.userInfo}>

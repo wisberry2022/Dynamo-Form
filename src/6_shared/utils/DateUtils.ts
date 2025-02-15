@@ -1,3 +1,5 @@
+import { isEmpty } from "./EtcUtils";
+
 const _toFormatString = (date: Date, format: string): string => {
   // 포맷 구성요소 매핑
   const formatMap: any = {
@@ -27,7 +29,7 @@ export const formatDate = (
   dateString: string,
   format: string = "yyyy-MM-dd"
 ): string => {
-  if (!dateString) {
+  if (isEmpty(dateString)) {
     return "";
   }
   // 입력 문자열을 Date 객체로 변환
@@ -43,7 +45,7 @@ export const formatDate = (
  * @returns 포맷스트링으로 변환된 문자열
  */
 export const parseDate = (date: Date, format = "yyyy-MM-dd"): string => {
-  if (!date) {
+  if (isEmpty(date)) {
     return "";
   }
 

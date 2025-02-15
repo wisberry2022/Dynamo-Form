@@ -3,11 +3,10 @@ import {
   NoSurveyPage,
   SuspendPage,
   WaitingPage,
-} from "@/2_pages/join";
+} from "@/2_pages/reply";
 import {
   endpoints,
   FullLayout,
-  PageLayout,
   PageWithLayout,
   useGetQuery,
   useSurveyJoinValidSWR,
@@ -26,7 +25,7 @@ const Page: PageWithLayout = () => {
     if (survey) {
       // 설문 조사 상태가 진행인 경우 응답자 정보 입력 페이지로 이동
       if (survey.status === "PROGRESS") {
-        router.replace(endpoints.survey.join.writeInfo(token, survey));
+        router.replace(endpoints.reply.writeInfo(token, survey));
       }
     }
   }, [survey]);

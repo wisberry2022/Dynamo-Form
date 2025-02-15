@@ -1,4 +1,4 @@
-import { Submit, Thanks } from "@/2_pages/join";
+import { Submit, Thanks } from "@/2_pages/reply";
 import { ColumnContainer, PageWithLayout } from "@/6_shared";
 
 // 설문조사 완료료 화면
