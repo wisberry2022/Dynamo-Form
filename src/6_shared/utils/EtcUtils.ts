@@ -42,3 +42,46 @@ export const isEmpty = <T = string | number | Date>(value: T): boolean => {
 
   return false;
 };
+
+/**
+ * 파일 용량 단위 변환 함수
+ * @param value 파일 용량 값
+ * @param unit 파일 용량 단위
+ * @returns number - 변환된 파일 용량 값(kb 단위)
+ */
+export const convertFileSize2KB = (
+  value: number,
+  unit: "Byte" | "KB" | "MB" | "GB"
+): number => {
+  switch (unit) {
+    case "Byte":
+      return value / 1024;
+    case "KB":
+      return value;
+    case "MB":
+      return value * 1024;
+    case "GB":
+      return value * 1024 * 1024;
+    default:
+      return value;
+  }
+};
+
+/**
+ * 파일 확장자 검사 함수
+ * @params fileName 파일명
+ * @return string 파일 확장자
+ */
+export const extractFileExtension = (fileName: string): string => {
+  if (isEmpty(fileName)) {
+    return "";
+  }
+
+  const splited = fileName.split(".");
+
+  if (isEmpty(splited)) {
+    return "";
+  }
+
+  return splited.at(-1) as string;
+};

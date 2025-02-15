@@ -18,8 +18,9 @@ export const handleError = (e: any) => {
     return;
   }
 
-  // 인터셉터에서 throw한 에러일 경우
+  // 에러 타입에 따라 적절히 처리
   switch (e.type) {
+    // 인터셉터에서 발생한 에러 CASE1. type - EXPECTED
     case "EXPECTED":
       let response = e.response as ErrorResponseWrapper<any>;
       if (response.errorType === "COMMON") {
@@ -30,8 +31,13 @@ export const handleError = (e: any) => {
         Toast.error("[FE003] 정의되지 않은 에러가 발생했습니다.");
       }
       break;
+    // 인터셉터에서 발생한 에러 CASE2. type - UNEXPECTED  
     case "UNEXPECTED":
       Toast.error("예기치 못한 에러가 발생했습니다.");
+      break;
+    // 프론트에서 발생한 에러 CASE1. type - FRONT_ERROR  
+    case "FRONT_ERROR":
+      Toast.error(e.message);
       break;
     default:
       Toast.error("[FE004] 정의되지 않은 에러가 발생했습니다.");

@@ -16,6 +16,7 @@ import {
   useState,
 } from "react";
 import styles from "./styles/attach-question.module.css";
+import { AttachReplyValidator } from "../../libs/AttachReplyValidator";
 
 type AttachQuestionProps = {
   question: AttachQuestionResponse;
@@ -45,17 +46,23 @@ export const AttachQuestion: FC<AttachQuestionProps> = (props) => {
   // 업로드 함수
   const [uploadKey, setKey] = useState<number>(0);
   const [files, setFiles] = useState<FileUploadResponse[]>([]);
-  
+
   const onUpload: ChangeEventHandler<HTMLInputElement> = async (e) => {
     try {
+      // 업로드 파일 유효성 검사
+      const validator = AttachReplyValidator.of(question, value as AttachReply);
+      validator.validate(e.target.files as FileList);
+
+      // 파일 업로드
       const formData = new FormData();
       formData.append("file", (e.target.files as FileList)[0]);
       const response = await File.upload(formData);
+
+      // 화면 출력
       handler(question.id as number, response.data.fileKey);
       setFiles((prev) => [...prev, response.data]);
       Toast.success("파일이 업로드되었습니다.");
     } catch (e) {
-      console.log("e", e);
       handleError(e);
     } finally {
       setKey((prev) => prev + 1);
