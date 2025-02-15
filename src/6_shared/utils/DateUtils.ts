@@ -33,7 +33,7 @@ export const formatDate = (
     return "";
   }
   // 입력 문자열을 Date 객체로 변환
-  const date = new Date(dateString);
+  const date = new Date(dateString.trim());
 
   return _toFormatString(date, format);
 };

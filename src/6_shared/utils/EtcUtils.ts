@@ -40,7 +40,5 @@ export const isEmpty = <T = string | number | Date>(value: T): boolean => {
     return true;
   }
 
-  console.log("value", value);
-
   return false;
 };

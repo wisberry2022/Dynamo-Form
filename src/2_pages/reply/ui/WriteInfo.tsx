@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 import styles from "./styles/write-info.module.css";
 import { useGetSurveyInfo } from "../libs/hooks";
 import {
@@ -47,6 +47,11 @@ export const WriteInfo: FC = () => {
     return msg;
   };
 
+  const periodMsg = useMemo(
+    () => getSurveyPeriod(startDate, endDate),
+    [startDate, endDate]
+  );
+
   // 설문자 정보
   const { value, onChangeTextField, onRadio } = respondent;
   const router = useRouter();
@@ -71,8 +76,8 @@ export const WriteInfo: FC = () => {
       <div className={styles.surveyInfo}>
         <h2>{title}</h2>
         <span>
-          {/* 설문 기간: {startDate} ~ {endDate} */}
-          {getSurveyPeriod(startDate, endDate)}
+          {/* {getSurveyPeriod(startDate, endDate)} */}
+          {periodMsg}
         </span>
       </div>
       <div className={styles.userInfo}>
