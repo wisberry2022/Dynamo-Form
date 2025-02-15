@@ -7,6 +7,8 @@ import { QuestionReplySection } from "@/3_widgets/question";
 export const Submit: FC = () => {
   const { form, state } = useReplyHandler();
 
+  console.log("state", state);
+
   return (
     <div id={styles.submit}>
       <FormInfoView title={form.survey.title} desc={form.survey.description} />

@@ -6,6 +6,7 @@ import {
   ReducerSliderQuestion,
   ReducerTextualQuestion,
 } from "@/5_entities/question";
+import { ReplySetterHandler } from "@/5_entities/reply/model/types";
 import {
   DataHandlerType,
   FileExtensions,
@@ -16,6 +17,8 @@ import {
 import { JSX } from "react";
 
 export type QuestionComponentMapperType = (view: any) => JSX.Element;
+export type ReplyQuestionComponentMapperType = (view: any, handler: ReplySetterHandler) => JSX.Element;
+
 export type CategoryComponentMapperType = (
   handler: DataHandlerType<any>,
   onQuestionSave: (question: Question) => void

@@ -1,5 +1,6 @@
 import {
   AttachQuestion as AttachQuestionResponse,
+  AttachReply,
   Button,
   FileExtensions,
 } from "@/6_shared";
@@ -8,10 +9,12 @@ import styles from "./styles/attach-question.module.css";
 
 type AttachQuestionProps = {
   question: AttachQuestionResponse;
+  value?: AttachReply;
+  handler?: (questionId: number) => void;
 };
 
 export const AttachQuestion: FC<AttachQuestionProps> = (props) => {
-  const { question } = props;
+  const { question, value, handler } = props;
 
   const getUploadableExtensions = (extensions: FileExtensions[]): string => {
     if (!extensions) {

@@ -20,4 +20,10 @@
       font-weight: 500;
     }
   }
+
+  .answerArea {
+    border: 0.1rem solid #ddd;
+    padding: 1rem;
+    resize: none;
+  }
 }

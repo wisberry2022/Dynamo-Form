@@ -1,12 +1,29 @@
-import { ReplyViewResponse, SurveyResponseRequest } from "@/6_shared";
+import {
+  Gender,
+  Reply,
+  ReplyViewResponse,
+  RespondentResponse,
+  SurveyResponseRequest,
+} from "@/6_shared";
 import { ChangeEventHandler } from "react";
+
+export type ReplySetterHandler = {
+  value: Reply[];
+  onReplySelectQuestion: (questionId: number, answers: string[]) => void;
+  onReplyDropDownQuestion: (questionId: number, answer: string) => void;
+  onReplyTextualQuestion: (questionId: number, text: string) => void;
+  onReplyRatingQuestion: (questionId: number, score: number) => void;
+  onReplySliderQuestion: (questionId: number, score: number) => void;
+  onReplyAttachQuestion: (questionId: number) => void;
+};
 
 export type ReplyHandler = {
   state: SurveyResponseRequest;
   form: ReplyViewResponse;
   respondent: {
-    value: SurveyResponseRequest["respondent"];
+    value: RespondentResponse;
     onChangeTextField: ChangeEventHandler<HTMLInputElement>;
-    onRadio: (value: SurveyResponseRequest["respondent"]["gender"]) => void;
+    onRadio: (value: Gender) => void;
   };
+  reply: ReplySetterHandler;
 };

@@ -8,10 +8,11 @@ type StarReviewProps = {
   score: number;
   value?: number;
   hideCurrentScore?: boolean;
+  onChange?: (score: number) => void;
 };
 
 export const StarReview: FC<StarReviewProps> = (props) => {
-  const { limit, score, value = 0, hideCurrentScore = false } = props;
+  const { limit, score, value = 0, hideCurrentScore = false, onChange = () => {} } = props;
   const [range, setRange] = useState<number>(0);
   const [half, setHalf] = useState<number>(-1);
   const [viewScore, setScore] = useState<number>(value);
@@ -21,9 +22,11 @@ export const StarReview: FC<StarReviewProps> = (props) => {
 
     if (half < 0) {
       setScore(criteria * range);
+      onChange(criteria * range);
       return;
     }
     setScore(criteria * range - criteria / 2);
+    onChange(criteria * range - criteria / 2);
   };
 
   const _coloring = (

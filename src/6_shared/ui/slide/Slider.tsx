@@ -14,15 +14,25 @@ type SliderProps = {
   defaultScore?: number;
   className?: string;
   disableLabel?: boolean;
+  value?: number;
+  onChange?: (score: number) => void;
 };
 
 export const Slider: FC<SliderProps> = (props) => {
-  const { min, max, className, defaultScore = 0, disableLabel = false } = props;
+  const {
+    min,
+    max,
+    className,
+    defaultScore = 0,
+    disableLabel = false,
+    value = 0,
+    onChange = () => {},
+  } = props;
   const pointRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
   const [state, setState] = useState<boolean>(false);
-  const [score, setScore] = useState(defaultScore);
+  const [score, setScore] = useState(value ? value : defaultScore);
 
   const calcScore = (offset: number) => {
     const range = max - min;
@@ -31,15 +41,18 @@ export const Slider: FC<SliderProps> = (props) => {
 
     if (offset < 0) {
       setScore(min);
+      onChange(min);
       return;
     }
 
     if (offset > xEnd) {
       setScore(max);
+      onChange(max);
       return;
     }
 
     setScore(Math.round(offset * intvl));
+    onChange(Math.round(offset * intvl));
   };
 
   const onMouseDown: MouseEventHandler<HTMLSpanElement> = (e) => {

@@ -1,6 +1,7 @@
 import {
   AttachQuestion,
   DropDownQuestion,
+  FileExtensions,
   ObjType,
   Question,
   RatingQuestion,
@@ -55,7 +56,7 @@ export const DirectConvertInitQuestionStates: ObjType<Question> = {
     attachableImage: false,
     attachableVideo: false,
     attachableOthers: false,
-    extensions: [],
+    extensions: [] as FileExtensions[],
   } as AttachQuestion,
 };
 
@@ -125,6 +126,6 @@ export const InitQuestionStates: ObjType<Question> = {
     attachableImage: false,
     attachableVideo: false,
     attachableOthers: false,
-    extensions: [],
+    extensions: [] as FileExtensions[],
   } as AttachQuestion,
 };

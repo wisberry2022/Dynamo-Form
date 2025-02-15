@@ -1,19 +1,47 @@
-import { TextualQuestion as TextualQuestionResponse } from "@/6_shared";
-import { FC } from "react";
+import {
+  TextualQuestion as TextualQuestionResponse,
+  TextualReply,
+  Toast,
+} from "@/6_shared";
+import { ChangeEventHandler, FC, useMemo } from "react";
 import styles from "./styles/textual-question.module.css";
 
 type TextualQuestionProps = {
   question: TextualQuestionResponse;
+  value?: TextualReply;
+  handler?: (questionId: number, text: string) => void;
 };
 
 export const TextualQuestion: FC<TextualQuestionProps> = (props) => {
-  const { question } = props;
+  const { question, value = { text: "" }, handler = () => {} } = props;
+  const maxLength = useMemo(() => question.answerLimit, [question]);
+
+  const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+    const { value: input } = e.target;
+
+    // 최대 입력 길이를 초과했을 경우
+    if (value?.text.concat(input).length > maxLength) {
+      Toast.error(`최대 ${maxLength}자까지 입력 가능합니다.`);
+      handler(question.id as number, value.text.slice(0, maxLength));
+      return;
+    }
+
+    handler(question.id as number, input);
+  };
 
   return (
     <div className={styles.qContainer}>
-      <div className={styles.answerArea}>
-        <strong>답변 영역입니다.</strong>
-      </div>
+      {value ? (
+        <textarea
+          className={styles.answerArea}
+          onChange={onChange}
+          value={value.text}
+        />
+      ) : (
+        <div className={styles.answerArea}>
+          <strong>답변 영역입니다.</strong>
+        </div>
+      )}
     </div>
   );
 };
