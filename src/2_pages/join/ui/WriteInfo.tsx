@@ -12,8 +12,6 @@ import {
   useGetFormBySurveySWR,
 } from "@/6_shared";
 import { useReplyHandler } from "@/5_entities/reply/libs/useReplyHandler";
-import { useSetRecoilState } from "recoil";
-import { FormViewState } from "@/5_entities/reply";
 import { convert2RespondentValid } from "../libs/TypeMapper";
 import { useRouter } from "next/router";
 
@@ -34,7 +32,7 @@ export const WriteInfo: FC = () => {
   const onValid = async () => {
     try {
       const resp = await Respondent.valid(
-        form?.surveyId as number,
+        form?.survey.id as number,
         convert2RespondentValid(value)
       );
       if (resp.response === "0000") {

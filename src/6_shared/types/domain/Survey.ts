@@ -56,3 +56,9 @@ export type SurveyResponseRequest = {
   respondent: RespondentResponse;
   replyForm: ReplyFormRequest;
 };
+
+export type SimpleSurvey = {
+  id: number;
+  title: string;
+  description: string;
+}

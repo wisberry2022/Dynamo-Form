@@ -13,10 +13,6 @@ export const FormInfo: FC<FormInfoProps> = (props) => {
 
   const [status, setStatus] = useState<DataStatus>("READ");
 
-  const onChangeModify = () => {
-    setStatus("MODIFY");
-  };
-
   const onChangeReadOnly = () => {
     setStatus("READ");
   };
@@ -29,14 +25,4 @@ export const FormInfo: FC<FormInfoProps> = (props) => {
       onClick={onChangeReadOnly}
     />
   );
-  // return status === "READ" ? (
-  //   <ReadOnlyFormInfo form={form} onClick={onChangeModify} />
-  // ) : (
-  //   <UpdatableFormInfo
-  //     form={form}
-  //     onTextField={onTextField}
-  //     onSwitch={onSwitch}
-  //     onClick={onChangeReadOnly}
-  //   />
-  // );
 };

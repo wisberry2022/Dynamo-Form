@@ -1,9 +1,10 @@
 import { FormResponse, QuestionCategory, QuestionSubCategory } from "./Form";
+import { SimpleSurvey } from "./Survey";
 
 export type ReplyViewResponse = {
-  surveyId: number;
+  survey: SimpleSurvey;
   form: FormResponse;
-}
+};
 
 export type ReplyFormRequest = {
   id: number;

@@ -1,6 +1,7 @@
 import {
   FormResponse,
   ReplyViewResponse,
+  SimpleSurvey,
   SurveyResponseRequest,
 } from "@/6_shared";
 import { atom } from "recoil";
@@ -24,7 +25,7 @@ export const ReplyState = atom<SurveyResponseRequest>({
 export const FormViewState = atom<ReplyViewResponse>({
   key: "FormViewState",
   default: {
-    surveyId: 0,
+    survey: {} as SimpleSurvey,
     form: {} as FormResponse,
   },
 });

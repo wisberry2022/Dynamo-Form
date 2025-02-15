@@ -1,0 +1,9 @@
+#submit {
+  padding: 1rem;
+  height: 95%;
+  overflow-y: scroll;
+}
+
+#submit::-webkit-scrollbar {
+  display: none;
+}
