@@ -38,7 +38,7 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
     <DropdownQuestion question={view} />
   ),
   TEXTUAL: (view: TextualQuestionResponse) => (
-    <TextualQuestion question={view} />
+    <TextualQuestion question={view} disableWrite />
   ),
   RATING: (view: RatingQuestionResponse) => <RatingQuestion question={view} />,
   SLIDER: (view: SliderQuestionResponse) => <SliderQuestion question={view} />,

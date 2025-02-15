@@ -41,6 +41,7 @@ const QuestionContent: FC<QuestionContentProps> = (props) => {
   const { answers } = value;
   const maxSelect = useMemo(() => question.responseLimit, [question]);
 
+  // 다건 선택형 질문의 답변 선택 이벤트
   const onChecked = (value: number) => {
     const target = question.questions[value];
 
@@ -63,6 +64,11 @@ const QuestionContent: FC<QuestionContentProps> = (props) => {
     handler(question.id as number, [...answers, target]);
   };
 
+  // 단건 선택형 질문의 답변 선택 이벤트
+  const onRadio = (value: string) => {
+    handler(question.id as number, [value]);
+  };
+
   if (question.multiple) {
     return (
       <div className={styles.quest}>
@@ -80,7 +86,11 @@ const QuestionContent: FC<QuestionContentProps> = (props) => {
   }
 
   return (
-    <RadioGroup className={styles.radioGrp} value="" onChange={() => {}}>
+    <RadioGroup
+      className={styles.radioGrp}
+      value={value.answers[0]}
+      onChange={onRadio}
+    >
       {question.questions.map((quest, idx) => (
         <Radio key={idx} value={quest} label={quest} />
       ))}
