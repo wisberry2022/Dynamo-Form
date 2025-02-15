@@ -126,11 +126,12 @@ export const useReplyHandler = (
     });
   };
 
-  const onReplyAttachQuestion = (questionId: number) => {
+  const onReplyAttachQuestion = (questionId: number, fileKey: string) => {
     _setReply(questionId, (reply, idx) => {
       if (reply.id === questionId) {
         return {
           ...reply,
+          fileKeys: [...(reply as AttachReply).fileKeys, fileKey],
         } as AttachReply;
       }
       return reply;

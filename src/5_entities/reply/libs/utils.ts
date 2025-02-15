@@ -53,6 +53,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
             id: question.id,
             category: "EVIDENCE",
             subCategory: "FILE_ATTACH",
+            fileKeys: [],
           } as AttachReply;
         default:
           return {} as Reply;

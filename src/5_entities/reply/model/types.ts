@@ -14,7 +14,7 @@ export type ReplySetterHandler = {
   onReplyTextualQuestion: (questionId: number, text: string) => void;
   onReplyRatingQuestion: (questionId: number, score: number) => void;
   onReplySliderQuestion: (questionId: number, score: number) => void;
-  onReplyAttachQuestion: (questionId: number) => void;
+  onReplyAttachQuestion: (questionId: number, fileKey: string) => void;
 };
 
 export type ReplyHandler = {

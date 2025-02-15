@@ -29,4 +29,7 @@ export const Paths = {
     getForm: (surveyId: number) => `/api/v1/reply/${surveyId}`,
     submit: (surveyId: number) => `/api/v1/reply/${surveyId}`,
   },
+  file: {
+    upload: "/api/v1/file/upload",
+  },
 };

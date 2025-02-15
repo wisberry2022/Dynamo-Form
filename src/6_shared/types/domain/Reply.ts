@@ -37,4 +37,6 @@ export interface SliderReply extends Reply {
   score: number;
 }
 
-export interface AttachReply extends Reply {}
+export interface AttachReply extends Reply {
+  fileKeys: string[];
+}
