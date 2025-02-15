@@ -1,0 +1,14 @@
+.tContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  background-color: #fff;
+  margin: auto;
+  width: 60%;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}

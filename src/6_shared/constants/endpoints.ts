@@ -17,6 +17,7 @@ export const endpoints = {
         return `/survey/join/write-info?token=${token}&id=${id}&title=${title}&startDate=${startDate}&endDate=${endDate}`;
       },
       submit: (token: string) => `/survey/join/submit?token=${token}`,
+      thanks: `/survey/join/thanks`,
     },
   },
 };

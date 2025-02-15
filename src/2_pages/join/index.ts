@@ -4,3 +4,4 @@ export { SuspendPage } from "./ui/SuspendPage";
 export { NoSurveyPage } from "./ui/NoSurveyPage";
 export { WriteInfo } from "./ui/WriteInfo";
 export { Submit } from "./ui/Submit";
+export { Thanks } from "./ui/Thanks";
