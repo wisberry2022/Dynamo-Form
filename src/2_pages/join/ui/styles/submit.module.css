@@ -1,7 +1,16 @@
 #submit {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1rem;
   height: 95%;
   overflow-y: scroll;
+
+  #questionBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 #submit::-webkit-scrollbar {

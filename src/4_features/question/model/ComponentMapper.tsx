@@ -38,3 +38,20 @@ export const Questions: ComponentMapperType<QuestionComponentMapperType> = {
     <AttachQuestion question={view} />
   ),
 };
+
+export const ReplyQuestions: ComponentMapperType<QuestionComponentMapperType> = {
+  MULTI_QUESTION: (view: SelectQuestion) => (
+    <MultiSelectQuestion question={view} />
+  ),
+  DROPDOWN: (view: DropdownQuestionResponse) => (
+    <DropdownQuestion question={view} />
+  ),
+  TEXTUAL: (view: TextualQuestionResponse) => (
+    <TextualQuestion question={view} />
+  ),
+  RATING: (view: RatingQuestionResponse) => <RatingQuestion question={view} />,
+  SLIDER: (view: SliderQuestionResponse) => <SliderQuestion question={view} />,
+  FILE_ATTACH: (view: AttachQuestionResponse) => (
+    <AttachQuestion question={view} />
+  ),
+};
