@@ -1,8 +1,15 @@
 import { FC } from "react";
 import styles from "./styles/sign-in.module.css";
-import { Button, LabelTextiField } from "@/6_shared";
+import { Button, endpoints, LabelTextiField } from "@/6_shared";
+import { useRouter } from "next/router";
 
 export const SignIn: FC = () => {
+  const router = useRouter();
+
+  const goSignUp = () => {
+    router.push(endpoints.auth.signUp);
+  };
+
   return (
     <div className={styles.container}>
       <h2>Dynamo Form</h2>
@@ -15,7 +22,7 @@ export const SignIn: FC = () => {
           <Button variant="primary">로그인 하기</Button>
         </div>
         <div className={styles.bottomBar}>
-          <strong>회원 가입하기</strong>
+          <strong onClick={goSignUp}>회원 가입하기</strong>
           <strong>로그인 정보를 잊어버렸나요?</strong>
         </div>
       </div>
