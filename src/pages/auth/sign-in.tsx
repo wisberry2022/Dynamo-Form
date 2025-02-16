@@ -1,7 +1,8 @@
-import { BlankLayout, FullLayout, PageWithLayout } from "@/6_shared";
+import { SignIn } from "@/2_pages/auth";
+import { BlankLayout, PageWithLayout } from "@/6_shared";
 
 const Page: PageWithLayout = () => {
-  return <div>hi</div>;
+  return <SignIn />;
 };
 
 Page.getLayout = (page) => <BlankLayout>{page}</BlankLayout>;
