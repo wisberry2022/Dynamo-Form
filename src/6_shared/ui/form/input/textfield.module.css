@@ -12,3 +12,7 @@
 .textField:focus {
   outline: none;
 }
+
+.textField.error {
+  outline: 0.1rem solid #f00;
+}

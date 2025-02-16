@@ -1,4 +1,7 @@
 export const Paths = {
+  user: {
+    signUp: "/api/v1/user/signup",
+  },
   form: {
     get: (id: number) => `/api/v1/form/${id}`,
     getAll: "/api/v1/form",
