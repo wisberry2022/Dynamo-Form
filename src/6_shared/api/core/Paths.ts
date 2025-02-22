@@ -1,4 +1,7 @@
 export const Paths = {
+  auth: {
+    signIn: "/api/v1/auth/sign-in",
+  },
   user: {
     signUp: "/api/v1/user/signup",
   },

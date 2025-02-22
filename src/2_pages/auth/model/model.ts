@@ -1,4 +1,4 @@
-import { SignUpRequest } from "@/6_shared";
+import { SignInRequest, SignUpRequest } from "@/6_shared";
 
 export const SignUpData: SignUpRequest = {
   userId: "",
@@ -8,4 +8,9 @@ export const SignUpData: SignUpRequest = {
   firstName: "",
   lastName: "",
   nickName: "",
-}
+};
+
+export const signInData: SignInRequest = {
+  userId: "",
+  password: "",
+};
