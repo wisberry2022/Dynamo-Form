@@ -1,9 +1,11 @@
 import { ChangeEventHandler, FC, useState } from "react";
 import styles from "./styles/sign-up.module.css";
 import {
+  Auth,
   Button,
   endpoints,
   handleError,
+  isEmpty,
   SignUpRequest,
   TextField,
   Toast,
@@ -16,6 +18,30 @@ import { useRouter } from "next/router";
 export const SignUp: FC = () => {
   const { state, onTextField } = useDataHandler<SignUpRequest>(SignUpData);
 
+  // 아이디 중복체크
+  const [checked, setChecked] = useState<boolean>(false);
+
+  const onCheckId = async (userId: string) => {
+    try {
+      if (isEmpty(userId)) {
+        Toast.error("아이디를 입력하세요.");
+        return;
+      }
+      const resp = await Auth.checkUserId({
+        userId,
+      });
+      setChecked(true);
+      Toast.success(resp.data);
+    } catch (e) {
+      handleError(e);
+    }
+  };
+
+  const onChangeUserId: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setChecked(false);
+    onTextField(e);
+  };
+
   // 비밀번호 체크
   const [validPassword, setPassword] = useState<string>(state.password);
 
@@ -24,10 +50,25 @@ export const SignUp: FC = () => {
     setPassword(value);
   };
 
+  // 회원가입
   const router = useRouter();
 
   const onSignUp = async () => {
     try {
+      if (!checked) {
+        throw {
+          type: "FRONT_ERROR",
+          message: "아이디 중복 확인을 해주세요.",
+        };
+      }
+
+      if (validPassword !== state.password) {
+        throw {
+          type: "FRONT_ERROR",
+          message: "비밀번호가 일치하지 않습니다.",
+        };
+      }
+
       await User.signUp(state);
       Toast.success("회원가입이 완료되었습니다!");
       router.replace(endpoints.auth.signIn);
@@ -45,11 +86,13 @@ export const SignUp: FC = () => {
             아이디 <i>*</i>
           </strong>
           <div className={styles.idField}>
-            <Button variant="brighten">아이디 중복확인</Button>
+            <Button variant="brighten" onClick={() => onCheckId(state.userId)}>
+              아이디 중복확인
+            </Button>
             <TextField
               placeholder="아이디를 입력하세요"
               name="userId"
-              onChange={onTextField}
+              onChange={onChangeUserId}
               value={state.userId}
             />
           </div>
