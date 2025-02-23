@@ -3,7 +3,7 @@ import { RestService } from "../core/RestService";
 import { Paths } from "../core/Paths";
 
 export const User = {
-  signUp: async (sendData: SignUpRequest): Promise<ResponseWrapper<String>> => {
-    return await RestService.post(Paths.user.signUp, sendData);
+  signUp: async (sendData: SignUpRequest): Promise<ResponseWrapper<string>> => {
+    return await RestService.post<SignUpRequest, string>(Paths.user.signUp, sendData);
   },
 };

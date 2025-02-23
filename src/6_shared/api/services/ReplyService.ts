@@ -7,9 +7,9 @@ export const Reply = {
     surveyId: number,
     sendData: SurveyResponseRequest
   ): Promise<ResponseWrapper<String>> => {
-    return await RestService.post<
-      SurveyResponseRequest,
-      ResponseWrapper<String>
-    >(Paths.reply.submit(surveyId), sendData);
+    return await RestService.post<SurveyResponseRequest, string>(
+      Paths.reply.submit(surveyId),
+      sendData
+    );
   },
 };

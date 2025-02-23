@@ -1,4 +1,8 @@
-import { ResponseWrapper, SignInRequest, UserDuplicateCheckRequest } from "@/6_shared/types";
+import {
+  ResponseWrapper,
+  SignInRequest,
+  UserDuplicateCheckRequest,
+} from "@/6_shared/types";
 import { RestService } from "../core/RestService";
 import { Paths } from "../core/Paths";
 import { axiosInstance } from "../core/axiosInstance";
@@ -9,7 +13,12 @@ export const Auth = {
       withCredentials: true,
     });
   },
-  checkUserId: async (sendData: UserDuplicateCheckRequest): Promise<ResponseWrapper<string>> => {
-    return await RestService.post<UserDuplicateCheckRequest, ResponseWrapper<string>>(Paths.auth.checkUserId, sendData);
-  }
+  checkUserId: async (
+    sendData: UserDuplicateCheckRequest
+  ): Promise<ResponseWrapper<string>> => {
+    return await RestService.post<UserDuplicateCheckRequest, string>(
+      Paths.auth.checkUserId,
+      sendData
+    );
+  },
 };
