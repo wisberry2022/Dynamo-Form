@@ -7,9 +7,9 @@ export const Respondent = {
     surveyId: number,
     sendData: RespondentValidRequest
   ): Promise<ResponseWrapper<string>> => {
-    return await RestService.post<
-      RespondentValidRequest,
-      ResponseWrapper<string>
-    >(Paths.respondent.valid(surveyId), sendData);
+    return await RestService.post<RespondentValidRequest>(
+      Paths.respondent.valid(surveyId),
+      sendData
+    );
   },
 };

@@ -31,12 +31,15 @@ export const handleError = (e: any) => {
         Toast.error("[FE003] 정의되지 않은 에러가 발생했습니다.");
       }
       break;
-    // 인터셉터에서 발생한 에러 CASE2. type - UNEXPECTED  
+    // 인터셉터에서 발생한 에러 CASE2. type - UNEXPECTED
     case "UNEXPECTED":
       Toast.error("예기치 못한 에러가 발생했습니다.");
       break;
-    // 프론트에서 발생한 에러 CASE1. type - FRONT_ERROR  
+    // 프론트에서 발생한 에러 CASE1. type - FRONT_ERROR
     case "FRONT_ERROR":
+      Toast.error(e.message);
+      break;
+    case "REQUEST_ERROR":
       Toast.error(e.message);
       break;
     default:

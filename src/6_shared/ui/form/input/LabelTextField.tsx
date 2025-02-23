@@ -10,6 +10,7 @@ type LabelTextFieldProps = {
   placeholder?: string;
   width?: number;
   subLabel?: string;
+  type?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -22,6 +23,7 @@ export const LabelTextiField: FC<LabelTextFieldProps> = (props) => {
     placeholder,
     width,
     subLabel,
+    type = "",
     onChange,
   } = props;
 
@@ -36,6 +38,7 @@ export const LabelTextiField: FC<LabelTextFieldProps> = (props) => {
       </div>
       <div className={styles.fieldBox}>
         <TextField
+          type={type ? type : "text"}
           name={name}
           value={value}
           placeholder={placeholder}

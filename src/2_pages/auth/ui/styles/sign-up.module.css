@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 3rem;
+  width: 25%;
+  background-color: #fff;
+
+  h3 {
+    width: 100%;
+    font-size: 2.1rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  ul {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      strong {
+        display: flex;
+        font-size: 1.3rem;
+        font-weight: 400;
+        width: 30%;
+
+        i {
+          font-size: 0.9rem;
+          color: #f00;
+        }
+      }
+
+      .field {
+        width: 70% !important;
+      }
+
+      .idField {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        width: 70%;
+
+        button {
+          margin-left: auto;
+          padding: 0.5rem !important;
+          width: 50% !important;
+          font-size: 1rem !important;
+        }
+
+        input {
+          width: 100% !important;
+        }
+      }
+    }
+
+    .columnList {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-direction: column;
+
+      .rowFields {
+        display: flex;
+        gap: 1.5rem;
+
+        input:first-child {
+          width: 25% !important;
+        }
+
+        input:last-child {
+          width: 70% !important;
+        }
+      }
+    }
+  }
+}

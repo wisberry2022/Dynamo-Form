@@ -14,14 +14,14 @@ export const Form = {
   getSummary: async (
     formId: number
   ): Promise<ResponseWrapper<SimpleFormDetailResponse>> => {
-    return await RestService.get<ResponseWrapper<SimpleFormDetailResponse>>(
+    return await RestService.get<SimpleFormDetailResponse>(
       Paths.form.getSummary(formId)
     );
   },
   save: async (
     sendData: FormRequest
   ): Promise<ResponseWrapper<FormResponse>> => {
-    return await RestService.post<FormRequest, ResponseWrapper<FormResponse>>(
+    return await RestService.post<FormRequest, FormResponse>(
       Paths.form.save,
       sendData
     );
@@ -31,13 +31,13 @@ export const Form = {
   ): Promise<ResponseWrapper<FormNameUpdateResponse>> => {
     return await RestService.patch<
       FormNameUpdateRequest,
-      ResponseWrapper<FormNameUpdateResponse>
+      FormNameUpdateResponse
     >(Paths.form.updateName, sendData);
   },
   update: async (
     sendData: FormRequest
   ): Promise<ResponseWrapper<FormResponse>> => {
-    return await RestService.put<FormRequest, ResponseWrapper<FormResponse>>(
+    return await RestService.put<FormRequest, FormResponse>(
       Paths.form.update,
       sendData
     );

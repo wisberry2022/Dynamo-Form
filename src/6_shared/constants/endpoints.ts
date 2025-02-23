@@ -2,6 +2,10 @@ import { SurveyValidResponse } from "../types";
 
 export const endpoints = {
   index: "/",
+  auth: {
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+  },
   form: {
     index: "/form",
     create: "/form/create",
