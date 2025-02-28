@@ -3,11 +3,9 @@ import styles from "./styles/top-toolbar.module.css";
 import { FaArrowLeft, FaHome, FaSignOutAlt } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { endpoints } from "@/6_shared/constants";
-import { Button } from "../button";
 import { handleError } from "@/6_shared/utils";
 import { Auth } from "@/6_shared/api";
 import { Toast } from "../popup";
-import { useSWRConfig } from "swr";
 
 type TopToolBarProps = {
   navigation?: boolean;
