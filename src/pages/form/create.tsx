@@ -10,6 +10,10 @@ const Page: PageWithLayout = () => {
   );
 };
 
-Page.getLayout = (page) => <PageLayout title="양식 생성">{page}</PageLayout>;
+Page.getLayout = (page) => (
+  <PageLayout title="양식 생성" navigate signOut>
+    {page}
+  </PageLayout>
+);
 
 export default Page;

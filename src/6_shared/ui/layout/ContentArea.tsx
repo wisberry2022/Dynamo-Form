@@ -6,14 +6,15 @@ import { Paper } from "./Paper";
 type ContentAreaProps = {
   children: ReactNode;
   title?: string;
-  disableTopToolBar?: boolean;
+  navigate?: boolean;
+  signOut?: boolean;
 };
 
 export const ContentArea: FC<ContentAreaProps> = (props) => {
-  const { children, title = "", disableTopToolBar = false } = props;
+  const { children, title = "", navigate = false, signOut = false } = props;
   return (
     <div className={styles.content}>
-      <TopToolBar disableNavigation={disableTopToolBar} />
+      <TopToolBar navigation={navigate} signOut={signOut} />
       <Paper>
         {title && <h2>{title}</h2>}
         {children}

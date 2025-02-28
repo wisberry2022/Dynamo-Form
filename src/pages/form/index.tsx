@@ -5,6 +5,10 @@ const Page: PageWithLayout = () => {
   return <FormListMain />;
 };
 
-Page.getLayout = (page) => <PageLayout title="">{page}</PageLayout>;
+Page.getLayout = (page) => (
+  <PageLayout title="" navigate signOut>
+    {page}
+  </PageLayout>
+);
 
 export default Page;

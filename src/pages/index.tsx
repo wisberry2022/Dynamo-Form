@@ -7,7 +7,7 @@ const Page: PageWithLayout = () => {
 };
 
 Page.getLayout = (page) => (
-  <PageLayout title="" disableTopToolBar>
+  <PageLayout title="" signOut>
     {page}
   </PageLayout>
 );

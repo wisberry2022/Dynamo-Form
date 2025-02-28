@@ -6,16 +6,17 @@ import { Container } from "../container";
 type PageLayoutProps = {
   title: string;
   children: ReactNode;
-  disableTopToolBar?: boolean;
+  navigate?: boolean;
+  signOut?: boolean;
 };
 
 export const PageLayout: FC<PageLayoutProps> = (props) => {
-  const { title, children, disableTopToolBar = false } = props;
+  const { title, children, navigate = false, signOut = false } = props;
 
   return (
     <Container>
       <LeftLNB />
-      <ContentArea title={title} disableTopToolBar={disableTopToolBar}>
+      <ContentArea title={title} navigate={navigate} signOut={signOut}>
         {children}
       </ContentArea>
     </Container>

@@ -6,7 +6,7 @@ const Page: PageWithLayout = () => {
 };
 
 Page.getLayout = (page) => (
-  <PageLayout title="설문조사 생성">{page}</PageLayout>
+  <PageLayout title="설문조사 생성" navigate signOut>{page}</PageLayout>
 );
 
 export default Page;
