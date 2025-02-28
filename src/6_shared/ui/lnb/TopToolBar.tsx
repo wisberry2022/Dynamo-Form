@@ -4,6 +4,10 @@ import { FaArrowLeft, FaHome, FaSignOutAlt } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { endpoints } from "@/6_shared/constants";
 import { Button } from "../button";
+import { handleError } from "@/6_shared/utils";
+import { Auth } from "@/6_shared/api";
+import { Toast } from "../popup";
+import { useSWRConfig } from "swr";
 
 type TopToolBarProps = {
   navigation?: boolean;
@@ -28,6 +32,16 @@ export const TopToolBar: FC<TopToolBarProps> = (props) => {
     router.push(endpoints.index);
   };
 
+  const onSignOut = async () => {
+    try {
+      await Auth.signOut();
+      Toast.success("로그아웃 되었습니다.");
+      router.replace(endpoints.auth.signIn);
+    } catch (e) {
+      handleError(e);
+    }
+  };
+
   return (
     <div className={styles.toolBar}>
       <div className={styles.left}>
@@ -40,7 +54,7 @@ export const TopToolBar: FC<TopToolBarProps> = (props) => {
       </div>
       <div className={styles.right}>
         {signOut && (
-          <div className={styles.signOut}>
+          <div className={styles.signOut} onClick={onSignOut}>
             <FaSignOutAlt />
             <span>로그아웃</span>
           </div>

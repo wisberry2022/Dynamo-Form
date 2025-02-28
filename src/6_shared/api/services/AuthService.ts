@@ -13,6 +13,9 @@ export const Auth = {
       withCredentials: true,
     });
   },
+  signOut: async (): Promise<ResponseWrapper<string>> => {
+    return await RestService.post<any, string>(Paths.auth.signOut, null);
+  },
   checkUserId: async (
     sendData: UserDuplicateCheckRequest
   ): Promise<ResponseWrapper<string>> => {
