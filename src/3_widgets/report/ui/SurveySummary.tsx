@@ -15,7 +15,7 @@ export const SurveySummary: FC<SurveySummaryProps> = (props) => {
   return (
     <div className={styles.report}>
       <h3>요약 정보</h3>
-      <SummaryCard data={resp2ViewType(summary as SurveySummaryResponse)} />
+      {summary && <SummaryCard data={resp2ViewType(summary)} />}
     </div>
   );
 };

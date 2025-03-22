@@ -1,0 +1,31 @@
+.tabContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .panel {
+    display: flex;
+    flex-direction: row;
+    .index {
+      border-top: 0.1rem solid #ddd;
+      padding: 0.5rem 1rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      width: auto;
+
+      &:last-child {
+        border-right: 0.1rem solid #ddd;
+      }
+
+      &.clicked {
+        color: #00f;
+        font-weight: 500;
+      }
+    }
+
+    .effect {
+      border-left: 0.1rem solid #ddd;
+      border-bottom: 0.1rem solid #ddd;
+    }
+  }
+}
