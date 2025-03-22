@@ -13,6 +13,7 @@ export type ReplyFormRequest = {
 
 export interface Reply {
   id: number | null;
+  questionId: number;
   category: QuestionCategory;
   subCategory: QuestionSubCategory;
 }

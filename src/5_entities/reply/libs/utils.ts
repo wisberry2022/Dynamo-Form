@@ -16,6 +16,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "MULTI_QUESTION":
           return {
             id: question.id,
+            questionId: question.id,
             category: "SELECT",
             subCategory: "MULTI_QUESTION",
             answers: [],
@@ -23,6 +24,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "DROPDOWN":
           return {
             id: question.id,
+            questionId: question.id,
             category: "SELECT",
             subCategory: "DROPDOWN",
             answer: "",
@@ -30,6 +32,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "TEXTUAL":
           return {
             id: question.id,
+            questionId: question.id,
             category: "DESCRIPTIVE",
             subCategory: "TEXTUAL",
             text: "",
@@ -37,6 +40,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "RATING":
           return {
             id: question.id,
+            questionId: question.id,
             category: "EVALUATIVE",
             subCategory: "RATING",
             score: 0,
@@ -44,6 +48,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "SLIDER":
           return {
             id: question.id,
+            questionId: question.id,
             category: "EVALUATIVE",
             subCategory: "SLIDER",
             score: 0,
@@ -51,6 +56,7 @@ export const getReplies = (questions: Question[]): Reply[] => {
         case "FILE_ATTACH":
           return {
             id: question.id,
+            questionId: question.id,
             category: "EVIDENCE",
             subCategory: "FILE_ATTACH",
             fileKeys: [],
