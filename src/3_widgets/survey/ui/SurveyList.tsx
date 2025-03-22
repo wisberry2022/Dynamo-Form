@@ -7,7 +7,7 @@ import {
   SurveyListResponse,
   Toast,
 } from "@/6_shared";
-import { FC } from "react";
+import { FC, MouseEvent, MouseEventHandler } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdReportGmailerrorred } from "react-icons/md";
 import styles from "./styles/survey-list.module.css";
@@ -43,6 +43,15 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
     }
   };
 
+  // 현황 페이지 이동
+  const onReport = (
+    e: MouseEvent<SVGElement, globalThis.MouseEvent>,
+    surveyId: number
+  ) => {
+    e.stopPropagation();
+    router.push(endpoints.survey.report(surveyId));
+  };
+
   return (
     <>
       {surveys.map((survey) => {
@@ -67,7 +76,12 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
             }
             right={
               <ListButton.Right
-                left={<MdReportGmailerrorred className={styles.tIcon} />}
+                left={
+                  <MdReportGmailerrorred
+                    className={styles.tIcon}
+                    onClick={(e) => onReport(e, survey.id)}
+                  />
+                }
                 right={
                   ["WAITING", "COMPLETE"].includes(survey.status) && (
                     <PopupTrigger

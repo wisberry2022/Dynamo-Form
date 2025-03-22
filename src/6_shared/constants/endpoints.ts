@@ -15,6 +15,7 @@ export const endpoints = {
     index: "/survey",
     create: "/survey/create",
     id: (id: number) => `/survey/${id}`,
+    report: (id: number) => `/survey/${id}/report`,
   },
   reply: {
     writeInfo: (token: string, survey: SurveyValidResponse) => {

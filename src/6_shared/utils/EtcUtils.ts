@@ -21,6 +21,9 @@ export const isMatchField = <T extends ObjType<any>>(
  * @returns 객체가 비어있는지 여부
  */
 export const isEmptyObject = <T extends object>(object: T): boolean => {
+  if (!object) {
+    return true;
+  }
   return !Object.keys(object).length;
 };
 

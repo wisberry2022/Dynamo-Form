@@ -37,6 +37,9 @@ export const Paths = {
     getForm: (surveyId: number) => `/api/v1/reply/${surveyId}`,
     submit: (surveyId: number) => `/api/v1/reply/${surveyId}`,
   },
+  report: {
+    getSummary: (surveyId: number) => `/api/v1/report/survey/${surveyId}`,
+  },
   file: {
     upload: "/api/v1/file/upload",
   },
