@@ -1,0 +1,11 @@
+.statContainer {
+  padding: 2rem 0;
+
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  .chart {
+    padding-left: 2rem;
+  }
+}

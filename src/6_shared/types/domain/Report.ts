@@ -22,10 +22,11 @@ export type SimpleFile = {
   id: number;
   fileKey: string;
   fileName: string;
-}
+};
 
 export type Stat = {
   questionId: number;
+  question: string;
   category: QuestionCategory;
   subCategory: QuestionSubCategory;
 };
@@ -43,8 +44,8 @@ export type RatingStat = Stat & {
   min: number;
   max: number;
   average: number;
-}
+};
 
 export type AttachStat = Stat & {
   files: SimpleFile[];
-}
+};
