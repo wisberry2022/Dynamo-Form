@@ -1,12 +1,18 @@
 import {
   AttachStat,
   RatingStat,
+  RatingStat2View,
   SelectStat,
   SelectStat2View,
   TextualStat,
   TextualStat2View,
 } from "@/4_features/report";
-import { useSurveyStatsSWR, SelectStat as SelectStatType, TextualStat as TextualStatType } from "@/6_shared";
+import {
+  useSurveyStatsSWR,
+  SelectStat as SelectStatType,
+  TextualStat as TextualStatType,
+  RatingStat as RatingStatType,
+} from "@/6_shared";
 import { FC } from "react";
 
 type QuestionStatProps = {
@@ -26,7 +32,7 @@ export const QuestionStat: FC<QuestionStatProps> = (props) => {
         return <TextualStat stat={TextualStat2View(stat as TextualStatType)} />;
       case "RATING":
       case "SLIDER":
-        return <RatingStat />;
+        return <RatingStat stat={RatingStat2View(stat as RatingStatType)} />;
       case "FILE_ATTACH":
         return <AttachStat />;
       default:
