@@ -22,7 +22,6 @@ export const SelectStat: FC<SelectStatProps> = (props) => {
               {
                 categoryPercentage: 0.5,
                 barPercentage: 0.4,
-                // maxBarThickness: 30,
                 label: "해당 응답을 선택한 수",
                 data: stat.answers.map((answer) => answer.count),
                 borderWidth: 1,

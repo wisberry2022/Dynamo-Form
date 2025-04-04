@@ -4,8 +4,9 @@ import {
   SelectStat,
   SelectStat2View,
   TextualStat,
+  TextualStat2View,
 } from "@/4_features/report";
-import { useSurveyStatsSWR, SelectStat as SelectStatType } from "@/6_shared";
+import { useSurveyStatsSWR, SelectStat as SelectStatType, TextualStat as TextualStatType } from "@/6_shared";
 import { FC } from "react";
 
 type QuestionStatProps = {
@@ -22,7 +23,7 @@ export const QuestionStat: FC<QuestionStatProps> = (props) => {
       case "DROPDOWN":
         return <SelectStat stat={SelectStat2View(stat as SelectStatType)} />;
       case "TEXTUAL":
-        return <TextualStat />;
+        return <TextualStat stat={TextualStat2View(stat as TextualStatType)} />;
       case "RATING":
       case "SLIDER":
         return <RatingStat />;
