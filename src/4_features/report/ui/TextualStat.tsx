@@ -7,6 +7,7 @@ type TextualStatProps = {
   stat: TextualStatView;
 };
 
+// TODO: 응답 엑셀 다운로드, AI 요약 기능 추가
 export const TextualStat: FC<TextualStatProps> = (props) => {
   const { stat } = props;
   return (
