@@ -61,7 +61,6 @@ export const useListData = <T = any>(
     removeRow,
     removeBulkRow,
     onChangeValue,
-
     convertOrigin,
   };
 };

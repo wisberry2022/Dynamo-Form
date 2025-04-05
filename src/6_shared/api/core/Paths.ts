@@ -39,9 +39,12 @@ export const Paths = {
   },
   report: {
     getSummary: (surveyId: number) => `/api/v1/report/survey/${surveyId}`,
-    getSurveyStats: (surveyId: number) => `/api/v1/report/survey/question/${surveyId}`
+    getSurveyStats: (surveyId: number) =>
+      `/api/v1/report/survey/question/${surveyId}`,
   },
   file: {
     upload: "/api/v1/file/upload",
+    download: (isCompress: boolean = false) =>
+      `/api/v1/file/download?isCompress=${isCompress}`,
   },
 };

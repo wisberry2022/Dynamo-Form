@@ -1,5 +1,6 @@
 import {
   AttachStat,
+  AttachStat2View,
   RatingStat,
   RatingStat2View,
   SelectStat,
@@ -12,6 +13,7 @@ import {
   SelectStat as SelectStatType,
   TextualStat as TextualStatType,
   RatingStat as RatingStatType,
+  AttachStat as AttachStatType,
 } from "@/6_shared";
 import { FC } from "react";
 
@@ -34,7 +36,7 @@ export const QuestionStat: FC<QuestionStatProps> = (props) => {
       case "SLIDER":
         return <RatingStat stat={RatingStat2View(stat as RatingStatType)} />;
       case "FILE_ATTACH":
-        return <AttachStat />;
+        return <AttachStat stat={AttachStat2View(stat as AttachStatType)} />;
       default:
         return;
     }

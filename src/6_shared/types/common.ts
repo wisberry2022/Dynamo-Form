@@ -30,3 +30,9 @@ export type SequenceData<T> = {
 export type UseListDataOptionType<T = any> = {
   defaultData: T;
 };
+
+export type ExceptionType =
+  | "EXPECTED"
+  | "UNEXPECTED"
+  | "FRONT_ERROR"
+  | "REQUEST_ERROR";

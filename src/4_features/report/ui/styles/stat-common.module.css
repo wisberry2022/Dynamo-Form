@@ -40,7 +40,8 @@
       }
     }
 
-    .aiSummary {
+    .aiSummary,
+    .attachSummary {
       border: 0.1rem solid #ddd;
 
       .content {
@@ -52,9 +53,33 @@
         }
       }
 
-      p {
+      .attachContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .btnBox {
+          display: flex;
+          gap: 1.2rem;
+        }
+      }
+
+      p,
+      .attachList {
         padding: 1.5rem 1.8rem;
         font-size: 1.4rem;
+      }
+
+      .attachList {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        height: 20rem;
+        overflow-y: scroll;
+      }
+
+      .attachList::-webkit-scrollbar {
+        display: none;
       }
     }
   }
