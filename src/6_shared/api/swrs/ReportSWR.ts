@@ -1,4 +1,9 @@
-import { ResponseWrapper, Stat, SurveySummaryResponse } from "@/6_shared/types";
+import {
+  ResponseWrapper,
+  Stat,
+  SurveyRespondentResponse,
+  SurveySummaryResponse,
+} from "@/6_shared/types";
 import useSWR from "swr";
 import { Paths } from "../core/Paths";
 
@@ -20,4 +25,12 @@ export const useSurveyStatsSWR = (surveyId: number) => {
   );
 
   return { stats: stats?.data };
+};
+
+export const useSurveyRespondentsSWR = (surveyId: number) => {
+  const { data: respondents, mutate } = useSWR<
+    ResponseWrapper<SurveyRespondentResponse[]>
+  >(surveyId ? Paths.report.getSurveyRespondents(surveyId) : null);
+
+  return { respondents, mutate };
 };

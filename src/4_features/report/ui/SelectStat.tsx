@@ -20,8 +20,8 @@ export const SelectStat: FC<SelectStatProps> = (props) => {
             labels: stat.answers.map((answer) => answer.question),
             datasets: [
               {
-                categoryPercentage: 0.5,
-                barPercentage: 0.4,
+                categoryPercentage: 1,
+                barPercentage: 0.5,
                 label: "해당 응답을 선택한 수",
                 data: stat.answers.map((answer) => answer.count),
                 borderWidth: 1,
@@ -29,6 +29,7 @@ export const SelectStat: FC<SelectStatProps> = (props) => {
             ],
           }}
           options={{
+            maintainAspectRatio: false,
             indexAxis: "y",
             scales: {
               x: {

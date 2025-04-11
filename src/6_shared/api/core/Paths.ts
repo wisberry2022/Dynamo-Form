@@ -40,7 +40,9 @@ export const Paths = {
   report: {
     getSummary: (surveyId: number) => `/api/v1/report/survey/${surveyId}`,
     getSurveyStats: (surveyId: number) =>
-      `/api/v1/report/survey/question/${surveyId}`,
+      `/api/v1/report/survey/${surveyId}/question`,
+    getSurveyRespondents: (surveyId: number) =>
+      `/api/v1/report/survey/${surveyId}/respondents`,
   },
   file: {
     upload: "/api/v1/file/upload",

@@ -2,7 +2,7 @@ import { QuestionStat, SurveySummary } from "@/3_widgets/report";
 import { FC } from "react";
 import styles from "./survey-report.module.css";
 import { BasicTab } from "@/6_shared";
-import { CategoryScale, Chart, registerables } from "chart.js";
+import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 

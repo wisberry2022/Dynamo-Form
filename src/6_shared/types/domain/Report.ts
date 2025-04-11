@@ -49,3 +49,10 @@ export type RatingStat = Stat & {
 export type AttachStat = Stat & {
   files: SimpleFile[];
 };
+
+export type SurveyRespondentResponse = {
+  id: number;
+  name: string;
+  formId: number;
+  replyFormId: number;
+};
