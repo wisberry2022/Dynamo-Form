@@ -16,7 +16,7 @@ type ListButtonType = ListButtonCompound &
     onClick?: () => void;
   }>;
 
-export const ListButton: ListButtonType = (props) => {
+export const ListButtonType1: ListButtonType = (props) => {
   const { bgColor = "secondary", left, center, right, onClick } = props;
 
   return (
@@ -76,6 +76,6 @@ const Right: FC<RightProps> = (props) => {
   );
 };
 
-ListButton.Left = Left;
-ListButton.Center = Center;
-ListButton.Right = Right;
+ListButtonType1.Left = Left;
+ListButtonType1.Center = Center;
+ListButtonType1.Right = Right;

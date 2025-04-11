@@ -1,3 +1,3 @@
 export { Button } from "./Button";
 export { SquareButton } from "./SquareButton";
-export { ListButton } from "./ListButton";
+export { ListButtonType1 } from "./ListButton";

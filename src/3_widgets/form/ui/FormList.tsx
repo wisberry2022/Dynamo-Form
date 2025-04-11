@@ -1,6 +1,6 @@
 import { FC, MouseEvent, useState } from "react";
 import styles from "./styles/form-list.module.css";
-import { Chip, endpoints, FormListResponse, ListButton } from "@/6_shared";
+import { Chip, endpoints, FormListResponse, ListButtonType1 } from "@/6_shared";
 import { FaFileAlt, FaPen, FaRegPlusSquare } from "react-icons/fa";
 import { FormDelete, FormTitleUpdate } from "@/4_features/form";
 import { useRouter } from "next/router";
@@ -39,11 +39,11 @@ export const FormList: FC<FormListProps> = (props) => {
     <>
       {formList.map((form) => {
         return (
-          <ListButton
+          <ListButtonType1
             key={form.id}
             onClick={() => goPage(form.id)}
             left={
-              <ListButton.Left
+              <ListButtonType1.Left
                 // ToDo: 양식 상태 API 연동 필요
                 // ToDo: 양식 리스트, 설명값 필드 추가
                 left={<Chip text="사용" variant="primary" />}
@@ -58,7 +58,7 @@ export const FormList: FC<FormListProps> = (props) => {
               />
             }
             right={
-              <ListButton.Right
+              <ListButtonType1.Right
                 left={
                   update !== form.id && (
                     <FaPen

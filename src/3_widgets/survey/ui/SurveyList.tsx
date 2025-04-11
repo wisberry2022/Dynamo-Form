@@ -1,7 +1,7 @@
 import {
   endpoints,
   handleError,
-  ListButton,
+  ListButtonType1,
   PopupTrigger,
   Survey,
   SurveyListResponse,
@@ -56,11 +56,11 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
     <>
       {surveys.map((survey) => {
         return (
-          <ListButton
+          <ListButtonType1
             key={survey.id}
             onClick={() => goDetail(survey.id)}
             left={
-              <ListButton.Left
+              <ListButtonType1.Left
                 left={
                   <div>
                     <SurveyStatusChip status={survey.status} />
@@ -75,7 +75,7 @@ export const SurveyList: FC<SurveyListProps> = (props) => {
               />
             }
             right={
-              <ListButton.Right
+              <ListButtonType1.Right
                 left={
                   <MdReportGmailerrorred
                     className={styles.tIcon}
