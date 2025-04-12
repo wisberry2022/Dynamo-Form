@@ -1,5 +1,5 @@
 import { ReplyFormRequest } from "./Reply";
-import { RespondentResponse } from "./Respondent";
+import { RespondentRequest } from "./Respondent";
 
 export type SurveyStatus = "WAITING" | "PROGRESS" | "COMPLETE" | "SUSPENDED";
 
@@ -53,7 +53,7 @@ export type SurveyValidRequest = {
 };
 
 export type SurveyResponseRequest = {
-  respondent: RespondentResponse;
+  respondent: RespondentRequest;
   replyForm: ReplyFormRequest;
 };
 
@@ -61,4 +61,4 @@ export type SimpleSurvey = {
   id: number;
   title: string;
   description: string;
-}
+};

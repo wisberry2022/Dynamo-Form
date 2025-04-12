@@ -1,13 +1,22 @@
 import { usePopover } from "@/6_shared/hooks";
-import { cloneElement, FC, ReactElement } from "react";
+import {
+  cloneElement,
+  FC,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from "react";
 
 type PopupTriggerProps = {
   trigger: ReactElement;
   popup: ReactElement;
+  triggerOption?: {
+    triggerOnClickSideEffect?: () => void;
+  }
 };
 
 export const PopupTrigger: FC<PopupTriggerProps> = (props) => {
-  const { trigger, popup } = props;
+  const { trigger, popup, triggerOption } = props;
   const { open, onClose, onOpen } = usePopover();
 
   return (
@@ -15,6 +24,7 @@ export const PopupTrigger: FC<PopupTriggerProps> = (props) => {
       {cloneElement<any>(trigger, {
         onClick: (e: any) => {
           e.stopPropagation();
+          triggerOption?.triggerOnClickSideEffect?.();
           onOpen();
         },
       })}

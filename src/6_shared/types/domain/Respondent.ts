@@ -1,6 +1,6 @@
 export type Gender = "MALE" | "FEMALE";
 
-export type RespondentResponse = {
+export type RespondentRequest = {
   name: string;
   email: string;
   phoneNumber: string;
@@ -11,3 +11,5 @@ export type RespondentValidRequest = {
   email: string;
   phoneNumber: string;
 };
+
+export type RespondentResponse = RespondentRequest;

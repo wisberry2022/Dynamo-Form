@@ -1,7 +1,7 @@
 import { Button, ListButtonType2, useSurveyRespondentsSWR } from "@/6_shared";
 import { FC } from "react";
 import styles from "./styles/resp-survey.module.css";
-import { Respondent } from "@/5_entities/report";
+import { Respondent } from "@/4_features/report";
 
 type RespondentsBySurveyProps = {
   surveyId: number;

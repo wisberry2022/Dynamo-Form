@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  li {
+    display: flex;
+    gap: 1.5rem;
+
+    strong,
+    span {
+      font-size: 1.3rem;
+    }
+
+    strong {
+      width: 15%;
+    }
+
+    span {
+      font-weight: 400;
+    }
+  }
+}
+
+.btnBox {
+  width: 100%;
+
+  * {
+    justify-self: flex-end;
+  }
+}

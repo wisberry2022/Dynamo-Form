@@ -2,7 +2,7 @@ import {
   Gender,
   Reply,
   ReplyViewResponse,
-  RespondentResponse,
+  RespondentRequest,
   SurveyResponseRequest,
 } from "@/6_shared";
 import { ChangeEventHandler } from "react";
@@ -21,7 +21,7 @@ export type ReplyHandler = {
   state: SurveyResponseRequest;
   form: ReplyViewResponse;
   respondent: {
-    value: RespondentResponse;
+    value: RespondentRequest;
     onChangeTextField: ChangeEventHandler<HTMLInputElement>;
     onRadio: (value: Gender) => void;
   };

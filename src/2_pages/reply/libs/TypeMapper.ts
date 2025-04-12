@@ -1,7 +1,7 @@
-import { RespondentResponse, RespondentValidRequest } from "@/6_shared";
+import { RespondentRequest, RespondentValidRequest } from "@/6_shared";
 
 export const convert2RespondentValid = (
-  data: RespondentResponse
+  data: RespondentRequest
 ): RespondentValidRequest => {
   return {
     email: data.email,

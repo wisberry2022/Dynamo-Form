@@ -31,6 +31,7 @@ export const Paths = {
     },
   },
   respondent: {
+    get: (id: number) => `/api/v1/respondent/${id}`,
     valid: (surveyId: number) => `/api/v1/respondent/${surveyId}/valid`,
   },
   reply: {
