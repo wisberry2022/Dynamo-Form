@@ -9,4 +9,4 @@ export type SurveySummaryViewType = {
   participants: number;
   limitParticipants: number;
   totalQuestionCount: number;
-}
+};

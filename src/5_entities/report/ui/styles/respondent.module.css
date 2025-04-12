@@ -1,0 +1,28 @@
+.left {
+  display: flex;
+  gap: 1.5rem;
+
+  .label {
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  .content {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
+
+.right {
+  display: flex;
+  gap: 1.2rem;
+  width: 23%;
+
+  * {
+    flex: 1;
+  }
+
+  .btn {
+    font-size: 1.1rem;
+  }
+}

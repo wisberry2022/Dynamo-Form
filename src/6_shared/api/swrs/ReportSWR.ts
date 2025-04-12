@@ -32,5 +32,5 @@ export const useSurveyRespondentsSWR = (surveyId: number) => {
     ResponseWrapper<SurveyRespondentResponse[]>
   >(surveyId ? Paths.report.getSurveyRespondents(surveyId) : null);
 
-  return { respondents, mutate };
+  return { respondents: respondents?.data, mutate };
 };

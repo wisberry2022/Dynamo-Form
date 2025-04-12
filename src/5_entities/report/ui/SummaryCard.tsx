@@ -1,7 +1,7 @@
 import { formatDate, SurveySummaryResponse } from "@/6_shared";
 import { FC } from "react";
 import styles from "./styles/summary-card.module.css";
-import { SurveySummaryViewType } from "./model/types";
+import { SurveySummaryViewType } from "../model/types";
 import { SurveyStatusChip } from "@/5_entities/survey";
 
 type SummaryCardProps = {

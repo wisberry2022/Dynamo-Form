@@ -1,4 +1,4 @@
-import { SurveySummaryViewType } from "@/5_entities/report/ui/model/types";
+import { SurveySummaryViewType } from "@/5_entities/report/model/types";
 import { isEmptyObject, SurveySummaryResponse } from "@/6_shared";
 
 export const resp2ViewType = (
